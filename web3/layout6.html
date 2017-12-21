@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <style>
+        html,body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .navbar {
+            height: 70px;
+            background-color: #2c3e50;
+        }
+        
+        .navbar .brand {
+            color: white;
+            font-size: 32px;
+            height: 70px;
+            display: inline-block;
+            /* 文本垂直居中 */
+            line-height: 70px;
+            text-decoration: none;
+            /* float: left; */
+            margin-right: 50px;
+        }
+
+        .menu {
+            list-style-type: none;
+            padding: 0px;
+            margin: 0px;
+            /* float: right; */
+        }
+
+        .menu li {
+            /* margin: 0px 15px; */
+            /* float: left; */
+        }
+
+        .menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            height: 70px;
+            display: inline-block;
+            line-height: 70px;
+            padding: 0px 15px;
+        }
+
+        .menu li a:hover {
+            background-color: #2980b9;
+        }
+
+        .container {
+            width: 720px;
+            /* height: 1200px;
+            background-color: #95a5a6; */
+            /* 左右居中 */
+            margin: 0px auto;
+            overflow: hidden;
+        }
+
+        .container .ad {
+            height: 300px;
+            background-color: #1abc9c; 
+        }
+
+        .row {
+            overflow: hidden;
+        }
+
+        .sider {
+            width: 220px;
+            height: 500px;
+            background-color: #27ae60;
+            /* float:left; */
+        }
+
+        .sider .little {
+            height: 100px;
+            background-color: #3498db;
+        }
+
+        .content {
+            width: 500px;
+            height: 500px;
+            background-color: #e67e22;
+            /* float: left; */
+        }
+
+        .footer {
+            height: 50px;
+            background-color: #bdc3c7;
+        }
+
+        .pull_left {
+            float: left;
+        }
+
+        .pull_right {
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+       <div class="container">
+          <a class="brand pull_left" href="home.html"><i class="fa fa-weixin"></i> weixin</a>   
+          <ul class="menu pull_left">
+              <li class="pull_left"><a href="">首页</a></li>
+              <li class="pull_left"><a href="">今日头条</a></li>
+              <li class="pull_left"><a href="">关于我们</a></li>
+              <li class="pull_left"><a href="">公司招聘</a></li>
+          </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="ad">
+            <!-- <img src="img/ad.png"> -->
+        </div>
+        <div class="row">
+            <div class="sider pull_left">
+                <div class="little"></div>
+
+            </div>
+            <div class="content pull_left"></div>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+
+</body>
+</html>

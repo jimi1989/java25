@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #parent,#parent2 {
+            width: 300px;
+            height: 300px;
+            background-color: #ccc;
+        }
+
+        #inner {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+        }
+
+        #parent2 {
+            background-color: goldenrod;
+        }
+
+        /*最佳实践：父容器相对定位，子容器绝对定位*/
+        #parent {
+            position: relative;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="parent">
+        <div id="inner"></div>
+    </div>
+    <div id="parent2"></div>
+
+
+</body>
+</html>

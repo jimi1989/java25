@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         html,body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .sons {
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+        /* #first {
+            height: 201px;
+        } */
+
+        .parent {
+            /* height: 600px; */
+            /* 1.隐藏溢出的文本 */
+            /* 2.完美解决子元素浮动后，父元素高度为0的问题 */
+            /* overflow: hidden; */
+        }
+
+        .footer {
+            height: 300px;
+            background-color: #2c3e50;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="sons" id="first" style="background-color:#ccc"></div>
+        <div class="sons" style="background-color:#890"></div>
+        <div class="sons" style="background-color:#234"></div>
+        <div class="sons" style="background-color:#456"></div>
+        <div class="sons" style="background-color:#852"></div>
+        <div class="sons" style="background-color:#083"></div>
+        <!-- 该div不是为了显示内容而是解决兄弟元素浮动带来父元素高度为0的问题 -->
+        <div class="clear"></div>
+    </div>
+
+    <div class="footer"> </div>
+
+</body>
+</html>
