@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="js/moment.js"></script>
+    <script>
+        // var now = moment();
+        //  now.locale("zh-cn");
+        // console.log(now.format("YYYY-MM-DD HH:mm:ss Q DDDD a ww"));
+        // console.log(now.valueOf());
+        // console.log(now.unix());
+
+        // now.add(80,'day').add(10,"hour");
+        // now.subtract(30,"d");
+        // console.log(now.format("YYYY-MM-DD HH:mm:ss"));
+
+        // console.log(now.isBefore('2017-12-23'));
+        // console.log(now.isAfter('2017-12-23'));
+        // console.log(now.isBetween('2017-12-21','2017-12-25'));
+
+        var sendTime = moment("2017-12-22 16:05:01");
+        sendTime.locale("zh-cn");
+        console.log(sendTime.fromNow());
+    </script>
+
+</body>
+</html>
