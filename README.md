@@ -1,6 +1,6 @@
 ## First java
 [凯盛软件](http://www.kaishengit.com)第25期 代码示例 </br>
-课程列表如下
+课程列表如下：
 <ul>
     <li>1.javaSE</li>
     <li>2.mysql数据库</li>
