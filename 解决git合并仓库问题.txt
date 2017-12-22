@@ -1,0 +1,18 @@
+2017年12月21日，使用两个本地仓库同一个远程仓库的时候，先push第一个仓库到远程仓库，想把第二个仓库合并远程仓库的时候就出问题，只能把后来初始化的仓库清空，先clone下来第一个上传，问题如下：
+	1.执行git push origin master,提示需要先进行git pull  
+	2.执行git pull origin master，提示refusing to merge unrelated histories,因为pull=fetch+merge，问题主要出在merge这步
+	
+解决方案：
+	1.清空所有之前的操作
+	2.git init;
+	3.把要合并的文件放到第二个仓库中
+	4.git add .
+	5.git commit -m "提交日志"
+	6.git remote add origin url
+	7.git fetch origin 获取远程
+	8.如果此时之行git merge将会出现和之前一样的问题，在第二个仓库中执行git checkout -b demo1 origin/master (在二仓库中创建并切换本地分支demo1，代码从origin/master远程获得)，这时候本地仓库显示的代码是远程仓库（或者本地仓库1的文件）
+	9.执行git branch -v 查看分支版本
+	10.git checkout master，切换主分支
+	11.git merge demo1 --allow-unrelated-histories 合并本地两个分支
+	12.完成
+	
