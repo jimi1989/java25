@@ -10,16 +10,30 @@
 
     <script>
         (function(){
+            var names = new Array("aa","bb");
+            names['k'] = 'v';
+            console.log(names);
+            console.log(names.length);
 
-            var now = new Date("2017-11-22 12:23:34");//客户端时间 
+            for(var i = 0; i < names.length; i++) {
+                console.log(i + "-->" + names[i]);
+            }
+
+            console.log("-----------");
+
+            for(var index in names) {
+                console.log(index + "-->" + typeof index);
+            }
+
+            // var now = new Date("2017-11-22 12:23:34");//客户端时间 
             
-            console.log(now);
-            console.log(now.getFullYear());
-            console.log(now.getMonth());
-            console.log(now.getTime());
-            console.log();
-            console.log();
-            console.log();
+            // console.log(now);
+            // console.log(now.getFullYear());
+            // console.log(now.getMonth());
+            // console.log(now.getTime());
+            // console.log();
+            // console.log();
+            // console.log();
 
 
             // // 月份 0-11 代表1-12月
