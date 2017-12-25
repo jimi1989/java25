@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 如果页面上有两个控件的id值相同，只能获得第一个对象 -->
+    <button class="myBtn" name="myButton" id="btn">button1</button>
+    <button class="myBtn" name="myButton" id="btn2">button2</button>
+
+    <div>
+        <button>button3</button>
+    </div>
+
+    <script>
+        (function(){
+            // var btn = document.getElementById("btn");
+            // var btns = document.getElementsByTagName("button");
+            // var btns = document.getElementsByClassName("myBtn");
+            // var btns = document.getElementsByName("myButton");
+
+            // var btn = document.querySelector("#btn"); // 选择器
+            // var btns = document.querySelectorAll(".myBtn");
+            // var btns = document.querySelectorAll("button");
+            // var btns = document.querySelectorAll("Button[name=myButton]");
+            
+            // var btns = document.querySelectorAll("#btn");  不推荐
+            // var btn = document.querySelector(".myBtn"); 不推荐
+            
+            // var btn = document.querySelector("div button");
+          
+            var div = document.querySelector("div");
+            var btn = div.querySelector("button");
+          
+
+            var fn = function(){
+                console.log("button1 click...");
+            };
+
+            btn.onclick = fn;
+
+            // btns.forEach(function(item){
+            //     item.onclick = fn;
+            // });
+
+            // for(var i = 0; i < btns.length; i++) {
+            //     btns[i].onclick = fn;
+            // }
+
+            // btns[1].onclick = fn;
+
+            // var fn = function(){
+            //     console.log("hello");
+            // }
+            
+            // btn.onclick = fn;
+
+
+
+
+
+        })();
+    
+    </script>
+</body>
+</html>
