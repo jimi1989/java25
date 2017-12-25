@@ -35,32 +35,30 @@
 
     <script>
 
+        var rocket = document.getElementById("rocket");
+        var right = -60;
+        
+        rocket.onmouseover = function(){
+            rocket.style.right = 0 + "px";
+        }
 
-        var now = Date();
-        console.log(now);
-        // var rocket = document.getElementById("rocket");
-        // var right = -60;
-        // rocket.onmouseover = function(){
-        //     rocket.style.right = 0 + "px";
-        // }
+        rocket.onmouseout = function(){
+            rocket.style.right = right + "px";
+        }
 
-        // rocket.onmouseout = function(){
-        //     rocket.style.right = right + "px";
-        // }
-
-        // rocket.onclick = function(){
-        //     var height = 0;
-        //     right = 0;
-        //     var si = setInterval(function(){
-        //         height = 1.5 * height + 1;
-        //         rocket.style.bottom = height + "px";
-        //         if(height >= 1000) {
-        //             clearInterval(si);
-        //             rocket.style.bottom = 0 + "px";
-        //             rocket.style.right = 0 + "px";
-        //         }
-        //     },100);
-        // }
+        rocket.onclick = function(){
+            var height = 0;
+            right = 0;
+            var si = setInterval(function(){
+                height = 1.5 * height + 1;
+                rocket.style.bottom = height + "px";
+                if(height >= 1000) {
+                    clearInterval(si);
+                    rocket.style.bottom = 0 + "px";
+                    rocket.style.right = 0 + "px";
+                }
+            },100);
+        }
 
         // var btn = document.getElementById("adBtn");
 

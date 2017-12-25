@@ -17,43 +17,27 @@
 
     <div class="container">
         <div class="input_wrapper">
-            <input type="text" placeholder="+ 添加一个任务">
+            <input type="text" id="inputText" placeholder="+ 添加一个任务">
         </div>
         <!-- 输入框结束 -->
 
-        <ul class="todoList">
-            <li>
-                <a href=""><span class="checkbox"></span></a><span class="text">学习Node.js</span>
-            </li>
-            <li>
-                <a href=""><span class="checkbox"></span></a><span class="text">学习Node.js</span>
-            </li>
-            <li>
-                <a href=""><span class="checkbox"></span></a><span class="text">学习Node.js</span>
-            </li>
-            <li>
-                <a href=""><span class="checkbox"></span></a><span class="text">学习Node.js</span>
-            </li>
+        <ul class="todoList" id="newTodoList">
+            <!-- <li>
+                <a href="javascript:;"><span class="checkbox"></span></a><span class="text">学习Node.js</span>
+            </li> -->
+            
         </ul>
         <!-- 未完成列表结束 -->
 
-        <ul class="todoList done">
-            <li>
-                <a href=""><span class="checkbox"></span></a><span class="text">学习Node.js</span>
+        <ul class="todoList done" id="doneList">
+            <!-- <li>
+                <a href="javascript:;"><span class="checkbox"></span></a><span class="text">学习Node.js</span>
             </li>
-            <li>
-                <a href=""><span class="checkbox"></span></a><span class="text">学习Node.js</span>
-            </li>
-            <li>
-                <a href=""><span class="checkbox"></span></a><span class="text">学习Node.js</span>
-            </li>
-            <li>
-                <a href=""><span class="checkbox"></span></a><span class="text">学习Node.js</span>
-            </li>
+            -->
         </ul>
 
     </div>
 
-
+<script src="js/todo.js"></script>
 </body>
 </html>
