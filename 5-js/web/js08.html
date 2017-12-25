@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #processBar {
+            height: 20px;
+            background-color: orange;
+            border-radius: 3px;
+            margin-top: 20px;
+            width: 0px;
+        }
+    
+        #rocket {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="adBtn">上传</button>
+    <div id="processBar"></div>
+    <div id="rocket"><img src="img/rocket.png"></div>
+
+    <script>
+        var btn = document.getElementById("adBtn");
+
+        btn.onclick = function(){
+            // history.back(); 回退
+            // history.forward(); 
+            history.go(0); // n:前进n步 -n:后退n步 0：刷新
+        }
+
+        // location对象 http://www.sina.com.cn/index.html
+        // console.log(location.href);// 地址栏的完整路径
+        // console.log(location.protocol); //协议 http:
+        // console.log(location.port); // 端口 80 8080
+        // console.log(location.hostname); // 网址 ip www.sina.com.cn
+        // console.log(location.hash); // 锚标记
+        // console.log(location.pathname); //资源路径  index.html
+
+        // location.href="http://163.com"; // javascript中页面跳转
+
+
+        // 屏幕分辨率 颜色位数
+    //    console.log(screen.width);
+    //    console.log(screen.height);
+    //    console.log(screen.colorDepth);
+
+        // console.log(navigator.appName);
+        // console.log(navigator.appCodeName);
+        // console.log(navigator.appVersion);
+        // console.log(navigator.platform);
+        // console.log(navigator.language);
+        // console.log(navigator.userAgent);
+
+        
+        
+        // inner 可视页面的大小  outer是浏览器窗口的大小
+        // console.log(window.innerHeight);
+        // console.log(window.innerWidth);
+        // console.log(window.outerHeight);
+        // console.log(window.outerWidth);
+
+        // window.onresize = function(){
+        //     console.log(window.innerHeight);
+        //     console.log(window.innerWidth);
+        //     console.log(window.outerHeight);
+        //     console.log(window.outerWidth);
+        // }
+
+
+
+        // alert(123);
+        
+        // if(confirm("确定要删除么？")) {
+        //     alert("删除成功！")
+        // } 
+
+        // var num1 = prompt("请输入第一个数字");
+        // var num2 = prompt("请输入第二个数字");
+        // console.log(parseInt(num1) + parseInt(num2));
+        
+        // console.log(num2);
+
+        // var btn = document.getElementById("adBtn");
+        // var processBar = document.getElementById("processBar");
+        // var rocket = document.getElementById("rocket");
+
+        // btn.onclick = function(){
+        //     var height = 0;
+        //     setInterval(function(){
+        //         height = 1.5 * height + 1;
+        //         rocket.style.bottom = height + "px";
+        //     },100);
+        // }
+
+
+        // console.log(btn);
+        // console.log(processBar);
+
+        // btn.onclick = function(){
+            
+        //     var length = 10;
+        //     var si = setInterval(function(){
+        //         length += 10;
+        //         processBar.style.width = length + "px";
+        //         if(length == 600) {
+        //             clearInterval(si);
+        //         }
+        //     }, 50) ;
+
+
+        // }
+       
+
+
+    
+    </script>
+</body>
+</html>

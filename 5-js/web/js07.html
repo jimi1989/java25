@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="adBtn">弹广告</button>
+    <script>
+        var count = 0;
+        // 间歇调用 : 每隔多少毫秒调用一次
+        var si = setInterval(function(){
+            count++;
+            console.log("hello" + count);
+            if(count == 30) {
+                clearInterval(si);
+            }
+        },200);
+
+
+        //超时调用 setTimeout(fn(行为),ms(延长多少毫秒)) 
+        // setTimeout(function(){
+        //     alert("hello");
+        // },2000);
+        
+
+
+        // 目标（按钮） 事件（点击） 行为（弹窗口）
+        // var adBtn = document.getElementById("adBtn");
+        // adBtn.onclick = function(){
+
+        //     window.open("http://www.163.com","广告","height=500,width=500,top=200,left=200");
+        // }
+        
+        // console.log(adBtn);
+
+        // window.open("http://www.163.com");
+        // window.open("http://www.163.com","广告","height=500,width=500,top=200,left=200");
+
+        // window.alert(123);
+
+        // console.log(Math.PI);
+        // console.log(Math.E);
+        // console.log(parseInt(Math.random() * 100));
+    
+
+        // String regex = "\\d+"; name.maches(regex);
+        // var expression = /\d+/;// 只要包含数字即可校验通过
+        // var expression = /^\d+$/; // 加上边界，以数字开头以数字结尾
+        // var expression = /^aa\d+$/i; // i:该模式不区分大小写
+        // var res = expression.test("AA123");
+        // console.log(res);
+
+        // var expression = /^\w+@\w+(\.\w+){1,2}$/;
+        // var res = expression.test("jinjianghao@kaishengit.com");
+        // console.log(res);
+    
+    </script>
+</body>
+</html>
