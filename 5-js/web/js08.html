@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+
+         html {
+            overflow: hidden;
+        }
+
         #processBar {
             height: 20px;
             background-color: orange;
@@ -16,8 +21,9 @@
     
         #rocket {
             position: absolute;
-            right: 0px;
+            right: -60px;
             bottom: 0px;
+            border-radius: 50%;
         }
 
     </style>
@@ -28,13 +34,37 @@
     <div id="rocket"><img src="img/rocket.png"></div>
 
     <script>
-        var btn = document.getElementById("adBtn");
-
-        btn.onclick = function(){
-            // history.back(); 回退
-            // history.forward(); 
-            history.go(0); // n:前进n步 -n:后退n步 0：刷新
+        var rocket = document.getElementById("rocket");
+        var right = -60;
+        rocket.onmouseover = function(){
+            rocket.style.right = 0 + "px";
         }
+
+        rocket.onmouseout = function(){
+            rocket.style.right = right + "px";
+        }
+
+        rocket.onclick = function(){
+            var height = 0;
+            right = 0;
+            var si = setInterval(function(){
+                height = 1.5 * height + 1;
+                rocket.style.bottom = height + "px";
+                if(height >= 1000) {
+                    clearInterval(si);
+                    rocket.style.bottom = 0 + "px";
+                    rocket.style.right = 0 + "px";
+                }
+            },100);
+        }
+
+        // var btn = document.getElementById("adBtn");
+
+        // btn.onclick = function(){
+        //     // history.back(); 回退
+        //     // history.forward(); 
+        //     history.go(0); // n:前进n步 -n:后退n步 0：刷新
+        // }
 
         // location对象 http://www.sina.com.cn/index.html
         // console.log(location.href);// 地址栏的完整路径
