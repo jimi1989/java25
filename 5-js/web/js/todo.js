@@ -66,6 +66,10 @@
         }
     }
 
+    // newTodoList.onclick = function(){
+    //     console.log("ul click...");
+    // }
+
     //checkbox 点击事件
     document.onclick = function(event){
         // console.log(event.target);
@@ -81,17 +85,15 @@
                 doneList.appendChild(li);
             }
             
-
         }
-
-
+        // console.log("document click...")
     }
     
     
     // var checkBoxes = document.querySelectorAll(".checkbox");
 
     // var fn = function(){
-    //     console.log("success");
+    //     console.log("checkbox click...");
     // }
 
     // for(var i = 0; i < checkBoxes.length; i++) {

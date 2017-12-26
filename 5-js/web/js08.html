@@ -7,18 +7,18 @@
     <title>Document</title>
     <style>
 
-         html {
+        html {
             overflow: hidden;
         }
 
-        #processBar {
+        /* #processBar {
             height: 20px;
             background-color: orange;
             border-radius: 3px;
             margin-top: 20px;
             width: 0px;
         }
-    
+     */
         #rocket {
             position: absolute;
             right: -60px;
@@ -29,8 +29,8 @@
     </style>
 </head>
 <body>
-    <button id="adBtn">上传</button>
-    <div id="processBar"></div>
+    <!-- <button id="adBtn">上传</button>
+    <div id="processBar"></div> -->
     <div id="rocket"><img src="img/rocket.png"></div>
 
     <script>
@@ -52,10 +52,10 @@
             var si = setInterval(function(){
                 height = 1.5 * height + 1;
                 rocket.style.bottom = height + "px";
-                if(height >= 1000) {
+                if(height >= 30000) {
                     clearInterval(si);
                     rocket.style.bottom = 0 + "px";
-                    rocket.style.right = 0 + "px";
+                    rocket.style.right = right + "px";
                 }
             },100);
         }
