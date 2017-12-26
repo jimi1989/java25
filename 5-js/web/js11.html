@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    <!-- 如果页面上有两个控件的id值相同，只能获得第一个对象 -->
+    <!-- <button id="btn" onclick="sayHello()">button</button> -->
+    <button id="btn">button</button>
+   
+    <script>
+        
+
+        (function(){
+           
+            document.querySelector("#btn").onclick = function(){
+                alert("hello");
+            }
+
+            // function sayHello(){
+            //     alert("hello");
+            // }
+
+
+        })();
+    
+    </script>
+</body>
+</html>

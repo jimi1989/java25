@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    <button id="btn">button</button>
+    <a href="http://163.com" id="link">163</a>
+    <script>
+
+        (function(){
+            var btn = document.querySelector("#btn");
+            var link = document.querySelector("#link");
+
+            link.onclick = function(event){
+                alert("link");
+                console.log(this);// 触发该事件的对象。
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            document.onclick = function(event){
+                alert("document");
+            }
+
+
+
+            // btn.onclick = function(event) {
+            //     console.log(event.type);
+            //     console.log(event.target);
+            // }
+            
+            // var fn = function(event){
+            //     switch(event.type) {
+            //         case 'click' :
+            //             console.log("click");
+            //             break;
+            //         case 'mouseover':
+            //             console.log("mouseover");
+            //             break;
+            //         case 'mouseout' :
+            //             console.log("mouseout");
+            //             break;    
+            //     }
+
+            // }
+
+            // btn.onclick = fn;
+            // btn.onmouseover = fn;
+            // btn.onmouseout = fn;
+
+
+
+            
+            // 解绑
+            // var fn = function(){
+            //      console.log("haha");
+            //      btn.onclick = null;
+            // }
+
+            // btn.onclick = fn;
+            
+
+            // var fn = function(){
+            //     console.log("btn click1...");
+            //     btn.removeEventListener("click",fn,true);
+            // };
+
+            // btn.addEventListener("click",fn,true);
+
+            
+
+
+            // btn.onclick = function(){
+            //     console.log("haha");
+            // }
+
+            // // 覆盖之前绑定的事件
+            // btn.onclick = function(){
+            //     console.log("hehe");
+            // }
+
+            // 支持多事件绑定
+            // btn.addEventListener("click",function(){
+            //         console.log("btn click1...")
+            // },true);
+
+            // btn.addEventListener("click",function(){
+            //         console.log("btn click2...")
+            // },true);
+
+
+            // 只有使用addEventListner支持事件捕获，其他只能默认事件冒泡
+            // true: 事件捕获  false:事件冒泡
+            // btn.addEventListener("click",function(){
+            //         console.log("btn click...")
+            // },true);
+
+            // document.addEventListener("click",function(){
+            //         console.log("docuemnt click...")
+            // },true);
+
+        })();
+    
+    </script>
+</body>
+</html>

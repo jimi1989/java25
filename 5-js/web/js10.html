@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 如果页面上有两个控件的id值相同，只能获得第一个对象 -->
+    <button id="btn">button</button>
+    <!-- style="width:220px;height:220px" -->
+    <div id="box" ></div>
+
+    <script>
+        (function(){
+            var btn = document.querySelector("#btn");
+            var box = document.querySelector("#box");
+
+            btn.onclick = function(){
+                // 通过javascript添加css样式本质上是添加的行内样式
+                // box.style.width = "300px";
+                // box.style.height = "300px";
+                // box.style.backgroundColor = "orange";
+                // box.style.border = "2px solid #000";
+                // box.style.backgroundImage = "url('img/todo.jpg')";
+
+                // 取值css属性，只能获得行内样式表的值，内嵌和外部都不行
+                // console.log(box.style.width);
+
+                // 获得内嵌或者外部样式表
+                if(document.defaultView) {
+                    // 非ie浏览器
+                    var style = document.defaultView.getComputedStyle(box,null);
+                    console.log(style.width);
+                } else {
+                    alert(box.currentStyle.width);
+                    // console.log();// 低版本ie不支持
+                }
+
+            }
+
+
+
+        })();
+    
+    </script>
+</body>
+</html>
