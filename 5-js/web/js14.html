@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        label {
+            display: block;
+            margin: 8px 0px;
+        }
+
+        .form-btn {
+            margin-top:10px;
+        }
+
+        .text-error {
+            color: red;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="addForm" action="save.jsp" method="get">
+        <label>帐号</label>
+        <input id="text" type="text" value="tom" autofocus><span class="text-error">请输入帐号</span>
+        <label>密码</label>
+        <input id="pass" type="password"><span class="text-error">请输入密码</span>
+        <h3>下拉框联动</h3>
+        <select id="province">
+            <option value="0">请选择省份</option>
+        </select>
+        <select id="city">
+            <option value="">请选择城市</option>
+        </select>
+
+
+        <div class="form-btn">
+            <button type="button" id="saveBtn">保存</button>
+        </div>
+    </form>
+    <script>
+
+        (function(){
+
+            var input = document.querySelector("#text");
+            input.onfocus = function(){
+                this.select();
+            }
+
+
+            var data = [
+                {name:"河南省",citys:["郑州市","新乡市","焦作市"]},
+                {name:"山西省",citys:["太原市","临汾市","大同市"]},
+                {name:"广东省",citys: ["广州市", "深圳市", "东莞市"]}
+            ];
+
+            var province = document.querySelector("#province");
+            var city = document.querySelector("#city");
+
+            for(var i = 0; i < data.length; i++) {
+                var pro = data[i];
+                // 创建option对象，添加到province中
+                // var option = document.createElement("option");
+                // option.setAttribute("value",pro.name);
+                // // var text = document.createTextNode(pro.name);
+                // // option.appendChild(text);
+                
+                // option.innerText = pro.name;
+
+                // 11：显示 22：value
+                // var option = new Option("11","22");
+                var option = new Option(pro.name, pro.name);
+                province.appendChild(option);
+            }
+
+            province.onchange = function(){
+                city.options.length = 1;
+                var value = this.value;
+                var citys = [];
+                // 根据选择的省份获得对应的城市数组
+                for(var i = 0; i < data.length; i++) {
+                    if(value == data[i].name) {
+                        citys = data[i].citys;
+                        break;
+                    }
+                }
+
+                // 根据城市数组创建option并添加到city select中
+                for(var i = 0; i < citys.length; i++) {
+                    var option = new Option(citys[i],citys[i]);
+                    city.appendChild(option);
+                }
+
+
+            }
+
+
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            var addForm = document.querySelector("#addForm");
+            var btn = document.querySelector("#saveBtn");
+            // btn.setAttribute("type","submit");
+
+            var text = document.querySelector("#text");
+            var pass = document.querySelector("#pass");
+                
+
+            text.onkeyup = function(){
+                this.nextSibling.style.display = "none";
+            }
+
+            pass.onkeyup = function(){
+                this.nextSibling.style.display = "none";
+            }
+
+            btn.onclick= function(){
+                
+                if(!text.value) {
+                    // alert("请输入帐号");
+                    // input 和 span之间不能有空格、换行
+                    // console.log(text.nextSibling);   
+                    text.nextSibling.style.display = "inline";
+                    text.focus(); // 元素获得焦点
+                    // event.preventDefault();
+                    return;
+                }
+
+                if(!pass.value) {
+                    // alert("请输入密码");
+                    pass.nextSibling.style.display = "inline";
+                    pass.focus(); // 元素获得焦点
+                    // event.preventDefault();
+                    return;
+                } else {
+                    
+                    if(pass.value.length < 8 || pass.value.length > 16) {
+                        pass.nextSibling.innerText = "密码长度为8~16位";
+                        pass.nextSibling.style.display = "inline";
+                        pass.focus();
+                        return;
+                    }
+                }
+
+                // 表单对象的submit()函数用于表单提交
+                addForm.submit();
+                
+            }
+
+
+            // addForm.onsubmit = function(event){
+            //     var text = document.querySelector("#text");
+            //     var pass = document.querySelector("#pass");
+                
+            //     if(!text.value) {
+            //         alert("请输入帐号");
+            //         event.preventDefault();
+            //         return;
+            //     }
+
+            //     if(!pass.value) {
+            //         alert("请输入密码");
+            //         event.preventDefault();
+            //         return;
+            //     }
+
+
+            // }
+
+        })();
+    
+    </script>
+</body>
+</html>

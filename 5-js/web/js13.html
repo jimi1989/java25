@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #menu {
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            display: none;
+            position: absolute;
+            z-index: 99999;
+        }
+    
+        #menu li {
+            height: 28px;
+            width: 180px;
+            background-color: #ccc;
+            text-align: center;
+            border: 1px solid #999;
+        }
+
+        #menu li:hover{
+            background-color: #888;
+            color: aliceblue;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="text"></h1>
+    <input type="text" id="input_text">
+    <button id="btn">button</button>
+    <ul id="menu">
+        <li>复制</li>
+        <li>粘贴</li>
+        <li>打印</li>
+        <li>分享</li>
+    </ul>
+    <script>
+            
+
+        (function(){
+            var btn = document.querySelector("#btn");
+            var input = document.querySelector("#input_text");
+            var text = document.querySelector("#text");
+            var menu = document.querySelector("#menu");
+
+            // window.onbeforeunload = function(){
+            //    return "";
+            // }
+
+            // input.onkeydown = function(event){
+            //     var keyCode = event.keyCode;
+            //     if(!((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105) || keyCode == 8 || keyCode == 46 )) {
+            //         event.preventDefault();
+            //     }
+            //     console.log(keyCode);
+            // }
+
+
+            document.oncontextmenu = function(event){
+                event.preventDefault();
+                // menu.style.display = "block";
+                // var x = event.pageX;
+                // var y = event.pageY;
+                // menu.style.left = x + "px";
+                // menu.style.top = y + "px";
+            }
+
+            // document.onclick = function(){
+            //     menu.style.display = "none";
+            // }
+
+            // document.onmousemove = function(event){
+            //     var x = event.pageX;
+            //     var y = event.pageY;
+            //     var t = x + "*" + y;
+            //     text.innerText = t;
+            // }
+
+
+            // 获得焦点事件
+            // input.onfocus = function(){
+            //     console.log("on focus..");
+            // }
+
+            // 失去焦点事件（无论内容是否改变）
+            // input.onblur = function(){
+            //     console.log("on blur...");
+            // }
+
+            // 当内容发生改变，并且失去焦点触发该事件
+            // input.onchange = function(){
+            //     console.log("on change...");
+            // }
+
+        })();
+    
+    </script>
+</body>
+</html>
