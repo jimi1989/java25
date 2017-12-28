@@ -53,13 +53,13 @@
             //    return "";
             // }
 
-            // input.onkeydown = function(event){
-            //     var keyCode = event.keyCode;
-            //     if(!((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105) || keyCode == 8 || keyCode == 46 )) {
-            //         event.preventDefault();
-            //     }
-            //     console.log(keyCode);
-            // }
+            input.onkeypress = function(event){
+                var keyCode = event.keyCode;
+                // if(!((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105) || keyCode == 8 || keyCode == 46 )) {
+                //     event.preventDefault();
+                // }
+                console.log(keyCode);
+            }
 
 
             document.oncontextmenu = function(event){
