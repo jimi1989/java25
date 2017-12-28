@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input name="text" disabled="disabled" />
+
+    <button class="btn">b1</button>
+    <button class="btn">b2</button>
+    
+    <div>
+        <button>b3</button>
+    </div>
+    
+    <button>b4</button>
+    <button>b5</button>
+
+    <p style="display:none">这是一个p段落</p>
+    <p></p>
+
+    <ul>
+        <li>AA</li>
+        <li>BB</li>
+        <li>CC</li>
+    </ul>
+
+    <ul>
+        <li>AA</li>
+        <li>BB</li>
+        <li>CC</li>
+    </ul>
+
+
+    <script src="js/jquery-3.2.1.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script> -->
+    <script>
+        
+        $(function(){
+            // var btns = document.querySelectorAll(".btn");
+            // $("div button").click(function(){
+            //     alert("success");
+            // });
+
+            // $("button:eq(1)").click(function(){ // 从0开始
+            // $("div+button").click(function(){
+            // $("div ~ button").click(function(){
+            // $("button:not(button:first)").click(function(){
+            // $("button:even").click(function(){ //从0开始
+            // $("button:lt(1)").click(function(){ // gt lt 都不包含自己
+            // $("button:contains('2')").click(function(){ // 包含某内容的元素
+            // $("p:parent").click(function(){ // 包含某内容的元素
+            //     alert("success");
+            // });
+
+            $("button:eq(4)").click(function(){
+                // 不是找p标签的父标签，而是找到作为父标签存在的p标签
+                // $("p:parent").text("hello,parent"); // innetText = "hello,parent"
+
+                // $("p:hidden").css("display","block");
+                // $("p:hidden").show();
+
+                // $("ul:first li:first-child").css("color","red");
+                // $("ul li:nth-child(2)").css("color","red"); // 从1开始
+                // $("ul li:nth-child(odd)").css("color","red"); // 从1开始
+
+
+
+            })
+
+            
+
+
+        });
+
+
+    </script>
+
+</body>
+</html>
