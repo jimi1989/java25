@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .input_text {
+            height: 30px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+    <!-- class="abc input_text" -->
+    <input type="text" id="text" value="tom" rel="123" >
+
+    <button id="btn">button</button>
+    <div id="p_text"><h2>hello</h2></div>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script>
+        $(function(){
+            //dom开销
+            $("#btn").click(function(){
+                var $input = $("#text"); // 在变量名之前加上$，用于标识该对象为jQuery对象
+                var $p = $("#p_text");
+               
+                // $input.val("jack");
+                // console.log($input.val()); // input.value;
+                
+                console.log($p.html());  
+                
+
+                // $p.text("<h1>tom</h1>"); // input.innerText = "";
+                // $p.html("<h1>tom</h1>"); // input.innerHTML = "";
+
+                // $input.addClass("input_text");
+                // $input.removeClass("input_text"); // 去除对应的class值
+                // $input.toggleClass("input_text"); // 开关效果
+
+
+                // $input.removeAttr("rel");
+               
+               
+                // console.log($input.attr("id")); // 获得属性值
+                // $input.attr("class","abc"); // 添加属性(key,value)
+                // $input.attr("rel","1001");
+                // $input.attr("xyz","123");
+
+                // $input.attr("rel","1001").attr("xyz","123");// 链式调用，一次性添加多个
+
+                // $input.attr({
+                //     "rel":"1001",
+                //     "xyz":"123"
+                // }); // 使用对象添加属性
+
+                // $input.attr("num",function(){
+                //     return 120 + 3;
+                // }); // 属性值通过fn获得
+
+            });
+            
+           
+        });
+
+
+    </script>
+   
+</body>
+</html>

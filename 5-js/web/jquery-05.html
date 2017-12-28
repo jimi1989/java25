@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div {
+            width: 200px;
+            height: 300px;
+            background-color: orange;
+            display: none;
+        }
+    
+    </style>
+</head>
+<body>
+    <button id="addBtn">addButton</button>   
+    <button id="clearBtn">claerButton</button>     
+    <ul id="todo">
+    
+    </ul>
+    
+    <div>
+        
+
+    </div>
+
+
+    <script src="js/jquery-3.2.1.js"></script>
+       
+    <script>
+
+        $(function(){
+            var $ul = $("#todo");
+            $("#addBtn").click(function(){
+                var $div = $("div");
+
+                $div.fadeTo(1000,0.3);
+
+                // $div.fadeIn(1000);
+                
+                // $div.slideDown(2000);
+                // $div.slideUp(2000);
+                // $div.slideToggle(1000);
+
+
+                // var $div = $("div");
+                //  $div.hide(2000,function(){
+                //      alert("success"); // 回调函数
+                //  });
+
+
+                // $div.show(2000);
+                // $div.toggle();
+                
+                // var $div = $("div");
+                // // console.log($div.css("width")); // 获得css值
+                // // $div.css("background-color","orange").css("border-radius","3px");
+                // $div.css({
+                //     "background-color":"orange",
+                //     "border-radius": "3px"
+                // })
+
+
+                // console.log(Math.random());
+                // var li = "<li>abc" + parseInt(Math.random() * 100) + "</li>";
+                // $(li).appendTo($ul); 把li对象添加ul对象中去
+                // $ul.append(li); 在ul中添加li
+                
+                // $ul.prepend(li); //在ul的顶部添加li
+                // $(li).prependTo($ul); 把li添加到ul顶部
+            });
+
+            $("#clearBtn").click(function(){
+                // $ul.empty();
+
+                $("p").remove(); // 自己删除自己
+            })
+
+
+        });
+
+
+    </script>
+   
+</body>
+</html>
