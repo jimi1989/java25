@@ -16,3 +16,12 @@
 	11.git merge demo1 --allow-unrelated-histories 合并本地两个分支
 	12.完成
 	
+问与答：
+	1.在执行git add . 时候，warning: LF will be replaced by CRLF in 5-js/web/js/jquery-3.2.1.js.
+	The file will have its original line endings in your working directory.
+		
+	答：In Unix systems the end of a line is represented with a line feed (LF). In windows a line is represented with a carriage return (CR) and a line feed (LF) thus (CRLF). when you get code from git that was uploaded from a unix system they will only have an LF.
+
+	If you want to turn this warning off, type this in the git command line
+
+	git config core.autocrlf true
