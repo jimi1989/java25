@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>web-02</display-name>
+  
+  <!-- 欢迎页设置 
+  	** 友情提示：修改了web.xml文件必须重启tomcat服务器
+  	可以配置多个欢迎页，从上往下依次查找对应的页面，如果都找不到，则404
+  	
+  -->
+  <welcome-file-list>
+    <welcome-file>home.jsp</welcome-file>
+    <welcome-file>index1.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
