@@ -7,27 +7,126 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/static/css/bootstrap.css" />
+<style>
+	/* .error {
+		color : red;
+	} */
+</style>
 </head>
 <body>
-	<%
-		List<String> strList = new ArrayList<>();
-		String username = "jack";
-		
-		//for(int i = 0; i < 10; i++) {
-	%>
 	
-	<!-- 客户端注释：本公司长期招聘前端工程师，详情咨询hr@163.com -->
-	<%-- 服务器注释：方法的定义使用声明的方式 --%>
-	<%!
-		public void add() {
-		
-		}
-	%>
+	<div class="container">
+		<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>用户注册</h3>
+		</div>
 	
-	<h3>hello,<%=username %></h3>
-	<%= strList.size() %>
-	<%
-		//}
-	%>
+		<div class="panel-body">
+			<form action="/add" id="addForm">
+				<div class="form-group">
+					<label>用户名</label>
+					<input type="text" name="userName" class="form-control" />
+				</div>
+				<div class="form-group">
+					<label>密码</label>
+					<input type="text" name="password" id="pwd"  class="form-control" />
+				</div>
+				<div class="form-group">
+					<label>确认密码</label>
+					<input type="text" name="rePassword" class="form-control" />
+				</div>
+				<div class="form-group">
+					<label>邮箱</label>
+					<input type="text" name="email" class="form-control" />
+				</div>
+				<div class="form-group">
+					<label>年龄</label>
+					<input type="text" name="age" class="form-control" />
+				</div>
+			
+			</form>
+		
+			<div class="panel-footer">
+				<button type="button" class="btn btn-primary" id="addBtn">注册</button>
+			</div>
+		</div>
+	
+	
+	</div> 
+	
+	</div>
+	
+	
+	<script src="/static/js/jquery-3.2.1.js"></script>
+	<script src="/static/js/jquery.validate.js"></script>
+	<!-- <script src="/static/js/messages_zh.js"></script> -->
+	
+	<script>
+		$(function(){
+			$("#addForm").validate({
+				
+				errorClass : "text-danger",
+				errorElement:'span',
+				rules:{
+					userName:{
+						required : true,
+						minlength : 3
+					},
+					password:{
+						required : true,
+						rangelength : [6,12]
+					},
+					rePassword :{
+						required : true,
+						rangelength : [6,12],
+						equalTo : "#pwd"
+					},
+					email : {
+						required : true,
+						email : true
+					},
+					age : {
+						required : true,
+						digits :true
+					}
+					
+				},
+				messages:{
+					userName:{
+						required : "请输入用户名",
+						minlength : "用户名至少3位"
+					},
+					password:{
+						required : "请输入密码",
+						rangelength : "密码长度6-12位"
+					},
+					rePassword:{
+						required : "请输入确认密码",
+						rangelength : "密码长度6-12位",
+						equalTo: "两次密码不一致"
+					},
+					email : {
+						required : "请输入邮箱",
+						email : "邮箱格式不正确"
+					},
+					age : {
+						required : "请输入年龄",
+						digits: "请输入正确的年龄"
+					}
+				}
+			});
+			
+			$("#addBtn").click(function(){
+				
+				$("#addForm").submit();
+
+			});
+			
+
+		});
+	
+	
+	</script>
 </body>
 </html>
