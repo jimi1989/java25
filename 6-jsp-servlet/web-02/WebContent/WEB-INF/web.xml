@@ -1,55 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-	
-	<!-- 
-		servlet-name:自定义，一般而言和servlet类名相同
-		servlet-class:servlet类的完全限定名
-	 -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
 	<servlet>
-		<servlet-name>HelloServlet</servlet-name>
-		<servlet-class>com.kaishengit.web.HelloServlet</servlet-class>
+		<servlet-name>AddServlet</servlet-name>
+		<servlet-class>com.kaishengit.web.AddServlet</servlet-class>
 	</servlet>
-  
-  
-  	<!-- 
-  		servlet-name:自定义，但是必须和servlet中配置的servle-name一致
-  		urlpattern : 客户端请求的路径，必须以/开头
-  	 -->
-  	<servlet-mapping>
-  		<servlet-name>HelloServlet</servlet-name>
-  		<url-pattern>/hello</url-pattern>
-  	</servlet-mapping>
-  
-  
-  	<servlet>
-  		<servlet-name>LoginServlet</servlet-name>
-  		<servlet-class>com.kaishengit.web.LoginServlet</servlet-class>
-  	</servlet>
-  
-  	<servlet-mapping>
-  		<servlet-name>LoginServlet</servlet-name>
-  		<url-pattern>/login</url-pattern>
-  	</servlet-mapping>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <!-- 欢迎页设置 
-  	** 友情提示：修改了web.xml文件必须重启tomcat服务器
-  	可以配置多个欢迎页，从上往下依次查找对应的页面，如果都找不到，则404
-  	
-  -->
-  <welcome-file-list>
-    <welcome-file>home.jsp</welcome-file>
-    <welcome-file>index1.jsp</welcome-file>
-  </welcome-file-list>
+	<servlet>
+		<servlet-name>ListServlet</servlet-name>
+		<servlet-class>com.kaishengit.web.ListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DelServlet</servlet-name>
+		<servlet-class>com.kaishengit.web.DelServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>UpdateServlet</servlet-name>
+		<servlet-class>com.kaishengit.web.UpdateServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.kaishengit.web.LoginServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>com.kaishengit.web.LogoutServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>UpdateServlet</servlet-name>
+		<url-pattern>/update</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>DelServlet</servlet-name>
+		<url-pattern>/del</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListServlet</servlet-name>
+		<url-pattern>/list</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddServlet</servlet-name>
+		<url-pattern>/add</url-pattern>
+	</servlet-mapping>
+	
+	<session-config>
+		<!-- session的过期事件设置为20分钟 -->
+		<session-timeout>20</session-timeout>
+	</session-config>
+	
+	<welcome-file-list>
+		<welcome-file>/index.jsp</welcome-file>
+		
+	</welcome-file-list>
+
 </web-app>

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectionManager {
 
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	private static final String URL = "jdbc:mysql:///db_25";
+	private static final String URL = "jdbc:mysql:///book_lib";
 	private static final String NAME = "root";
 	private static final String PASSWORD = "rootroot";
 
