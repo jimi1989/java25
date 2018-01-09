@@ -31,6 +31,25 @@
 		<servlet-class>com.kaishengit.web.LogoutServlet</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>HelloServlet</servlet-name>
+		<servlet-class>com.kaishengit.web.HelloServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+		<init-param>
+			<param-name>name</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<init-param>
+			<param-name>password</param-name>
+			<param-value>rootroot</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>HelloServlet</servlet-name>
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+	
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/logout</url-pattern>

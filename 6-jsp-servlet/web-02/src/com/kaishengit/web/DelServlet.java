@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.kaishengit.entity.Admin;
 import com.kaishengit.exception.ServiceException;
 import com.kaishengit.service.BookService;
@@ -22,7 +24,7 @@ public class DelServlet extends HttpServlet {
 		if(admin != null) {
 			//接收客户端数据
 			String id = req.getParameter("id");
-	
+			System.out.println("hello");
 			BookService bookService = new BookService();
 			
 			// 调用service进行删除
