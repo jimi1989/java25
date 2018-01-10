@@ -30,4 +30,8 @@ public class Admin {
 		this.password = password;
 	}
 
+	public String getInfo(){
+		return name + "-->" + password;
+	}
+	
 }

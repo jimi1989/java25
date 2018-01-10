@@ -1,7 +1,6 @@
-<%@page import="com.kaishengit.entity.Book"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,23 +25,21 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%
-					List<Book> bookList = (List<Book>)request.getAttribute("bookList");
-					for(Book book : bookList) {
-				%>
+				
+				<c:forEach items="${bookList}" var="book">
 					<tr>
-						<td><%=book.getName() %></td>
-						<td><%=book.getAuthor() %></td>
-						<td><%=book.getPublish() %></td>
-						<td><%=book.getIsbn() %></td>
-						<td><%=book.getTotal() %></td>
-						<td><%=book.getCurrentNum() %></td>
-						<td><a href="javascript:;" rel="<%=book.getId() %>" class="del">删除</a>
-							<a href="/update?id=<%=book.getId() %>">修改</a>
+						<td>${book.name }</td>
+						<td>${book.author }</td>
+						<td>${book.publish }</td>
+						<td>${book.isbn }</td>
+						<td>${book.total }</td>
+						<td>${book.currentNum }</td>
+						<td><a href="javascript:;" rel="${book.id }" class="del">删除</a>
+							<a href="/update?id=${book.id }">修改</a>
 						</td>
 					</tr>
+				</c:forEach>
 				
-				<%} %>
 			</tbody>   	
     	</table>
     

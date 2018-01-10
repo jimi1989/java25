@@ -34,7 +34,7 @@
 	<servlet>
 		<servlet-name>HelloServlet</servlet-name>
 		<servlet-class>com.kaishengit.web.HelloServlet</servlet-class>
-		<load-on-startup>0</load-on-startup>
+		<!-- <load-on-startup>0</load-on-startup> -->
 		<init-param>
 			<param-name>name</param-name>
 			<param-value>root</param-value>
