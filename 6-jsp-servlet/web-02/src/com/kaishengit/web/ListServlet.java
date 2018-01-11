@@ -17,18 +17,12 @@ public class ListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(admin != null) {
-			BookService bookService = new BookService();
-			
-			List<Book> bookList = bookService.findAllBook();
-			
-			req.setAttribute("bookList", bookList);
-			req.getRequestDispatcher("/WEB-INF/views/list.jsp").forward(req, resp);
-		} else {
-			resp.sendRedirect("/login");
-		}	
+		BookService bookService = new BookService();
+
+		List<Book> bookList = bookService.findAllBook();
+
+		req.setAttribute("bookList", bookList);
+		req.getRequestDispatcher("/WEB-INF/views/list.jsp").forward(req, resp);
 	}
 
 }

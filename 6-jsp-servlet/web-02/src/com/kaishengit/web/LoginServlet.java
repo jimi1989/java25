@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.kaishengit.entity.Admin;
 import com.kaishengit.exception.ServiceException;
 import com.kaishengit.service.AdminService;
@@ -24,10 +26,9 @@ public class LoginServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.setCharacterEncoding("UTF-8");
-		
 		String userName = req.getParameter("username");
 		String pass = req.getParameter("password");
+		String callback = req.getParameter("callback");
 		
 		AdminService service = new AdminService();
 		try {
@@ -36,8 +37,12 @@ public class LoginServlet extends HttpServlet{
 			HttpSession session = req.getSession();
 			session.setAttribute("admin", admin);
 			
-			// 登录成功，展示书籍列表
-			resp.sendRedirect("/list");
+			// 登录成功
+			if(StringUtils.isNotEmpty(callback)) {
+				resp.sendRedirect(callback);
+			} else {
+				resp.sendRedirect("/list");
+			}
 		} catch(ServiceException e) {
 			req.setAttribute("message", e.getMessage());
 			req.setAttribute("username", userName);

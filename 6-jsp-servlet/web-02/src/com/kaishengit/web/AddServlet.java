@@ -17,23 +17,11 @@ public class AddServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(admin != null) {
-			req.getRequestDispatcher("/WEB-INF/views/add.jsp").forward(req, resp);
-		} else {
-			//没有登录的情况，返回登录页面
-			resp.sendRedirect("/login");
-		}
-		
+		req.getRequestDispatcher("/WEB-INF/views/add.jsp").forward(req, resp);
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 		throws ServletException, IOException {
-		
-		// 中文乱码 
-		// 1.post提交中文乱码
-		req.setCharacterEncoding("UTF-8");
 		
 		// 2.接收表单的值
 		String name = req.getParameter("name");

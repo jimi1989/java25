@@ -19,26 +19,19 @@ public class DelServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		HttpSession session = req.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(admin != null) {
-			//接收客户端数据
-			String id = req.getParameter("id");
-			System.out.println("hello");
-			BookService bookService = new BookService();
-			
-			// 调用service进行删除
-			try {
-				bookService.delBook(id);
-				// 重定向跳转到/list
-				resp.sendRedirect("/list");
-			} catch(ServiceException e) {
-				// 手动引发404
-				resp.sendError(404, e.getMessage());
-			}
-		} else {
-			//没有登录的情况，返回登录页面
-			resp.sendRedirect("/login");
+		//接收客户端数据
+		String id = req.getParameter("id");
+		System.out.println("hello");
+		BookService bookService = new BookService();
+		
+		// 调用service进行删除
+		try {
+			bookService.delBook(id);
+			// 重定向跳转到/list
+			resp.sendRedirect("/list");
+		} catch(ServiceException e) {
+			// 手动引发404
+			resp.sendError(404, e.getMessage());
 		}
 	}
 

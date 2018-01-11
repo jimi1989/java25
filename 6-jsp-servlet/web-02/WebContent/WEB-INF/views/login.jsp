@@ -14,12 +14,17 @@
     	<div class="row">
     		<div class="col-md-7">
     			<form action="/login" id="loginForm" method="post">
+    				<c:if test="${not empty param.callback}">
+	    				<div class="alert alert-danger">请登录后继续访问</div>
+    				</c:if>
+    				
     				<c:if test="${not empty message}">
 	    				<div class="alert alert-danger">${message }</div>
     				</c:if>
     				
     				<div class="form-group">
     					<label>用户名</label>
+    					<input type="hidden" name="callback" value="${param.callback}"/>
     					<input type="text" name="username" value="${username}" class="form-control" />
     				</div>
     				<div class="form-group">

@@ -3,6 +3,45 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
+	
+	<!-- 字符编码过滤器 -->
+	<filter>
+		<filter-name>EncodingFilter</filter-name>
+		<filter-class>com.kaishengit.web.filter.EncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>EncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 登录过滤器 -->
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>com.kaishengit.web.filter.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+	
+	<!-- 过滤器配置 -->
+	<!-- <filter>
+		<filter-name>MyFilter</filter-name>
+		<filter-class>com.kaishengit.web.filter.MyFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>MyFilter</filter-name>
+		配置要拦截的请求  /*所有请求都要经过该过滤器
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> -->
+	
 	<servlet>
 		<servlet-name>AddServlet</servlet-name>
 		<servlet-class>com.kaishengit.web.AddServlet</servlet-class>
@@ -35,14 +74,14 @@
 		<servlet-name>HelloServlet</servlet-name>
 		<servlet-class>com.kaishengit.web.HelloServlet</servlet-class>
 		<!-- <load-on-startup>0</load-on-startup> -->
-		<init-param>
+		<!-- <init-param>
 			<param-name>name</param-name>
 			<param-value>root</param-value>
 		</init-param>
 		<init-param>
 			<param-name>password</param-name>
 			<param-value>rootroot</param-value>
-		</init-param>
+		</init-param> -->
 	</servlet>
 	
 	<servlet-mapping>

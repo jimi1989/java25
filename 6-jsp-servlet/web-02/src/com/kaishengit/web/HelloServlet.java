@@ -34,7 +34,7 @@ public class HelloServlet extends HttpServlet{
 	}*/
 	
 	
-	@Override
+	/*@Override
 	public void init(ServletConfig config) throws ServletException {
 		// 解决硬编码问题
 //		String name = config.getInitParameter("name");
@@ -52,12 +52,14 @@ public class HelloServlet extends HttpServlet{
 	
 	public HelloServlet(){
 		System.out.println("HelloSevlet create...");
-	}
+	}*/
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Admin admin = new Admin();
+		System.out.println("hahaha，我终于过来了...");
+		
+		/*Admin admin = new Admin();
 		admin.setId(1001);
 		admin.setName("admin");
 		admin.setPassword("123123");
@@ -85,7 +87,7 @@ public class HelloServlet extends HttpServlet{
 		context.setAttribute("status", "ok");
 		
 		
-		req.getRequestDispatcher("/WEB-INF/views/hello.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/hello.jsp").forward(req, resp);*/
 	}
 	
 	
