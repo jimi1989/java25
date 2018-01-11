@@ -3,7 +3,22 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
-	
+
+	<!-- ServletContextListener 监听器 -->
+	<!-- <listener> <listener-class>com.kaishengit.web.listener.MyServletContextListener</listener-class> 
+		</listener> -->
+
+	<!-- HttpSessionListener 监听器 -->
+	<listener>
+		<listener-class>com.kaishengit.web.listener.MyHttpSessionListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>name</param-name>
+		<param-value>root</param-value>
+	</context-param>
+
+
 	<!-- 字符编码过滤器 -->
 	<filter>
 		<filter-name>EncodingFilter</filter-name>
@@ -17,9 +32,9 @@
 		<filter-name>EncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<!-- 登录过滤器 -->
-	<filter>
+	<!-- <filter>
 		<filter-name>LoginFilter</filter-name>
 		<filter-class>com.kaishengit.web.filter.LoginFilter</filter-class>
 	</filter>
@@ -27,21 +42,14 @@
 		<filter-name>LoginFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
-	
-	
+ -->
+
+
 	<!-- 过滤器配置 -->
-	<!-- <filter>
-		<filter-name>MyFilter</filter-name>
-		<filter-class>com.kaishengit.web.filter.MyFilter</filter-class>
-	</filter>
-	
-	<filter-mapping>
-		<filter-name>MyFilter</filter-name>
-		配置要拦截的请求  /*所有请求都要经过该过滤器
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
-	
+	<!-- <filter> <filter-name>MyFilter</filter-name> <filter-class>com.kaishengit.web.filter.MyFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>MyFilter</filter-name> 配置要拦截的请求 /*所有请求都要经过该过滤器 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
+
 	<servlet>
 		<servlet-name>AddServlet</servlet-name>
 		<servlet-class>com.kaishengit.web.AddServlet</servlet-class>
@@ -59,42 +67,68 @@
 		<servlet-name>UpdateServlet</servlet-name>
 		<servlet-class>com.kaishengit.web.UpdateServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>com.kaishengit.web.LoginServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet>
 		<servlet-name>LogoutServlet</servlet-name>
 		<servlet-class>com.kaishengit.web.LogoutServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet>
 		<servlet-name>HelloServlet</servlet-name>
 		<servlet-class>com.kaishengit.web.HelloServlet</servlet-class>
 		<!-- <load-on-startup>0</load-on-startup> -->
-		<!-- <init-param>
-			<param-name>name</param-name>
-			<param-value>root</param-value>
-		</init-param>
-		<init-param>
-			<param-name>password</param-name>
-			<param-value>rootroot</param-value>
-		</init-param> -->
+		<!-- <init-param> <param-name>name</param-name> <param-value>root</param-value> 
+			</init-param> <init-param> <param-name>password</param-name> <param-value>rootroot</param-value> 
+			</init-param> -->
+	</servlet>
+
+	<servlet>
+		<servlet-name>SetCookieServlet</servlet-name>
+		<servlet-class>com.kaishengit.web.cookie.SetCookieServlet</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>GetCookieServlet</servlet-name>
+		<servlet-class>com.kaishengit.web.cookie.GetCookieServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>DelCookieServlet</servlet-name>
+		<servlet-class>com.kaishengit.web.cookie.DelCookieServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>DelCookieServlet</servlet-name>
+		<url-pattern>/cookie/del</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>GetCookieServlet</servlet-name>
+		<url-pattern>/cookie/get</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SetCookieServlet</servlet-name>
+		<url-pattern>/cookie/set</url-pattern>
+	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>HelloServlet</servlet-name>
 		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/login</url-pattern>
@@ -117,15 +151,15 @@
 		<servlet-name>AddServlet</servlet-name>
 		<url-pattern>/add</url-pattern>
 	</servlet-mapping>
-	
+
 	<session-config>
 		<!-- session的过期事件设置为20分钟 -->
 		<session-timeout>20</session-timeout>
 	</session-config>
-	
+
 	<welcome-file-list>
 		<welcome-file>/index.jsp</welcome-file>
-		
+
 	</welcome-file-list>
 
 </web-app>
