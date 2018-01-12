@@ -44,6 +44,8 @@ public class LoginServlet extends HttpServlet{
 		String callback = req.getParameter("callback");
 		String rememberme = req.getParameter("rememberme");
 		
+		System.out.println("password" + pass);
+		
 		AdminService service = new AdminService();
 		try {
 			Admin admin = service.login(userName,pass);
@@ -59,6 +61,18 @@ public class LoginServlet extends HttpServlet{
 				cookie.setHttpOnly(true);
 				
 				resp.addCookie(cookie);
+			} else {
+				Cookie[] cookies = req.getCookies();
+				for(Cookie cookie : cookies) {
+					if("username".equals(cookie.getName())) {
+						cookie.setDomain("localhost");
+						cookie.setPath("/");
+						cookie.setMaxAge(0);
+						resp.addCookie(cookie);
+						break;
+					}
+				}
+				
 			}
 			
 			// µÇÂ¼³É¹¦

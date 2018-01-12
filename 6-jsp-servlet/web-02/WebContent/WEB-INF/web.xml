@@ -102,6 +102,16 @@
 		<servlet-class>com.kaishengit.web.cookie.DelCookieServlet</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>PayServlet</servlet-name>
+		<servlet-class>com.kaishengit.web.PayServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>PayServlet</servlet-name>
+		<url-pattern>/pay</url-pattern>
+	</servlet-mapping>
+	
 	<servlet-mapping>
 		<servlet-name>DelCookieServlet</servlet-name>
 		<url-pattern>/cookie/del</url-pattern>

@@ -29,7 +29,7 @@
     				</div>
     				<div class="form-group">
     					<label>密码</label>
-    					<input type="password" name="password" class="form-control" />
+    					<input type="password" name="password" id="password" class="form-control" />
     				</div>
     				<div class="checkbox">
     					<label>
@@ -46,18 +46,24 @@
     
     <script src="/static/js/jquery-3.2.1.js"></script>
     <script src="/static/js/cookie.js"></script>
+    <script src="/static/js/cryptojs/rollups/md5.js"></script>
     <script>
     	$(function(){
     		/* $("#username").val(Cookies.get("username")); */
+    		$("#rememberme")[0].checked = "checked";
     		
     		$("#loginBtn").click(function(){
     			/* if($("#rememberme")[0].checked){
     				alert("checked");
     			} */
+    			
     			/* if($("#rememberme").is(":checked")) {
     				Cookies.set("username",$("#username").val(),{ expires: 7, path: '/' })
     			} */
     			
+    			var password = $("#password").val();
+    			password = CryptoJS.MD5(password);
+    			$("#password").val(password);
     			$("#loginForm").submit();
     		});
     	})

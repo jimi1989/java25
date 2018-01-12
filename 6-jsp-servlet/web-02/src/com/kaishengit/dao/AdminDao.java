@@ -8,7 +8,7 @@ import com.kaishengit.util.DbHelp;
 public class AdminDao {
 
 	public Admin findByName(String userName) {
-		String sql = "selects * from t_admin where name = ?";
+		String sql = "select * from t_admin where name = ?";
 		return DbHelp.query(sql, new BeanHandler<>(Admin.class), userName);
 	}
 
