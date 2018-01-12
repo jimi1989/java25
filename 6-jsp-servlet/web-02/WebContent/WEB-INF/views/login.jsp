@@ -25,12 +25,18 @@
     				<div class="form-group">
     					<label>用户名</label>
     					<input type="hidden" name="callback" value="${param.callback}"/>
-    					<input type="text" name="username" value="${username}" class="form-control" />
+    					<input type="text" name="username" value="${username}" id="username" class="form-control" />
     				</div>
     				<div class="form-group">
     					<label>密码</label>
     					<input type="password" name="password" class="form-control" />
     				</div>
+    				<div class="checkbox">
+    					<label>
+    						<input type="checkbox" name="rememberme" value="rememberme" id="rememberme"/> 记住帐号
+    					</label>
+    				</div>
+    				
     			</form>   
     			<button class="btn btn-primary" id="loginBtn">登录</button> 		
     		</div>
@@ -39,9 +45,19 @@
     
     
     <script src="/static/js/jquery-3.2.1.js"></script>
+    <script src="/static/js/cookie.js"></script>
     <script>
     	$(function(){
+    		/* $("#username").val(Cookies.get("username")); */
+    		
     		$("#loginBtn").click(function(){
+    			/* if($("#rememberme")[0].checked){
+    				alert("checked");
+    			} */
+    			/* if($("#rememberme").is(":checked")) {
+    				Cookies.set("username",$("#username").val(),{ expires: 7, path: '/' })
+    			} */
+    			
     			$("#loginForm").submit();
     		});
     	})

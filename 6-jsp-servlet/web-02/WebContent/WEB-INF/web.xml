@@ -9,14 +9,14 @@
 		</listener> -->
 
 	<!-- HttpSessionListener 监听器 -->
-	<listener>
+	<!-- <listener>
 		<listener-class>com.kaishengit.web.listener.MyHttpSessionListener</listener-class>
-	</listener>
+	</listener> -->
 
-	<context-param>
+	<!-- <context-param>
 		<param-name>name</param-name>
 		<param-value>root</param-value>
-	</context-param>
+	</context-param> -->
 
 
 	<!-- 字符编码过滤器 -->
@@ -161,5 +161,20 @@
 		<welcome-file>/index.jsp</welcome-file>
 
 	</welcome-file-list>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/error/500.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/error/404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>com.kaishengit.exception.DataAccessException</exception-type>
+		<location>/WEB-INF/views/error/dataAccessError.jsp</location>
+	</error-page>
 
 </web-app>

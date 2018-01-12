@@ -3,6 +3,7 @@ package com.kaishengit.web;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,18 @@ public class LoginServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Cookie[] cookies = req.getCookies();
+		
+		String userName = "";
+		
+		for(Cookie cookie : cookies) {
+			if("username".equals(cookie.getName())){
+				userName = cookie.getValue();
+				break;
+			}
+		}
+		
+		req.setAttribute("username", userName);
 		req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
 	}
 	
@@ -29,6 +42,7 @@ public class LoginServlet extends HttpServlet{
 		String userName = req.getParameter("username");
 		String pass = req.getParameter("password");
 		String callback = req.getParameter("callback");
+		String rememberme = req.getParameter("rememberme");
 		
 		AdminService service = new AdminService();
 		try {
@@ -36,6 +50,16 @@ public class LoginServlet extends HttpServlet{
 			
 			HttpSession session = req.getSession();
 			session.setAttribute("admin", admin);
+			
+			if(StringUtils.isNotEmpty(rememberme)) {
+				Cookie cookie = new Cookie("username",userName);
+				cookie.setDomain("localhost");
+				cookie.setPath("/");
+				cookie.setMaxAge(60 * 60 * 24 * 30);
+				cookie.setHttpOnly(true);
+				
+				resp.addCookie(cookie);
+			}
 			
 			// µÇÂ¼³É¹¦
 			if(StringUtils.isNotEmpty(callback)) {
