@@ -4,12 +4,24 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class Test {
 
 	public static void main(String[] args) throws IOException {
+		
+		
+//		Properties prop = new Properties();
+//		prop.setProperty("aa", "bb");
+//		
+//		System.out.println(prop.getProperty("aa"));
+		
+		Properties prop = new Properties();
+		prop.load(Test.class.getClassLoader().getResourceAsStream("config.properties"));
+		
+		System.out.println(prop.getProperty("jdbc.driver"));
 		
 		/*InputStream in1 = new FileInputStream("d:/1.txt");
 		InputStream in2 = new FileInputStream("d:/2.txt");
@@ -19,12 +31,12 @@ public class Test {
 		// 文件内容校验
 		System.out.println(code1.equals(code2));*/
 		
-		String password = "123123";
-		String salt = "#$@#DFSA^%$#asdfas^%^";
-//		String code = DigestUtils.md5Hex("");
-		String code = DigestUtils.md5Hex(DigestUtils.md5Hex(password) + salt);
-//		String code = DigestUtils.sha512Hex("1231dfdssaf23");
-		System.out.println(code);
+//		String password = "123123";
+//		String salt = "#$@#DFSA^%$#asdfas^%^";
+////		String code = DigestUtils.md5Hex("");
+//		String code = DigestUtils.md5Hex(DigestUtils.md5Hex(password) + salt);
+////		String code = DigestUtils.sha512Hex("1231dfdssaf23");
+//		System.out.println(code);
 		
 		
 		

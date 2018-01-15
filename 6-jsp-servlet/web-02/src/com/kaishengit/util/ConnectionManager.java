@@ -1,25 +1,60 @@
 package com.kaishengit.util;
 
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+
+import com.kaishengit.exception.DataAccessException;
 
 public class ConnectionManager {
 
-	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	private static final String URL = "jdbc:mysql:///book_lib";
-	private static final String NAME = "root";
-	private static final String PASSWORD = "rootroot";
+	private static String DRIVER;
+	private static String URL;
+	private static String NAME;
+	private static String PASSWORD;
 
+	private static BasicDataSource dataSource = new BasicDataSource();
+	private static Properties prop = new Properties();
+	
+	static {
+		try {
+			prop.load(ConnectionManager.class.getClassLoader().getResourceAsStream("config.properties"));
+			
+			DRIVER = prop.getProperty("jdbc.driver");
+			URL = prop.getProperty("jdbc.url");
+			NAME = prop.getProperty("jdbc.username","root");
+			PASSWORD = prop.getProperty("jdbc.password","rootroot");
+		} catch (IOException e) {
+			throw new DataAccessException("获取数据库连接配置异常",e);
+		}
+		
+		dataSource.setDriverClassName(DRIVER);
+		dataSource.setUrl(URL);
+		dataSource.setUsername(NAME);
+		dataSource.setPassword(PASSWORD);
+		
+		dataSource.setInitialSize(5);
+		dataSource.setMaxIdle(20);
+		dataSource.setMinIdle(5);
+		dataSource.setMaxWaitMillis(5000);
+		
+	}
+	
+	public static DataSource getDataSource(){
+		return dataSource;
+	}
+	
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
-			Class.forName(DRIVER);
-			conn = DriverManager.getConnection(URL, NAME, PASSWORD);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			conn = dataSource.getConnection();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DataAccessException("获取数据库连接异常",e);
 		}
 		return conn;
 	}
