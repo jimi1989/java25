@@ -33,8 +33,6 @@ public class FileuploadServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 中文乱码
-		req.setCharacterEncoding("UTF-8");
 
 		//将表单的enctype属性设置为multipart/form-data之后会导致无法通过req.getparameter("name")来获取表单的值
 		String desc = req.getParameter("desc");
@@ -72,7 +70,7 @@ public class FileuploadServlet extends HttpServlet{
 					if(item.isFormField()) {
 						// 普通元素
 						System.out.println("fildName:" + item.getFieldName()); // 获取表单name的属性值
-						System.out.println("getString:" + item.getString()); // 获取表单普通元素的value值
+						System.out.println("getString:" + item.getString("UTF-8")); // 获取表单普通元素的value值
 					} else {
 						// 文件元素
 						System.out.println("fileName:" + item.getFieldName()); // 获取表单文件元素的name属性值
@@ -105,7 +103,7 @@ public class FileuploadServlet extends HttpServlet{
 					}
 				}
 			} catch (FileUploadException e) {
-				e.printStackTrace();
+				throw new RuntimeException("文件上传异常");
 			}
 			
 			
