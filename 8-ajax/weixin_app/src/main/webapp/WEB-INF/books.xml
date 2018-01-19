@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<books>
+	<book>
+		<bookname>java编程思想</bookname>
+		<ISBN>12346-78945</ISBN>
+		<price>16.65</price>
+		<authors>
+			<author>
+				<name>toms</name>
+				<nation>USA</nation>
+			</author>
+			<author>
+				<name>jems</name>
+				<nation>USA</nation>
+			</author>
+		</authors>
+		<gifts>
+			<gift>t-shirt</gift>
+			<gift>cup</gift>
+		</gifts>
+	</book>
+	<book>
+		<bookname>java编程思想</bookname>
+		<ISBN>12346-78945</ISBN>
+		<price>16.65</price>
+		<authors>
+			<author>
+				<name>toms</name>
+				<nation>USA</nation>
+			</author>
+			<author>
+				<name>jems</name>
+				<nation>USA</nation>
+			</author>
+		</authors>
+		<gifts>
+			<gift>t-shirt</gift>
+			<gift>cup</gift>
+		</gifts>
+	</book>
+
+</books>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 根节点有且只能有一个 -->
+<students>
+	<student>
+		<id>1001</id>
+		<name>jack</name>
+		<age>23</age>
+		<address>焦作</address>
+		<scores>
+			<score>96</score>
+			<score>99</score>
+		</scores>
+		<selfIntroduce>
+			<!-- 转义大量特殊字符 <![CDATA[ 需要转义的文本 ]]> -->
+			<![CDATA[<h1>我是好人</h1>]]>
+		</selfIntroduce>
+	</student>
+	<student id="1002">
+		<name>tom</name>
+		<age>24</age>
+		<address>开封</address>
+		<score></score>
+	</student>
+	
+</students>
+
