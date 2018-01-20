@@ -14,8 +14,22 @@ var $ = (function(){
 		return xmlHttp;
 	}
 	
+	function createXmlHttp2(){
+		// 创建xmlHttpRequest对象
+		var xmlHttp = null;
+		if(window.ActiveXObject) {
+			// IE浏览器获得ajax引擎
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+		} else {
+			// 非IE浏览器获得ajax引擎
+			xmlHttp = new XMLHttpRequest();
+		}
+		return xmlHttp;
+	}
+	
 	var ajax = {
-		"createXmlHttp": createXmlHttp
+		"createXmlHttp": createXmlHttp,
+		"createXmlHttp2": createXmlHttp2
 	}
 	
 	return ajax;

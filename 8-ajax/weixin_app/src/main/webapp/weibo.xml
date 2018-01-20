@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weibos>
+	<weibo>
+		<userId>1001</userId>
+		<userName>经济观察报</userName>
+		<avatar>http://image.weibo/image/123456.jpg</avatar>
+		<flag>true</flag>
+		<!-- <vip>6</vip> -->
+		<level>vip6</level>
+		<sendTime>1581234567892</sendTime>
+		<device>iphoneX</device>
+		<content><![CDATA[【玩家回顾炒币经历：比特币是个好东西】第一次接触比特币是在2017年7月，我的投资公司有一个原始股东在深圳经营电脑显卡的进口业务，路过深圳拜访时候他提到显卡之前主要是卖给游戏机使用，但随着手游的兴起，市场也越来越少；但最近一二年用显卡挖矿的越来越多，生意也越来越好。°玩家回顾炒币经历：比特币是个好东西 ​​​​¡查看图片]]></content>
+		<likeNum>20</likeNum>
+		<trans>12</trans>
+		<comments>
+			<comment>
+				<userId>10013</userId>
+				<userName>meigui</userName>
+				<avatar>http://image.weibo/image/789456.jpg</avatar>
+				<flag>true</flag>
+				<!-- <vip>6</vip> -->
+				<level>vip3</level>
+				<content><![CDATA[比特币，如果多年以前能早点发现，早发家致富了[二哈]]]></content>
+				<sendTime>12345678</sendTime>
+			</comment>
+			<comment>
+				<userId>10013</userId>
+				<userName>meigui</userName>
+				<avatar>http://image.weibo/image/789456.jpg</avatar>
+				<flag>true</flag>
+				<!-- <vip>6</vip> -->
+				<level>vip3</level>
+				<content><![CDATA[比特币，如果多年以前能早点发现，早发家致富了[二哈]]]></content>
+				<sendTime>12345678</sendTime>
+			</comment>
+		</comments>
+	</weibo>
+	<weibo>
+		<userId>1001</userId>
+		<userName>经济观察报</userName>
+		<avatar>http://image.weibo/image/123456.jpg</avatar>
+		<flag>true</flag>
+		<!-- <vip>6</vip> -->
+		<level>vip6</level>
+		<sendTime>1581234567892</sendTime>
+		<device>iphoneX</device>
+		<content><![CDATA[【玩家回顾炒币经历：比特币是个好东西】第一次接触比特币是在2017年7月，我的投资公司有一个原始股东在深圳经营电脑显卡的进口业务，路过深圳拜访时候他提到显卡之前主要是卖给游戏机使用，但随着手游的兴起，市场也越来越少；但最近一二年用显卡挖矿的越来越多，生意也越来越好。°玩家回顾炒币经历：比特币是个好东西 ​​​​¡查看图片]]></content>
+		<likeNum>20</likeNum>
+		<trans>12</trans>
+		<comments>
+			<comment>
+				<userId>10013</userId>
+				<userName>meigui</userName>
+				<avatar>http://image.weibo/image/789456.jpg</avatar>
+				<flag>true</flag>
+				<!-- <vip>6</vip> -->
+				<level>vip3</level>
+				<content><![CDATA[比特币，如果多年以前能早点发现，早发家致富了[二哈]]]></content>
+				<sendTime>12345678</sendTime>
+			</comment>
+			<comment>
+				<userId>10013</userId>
+				<userName>meigui</userName>
+				<avatar>http://image.weibo/image/789456.jpg</avatar>
+				<flag>true</flag>
+				<!-- <vip>6</vip> -->
+				<level>vip3</level>
+				<content><![CDATA[比特币，如果多年以前能早点发现，早发家致富了[二哈]]]></content>
+				<sendTime>12345678</sendTime>
+			</comment>
+		</comments>
+	</weibo>
+
+</weibos>
+
