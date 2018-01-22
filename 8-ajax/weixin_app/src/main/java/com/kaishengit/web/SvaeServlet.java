@@ -16,6 +16,12 @@ public class SvaeServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		// 解决post请求的中文乱码问题
 		req.setCharacterEncoding("UTF-8");
 		String name = req.getParameter("name");
