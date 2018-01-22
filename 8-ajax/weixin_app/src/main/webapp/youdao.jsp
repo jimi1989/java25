@@ -1,57 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>我的翻译官	</title>
+    <meta charset="UTF-8">
+    <title>翻译</title>
 </head>
 <body>
-	<input type="text" id="word" />
-	<button id="btn">翻译</button>
-	<div id="content"></div>
-	
-	<script src="/static/js/ajax.js"></script>
-	<script>
-		(function(){
-			var input = document.getElementById("word");
-			var btn = document.getElementById("btn");
-			var content = document.getElementById("content");
-			
-			btn.onclick = function(){
-				content.innerText = "";
-				var xmlHttp = $.createXmlHttp();
-				xmlHttp.open("GET","/youdao2?p=" + input.value);
-		 		xmlHttp.onreadystatechange = function(){
-					if(xmlHttp.readyState == 4) {
-						if(xmlHttp.status == 200) {
-							/* var xmlDom = xmlHttp.responseXML;
-							var explains = xmlDom.getElementsByTagName("explains")[0];
-							var ex = explains.getElementsByTagName("ex")[0];
-							var text = ex.childNodes[0].nodeValue;
-							 */
-							 
-							var json = JSON.parse(xmlHttp.responseText);
-							console.log(json);
-							var text = json.translation[0];
-							var p = document.createElement("p");// <p></p>
-							var textNode = document.createTextNode(text);
-							
-							p.appendChild(textNode);
-							content.appendChild(p);
-							
-						} else {
-							alert("系统繁忙，请稍后重试");
-						}
-					}
-					
-				}
-				xmlHttp.send();
-			}
-			
-		})();
-	
-	
-	</script>
+    <input type="text" id="word"/> 
+    <button id="btn">翻译</button>
+    <div id="result"></div>
+    
+    <script src="/static/js/ajax.js"></script>
+    <script>
+    	(function(){
+    		var xmlHttp = kaisheng.createXmlHttp();
+    		var btn = document.querySelector("#btn");
+    		var input = document.querySelector("#word");
+    		var result = document.querySelector("#result");
+    		
+    		
+    		btn.onclick = function(){
+    			result.innerHTML = "";
+    			xmlHttp.open("get","/youdao?word=" + input.value);
+    			xmlHttp.onreadystatechange = function(){
+    				if(xmlHttp.readyState == 4) {
+    					if(xmlHttp.status == 200) {
+    						// 获得xml文档对象,并解析
+    						var xmlDoc = xmlHttp.responseXML;
+    						var explain = xmlDoc.getElementsByTagName("explains")[0];
+    						var ex = explain.getElementsByTagName("ex")[0].childNodes[0].nodeValue;
+    						
+    						var text = document.createTextNode(ex);
+    						var p = document.createElement("p");
+    						p.appendChild(text);
+    						result.appendChild(p);
+    						
+    					} else {
+    						alert("服务器开小差了...")
+    					}
+    				}
+    			}
+    			xmlHttp.send();
+    		}
+    	})();
+    
+    </script>
+    
 </body>
 </html>

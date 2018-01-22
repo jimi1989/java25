@@ -18,7 +18,7 @@
     		var input = document.getElementById("name");
 			var btn = document.getElementById("btn");   		
     		
-    		var xmlHttp = $.createXmlHttp();
+    		var xmlHttp = kaisheng.createXmlHttp();
     		btn.onclick = function(){
     			xmlHttp.open("post","/save");
     			xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded")

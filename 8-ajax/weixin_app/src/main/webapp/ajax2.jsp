@@ -15,7 +15,7 @@
     	(function(){
     		var input = document.getElementById("name");
     		var span = document.getElementById("check");
-    		var xmlHttp = $.createXmlHttp();
+    		var xmlHttp = kaisheng.createXmlHttp();
     		input.onchange = function(){
     			//解决将参数进行URLEncode编码
     			xmlHttp.open("get","/ajax2?name=" + encodeURIComponent(input.value));

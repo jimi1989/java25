@@ -26,7 +26,7 @@
     	(function(){
 			var btn = document.getElementById("btn");   		
     		
-    		var xmlHttp = $.createXmlHttp();
+    		var xmlHttp = kaisheng.createXmlHttp();
     		btn.onclick = function(){
     			xmlHttp.open("get","/user.xml");
     			xmlHttp.onreadystatechange = function(){
