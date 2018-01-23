@@ -2,8 +2,7 @@ package com.kaishengit.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,48 +10,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
-import com.kaishengit.util.Config;
 import com.kaishengit.util.HttpClientUtil;
 
-
 @WebServlet("/youdao2")
-public class YoudaoServlet2 extends HttpServlet{
+public class YoudaoServlet2 extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String p = req.getParameter("p");
-		p = new String(p.getBytes("ISO-8859-1"),"UTF-8");
+		String word = req.getParameter("word");
 		
-		Map<String,String> params = new HashMap<>();
-		params.put("q", p);
-		params.put("from","auto");
-		params.put("to","auto");
-		params.put("appKey",Config.get("youdao.appkey"));
-		String salt = String.valueOf((int)(Math.random()*100));
-		System.out.println("salt:" + salt);
-		params.put("salt",salt);
-		//appKey+q+salt+密钥 md5加密
-		String sign = DigestUtils.md5Hex(Config.get("youdao.appkey") + p + salt +Config.get("youdao.primarykey"));
-		params.put("sign", sign);
-		
-		String url = HttpClientUtil.getUrlWithQueryString("http://openapi.youdao.com/api", params);
-		
-		System.out.println("url:" + url);
-		
-		String result = HttpClientUtil.HttpClientGet(url, "UTF-8");
-	
+		word = new String(word.getBytes("ISO8859-1"),"UTF-8");
+		// 进行urlEncode
+		URLEncoder.encode(word, "UTF-8");
+		String url = "http://fanyi.youdao.com/openapi.do?keyfrom=kaishengit&key=1587754017&type=data&doctype=json&version=1.1&q=" + word;
+		String result = HttpClientUtil.httpClientGet(url, "UTF-8");
+		// 设置相应头
 		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("application/json;charset=UTF-8");
+		resp.setContentType("application/json; charset=UTF-8");
 		
-		PrintWriter out = resp.getWriter();
-		out.print(result);
+		PrintWriter writer = resp.getWriter();
+		writer.print(result);
 		
-		out.flush();
-		out.close();
+		writer.close();
+		
+		
+		
 		
 	}
+
 }
