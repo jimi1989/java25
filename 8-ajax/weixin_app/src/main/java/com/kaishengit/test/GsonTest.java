@@ -35,7 +35,7 @@ public class GsonTest {
 //		String json = gson.toJson(user); // {}
 //		String json = gson.toJson(lists); // []
 //		String json = gson.toJson(maps); // {}
-		String json = gson.toJson(userList);
+		String json = gson.toJson(userList);// []
 		System.out.println(json);
 		
 	}

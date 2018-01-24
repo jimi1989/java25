@@ -1,0 +1,29 @@
+{
+  "name": "simditor-emoji",
+  "version": "2.1.3",
+  "homepage": "https://github.com/mycolorway/simditor-emoji",
+  "authors": [
+    "tinyfive <tinyfive@mycolorway.com>"
+  ],
+  "description": "a simditor plugin emoji",
+  "main": "lib/simditor-emoji.js",
+  "keywords": [
+    "simditor",
+    "emoji"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor",
+    "Gruntfile.coffee",
+    "package.json"
+  ],
+  "devDependencies": {
+    "jasmine-jquery": "2.x"
+  },
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "simditor": "2.3.x"
+  }
+}
