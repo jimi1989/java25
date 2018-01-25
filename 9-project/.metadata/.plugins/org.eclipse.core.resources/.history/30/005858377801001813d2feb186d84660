@@ -1,0 +1,14 @@
+package com.kaishengit.entity;
+
+import java.sql.Timestamp;
+
+public class Account {
+
+	private int id;
+	private String username;
+	private String password;
+	private String mobile;
+	private Timestamp createTime;
+	private Timestamp updateTime;
+	
+}

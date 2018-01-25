@@ -1,0 +1,12 @@
+package com.kaishengit.util;
+
+import java.util.Properties;
+
+public class Config {
+	
+	static {
+		Properties prop = new Properties();
+		prop.load(Config.class.getClassLoader().getResourceAsStream("config.properties"));
+	}
+	
+}

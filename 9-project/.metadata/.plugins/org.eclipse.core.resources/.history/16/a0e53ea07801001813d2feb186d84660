@@ -1,0 +1,12 @@
+package com.kaishengit.dao;
+
+import com.kaishengit.entity.Account;
+
+public class AccountDao {
+
+	public Account findbyByName(String username) {
+		String sql = "select * from t_account where username = ?";
+		return null;
+	}
+
+}

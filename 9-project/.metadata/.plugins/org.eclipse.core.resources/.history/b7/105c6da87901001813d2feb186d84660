@@ -1,0 +1,16 @@
+package com.kaishengit.service;
+
+import com.kaishengit.dao.AccountDao;
+import com.kaishengit.entity.Account;
+
+public class AccountService {
+
+	AccountDao accDao = new AccountDao();
+	public Account login(String username, String password) {
+		
+		Account account = accDao.findbyByName(username);
+		
+		return null;
+	}
+
+}

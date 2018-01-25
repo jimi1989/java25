@@ -1,0 +1,4 @@
+#Password salt
+user.password.salt=QWSXZA$%$%((^%^FDEW))123
+
+#jdbc connection config
