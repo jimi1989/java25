@@ -1,0 +1,5 @@
+package com.kaishengit.web.filter;
+
+public class LoginFilter extends AbstractFilter{
+
+}

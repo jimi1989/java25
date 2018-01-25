@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,7 @@
 	<div class="alert alert-danger" hidden id="message"></div>
     <form id="loginForm" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" id="username" name="username" placeholder="电话号码">
+        <input type="text" class="form-control" id="username" name="username" value="${username}" placeholder="电话号码">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -46,7 +47,18 @@
         <div class="col-xs-8">
           <div class="checkbox">
 		    <label>
-		      <input type="checkbox" name="remember" value="remember" id="remember"> 记住密码
+		   <%--  <c:choose>
+		    	<c:when test="${ not empty username}">
+			      <input type="checkbox"  name="remember" checked value="remember" id="remember"> 记住密码
+		    	</c:when>
+				<c:otherwise>
+			      <input type="checkbox"  name="remember" value="remember" id="remember"> 记住密码
+				</c:otherwise>		    
+		    </c:choose> --%>
+		     <%-- <input type="hidden" id="callback" name="callback" value="${param.callback}"/> --%>
+		     <input type="checkbox"  name="remember" 
+		     	<c:if test="${not empty username}"> checked</c:if>
+		      value="remember" id="remember"> 记住密码
 		    </label>
 		  </div>
         </div>
@@ -73,6 +85,8 @@
 
 <script>
 	$(function(){
+		var callback = "${param.callback}";
+		
 		$("#loginBtn").click(function(){
 			$("#loginForm").submit();
 		});
@@ -105,8 +119,13 @@
 						$("#loginBtn").text("登录中...").attr("disabled","disabled");
 					},
 					success : function(data){
+						//var callback = $("#callback").val();
 						if(data.state == 'success') {
-							window.location.href = "/home";
+							if(callback) {
+								window.location.href = callback;
+							} else {
+								window.location.href = "/account/home";
+							}
 						} else {
 							$("#message").text(data.message).show();
 						}
