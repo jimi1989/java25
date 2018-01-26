@@ -1,0 +1,12 @@
+package com.kaishengit.dao;
+
+import com.kaishengit.entity.Dept;
+
+public class DeptDao {
+
+	public Dept findByName(String deptName) {
+		String sql = "select * from t_dept where deptname = ?";
+		return null;
+	}
+
+}

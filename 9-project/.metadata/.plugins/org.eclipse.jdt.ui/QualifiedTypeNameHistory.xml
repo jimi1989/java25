@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
+<fullyQualifiedTypeName name="java.sql.Timestamp"/>
+<fullyQualifiedTypeName name="com.kaishengit.entity.Account"/>
+<fullyQualifiedTypeName name="com.kaishengit.util.DbHelp"/>
+<fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.BeanHandler"/>
+<fullyQualifiedTypeName name="org.apache.commons.codec.digest.DigestUtils"/>
+<fullyQualifiedTypeName name="com.kaishengit.util.Config"/>
+<fullyQualifiedTypeName name="com.kaishengit.exception.ServiceException"/>
+<fullyQualifiedTypeName name="javax.servlet.Filter"/>
+<fullyQualifiedTypeName name="org.apache.commons.lang3.StringUtils"/>
+<fullyQualifiedTypeName name="com.kaishengit.web.filter.AbstractFilter"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.kaishengit.web.BaseServlet"/>
+<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+</qualifiedTypeNameHistroy>

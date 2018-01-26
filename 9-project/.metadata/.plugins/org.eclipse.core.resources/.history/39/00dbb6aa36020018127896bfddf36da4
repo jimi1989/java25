@@ -1,0 +1,17 @@
+package com.kaishengit.service;
+
+import com.kaishengit.exception.ServiceException;
+
+public class DeptService {
+
+
+	/**
+	 * 新增部门
+	 * @param deptName 部门名称
+	 * @throws ServiceException 例如部门名称已存在
+	 */
+	public void addDept(String deptName) throws ServiceException{
+		
+	}
+
+}

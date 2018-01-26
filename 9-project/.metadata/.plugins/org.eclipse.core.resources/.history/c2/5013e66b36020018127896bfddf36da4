@@ -1,0 +1,13 @@
+package com.kaishengit.service;
+
+public class DeptService {
+
+	/**
+	 * @param deptName 部门名称
+	 */
+	public void addDept(String deptName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

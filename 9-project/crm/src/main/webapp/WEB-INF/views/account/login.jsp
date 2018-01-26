@@ -87,6 +87,12 @@
 	$(function(){
 		var callback = "${param.callback}";
 		
+		$(document).keydown(function(event){
+			if(event.keyCode == 13) {
+				$("#loginForm").submit();
+			}
+		})
+		
 		$("#loginBtn").click(function(){
 			$("#loginForm").submit();
 		});

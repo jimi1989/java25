@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Config {
+	public static final int COMPANY_ID = 1;
 	
 	private static Properties prop = new Properties();
 	static {
