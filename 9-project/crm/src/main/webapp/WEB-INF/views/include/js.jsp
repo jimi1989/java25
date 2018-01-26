@@ -11,3 +11,5 @@
 <script src="/static/dist/js/app.min.js"></script>
 <!-- layer -->
 <script src="/static/plugins/layer/layer.js"></script>
+<!-- jQuery validate -->
+<script src="/static/plugins/jQuery/jquery.validate.js"></script>

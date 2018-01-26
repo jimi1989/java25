@@ -24,7 +24,7 @@ public class AjaxResult {
 	public static AjaxResult error(String message){
 		AjaxResult result = new AjaxResult();
 		result.setState(STATE_ERROR);
-		result.setData(message);
+		result.setMessage(message);
 		return result;
 	}
 	
