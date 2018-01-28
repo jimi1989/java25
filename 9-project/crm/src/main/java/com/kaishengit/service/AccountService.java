@@ -12,6 +12,7 @@ import com.kaishengit.entity.Account;
 import com.kaishengit.entity.AccountDept;
 import com.kaishengit.exception.ServiceException;
 import com.kaishengit.util.Config;
+import com.kaishengit.util.Page;
 
 public class AccountService {
 
@@ -23,7 +24,7 @@ public class AccountService {
 	 * @return account对象
 	 */
 	public Account login(String username, String password) {
-		Account account = accDao.findbyByName(username);
+		Account account = accDao.findByMobile(username);
 		String md5Password = DigestUtils.md5Hex(password + Config.get("user.password.salt"));
 		
 		if(account != null && md5Password.equals(account.getPassword())) {
@@ -80,6 +81,15 @@ public class AccountService {
 		accountDeptDao.save(accountDeptLists);
 		
 		
+	}
+
+
+	public Page<Account> findAccountByPage(String deptId, int pageNo) {
+		int count = accDao.count(deptId);
+		Page<Account> page = new Page<>(count, pageNo);
+		List<Account> accountList = accDao.findByPage(deptId,page.getStart(),page.getPageSize());
+		page.setItems(accountList);
+		return page;
 	}
 
 }

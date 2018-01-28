@@ -10,17 +10,20 @@
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="com.kaishengit.web.BaseServlet"/>
 <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
-<fullyQualifiedTypeName name="org.apache.commons.lang3.StringUtils"/>
 <fullyQualifiedTypeName name="com.kaishengit.exception.ServiceException"/>
 <fullyQualifiedTypeName name="com.kaishengit.util.Config"/>
-<fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.BeanListHandler"/>
 <fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.BeanHandler"/>
 <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-<fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.ScalarHandler"/>
 <fullyQualifiedTypeName name="com.kaishengit.entity.AccountDept"/>
-<fullyQualifiedTypeName name="com.kaishengit.util.DbHelp"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="com.kaishengit.util.Page"/>
+<fullyQualifiedTypeName name="org.apache.commons.lang3.StringUtils"/>
+<fullyQualifiedTypeName name="com.kaishengit.util.DbHelp"/>
+<fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.ScalarHandler"/>
+<fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.BeanListHandler"/>
 <fullyQualifiedTypeName name="com.kaishengit.util.AjaxResult"/>
+<fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.AbstractListHandler"/>
+<fullyQualifiedTypeName name="org.apache.commons.dbutils.ResultSetHandler"/>
 </qualifiedTypeNameHistroy>

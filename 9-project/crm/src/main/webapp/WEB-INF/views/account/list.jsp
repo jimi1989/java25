@@ -54,19 +54,11 @@
                       <th>#</th>
                     </tr>
                   </thead>
-				  <tbody>
-            <tr>
-              <td>tom</td>
-              <td>开发部</td>
-              <td>153223234522</td>
-              <td>
-                <a href="">禁用</a>
-                <a href="">删除</a>
-                <a href="">编辑</a>
-              </td>
-            </tr>
+				  <tbody id="body">
+            
 				  </tbody>
                 </table>
+                 <ul class="pagination pull-right" id="pagination"></ul>
               </div>
             </div>
             <!-- /.box -->
@@ -125,9 +117,76 @@
 
 <script>
   $(function(){
+	    var deptId = null;
+	    var $pagination = $('#pagination');
+	    var defaultOpts = {
+	        totalPages: 20,
+	    };
+	    $pagination.twbsPagination(defaultOpts);
+	    pageload(deptId);
+	    
+	    function pageload(deptId){
+		   $.ajax({
+		        url:"/account/list.json",
+		        type:"get",
+		        data:{
+		        	"deptId":deptId
+		        },
+		        success: function (data) {
+		        	var page = data.data;
+		            var totalPages = page.totalpage;
+		            var currentPage = $pagination.twbsPagination('getCurrentPage');
+		            $pagination.twbsPagination('destroy');
+		            $pagination.twbsPagination($.extend({}, defaultOpts, {
+		                startPage: currentPage,
+		                totalPages: totalPages,
+		                visiblePages:3,
+		    		    // href:'/list?p={{number}}',
+		    		    first:'首页',
+		    		    last:'末页',
+		    		    prev:'上一页',
+		    		    next:'下一页',
+		    		    onPageClick: function (event, page) {
+		    		    	// 一旦分页插件被重新加载，分页插件就会自动执行第一页数据
+		    		    	load(deptId,page);
+		    		    	/* var page = data.data;
+				        	$("#body").html("");
+				            for(var i = 0; i < page.items.length; i++) {
+				            	var account = page.items[i];
+				            	var html = "<tr> <td>" + account.username+"</td> <td>" + account.deptName + "</td> <td>"+account.mobile+"</td> <td> <a href=''>禁用</a><a href=''>删除</a><a href=''>编辑</a></td></tr>";
+				            	$("#body").append(html);
+				            } */
+		    	        }
+		            }));
+		        }
+		    });
+	   }
+	   
+	  // 加载table数据
+	  function load(deptId,p) {
+		  $.ajax({
+		        url:"/account/list.json",
+		        type:"get",
+		        data:{
+		        	"deptId":deptId,
+		        	"p":p
+		        },
+		        success: function (data) {
+		        	var page = data.data;
+		        	$("#body").html("");
+		            for(var i = 0; i < page.items.length; i++) {
+		            	var account = page.items[i];
+		            	var html = "<tr> <td>" + account.username+"</td> <td>" + account.deptName + "</td> <td>"+account.mobile+"</td> <td> <a href=''>删除</a><a href=''>编辑</a></td></tr>";
+		            	$("#body").append(html);
+		            }
+		        }
+		    });
+	  }
+	  
     $("#addAcc").click(function(){
     
     	$.get("/dept/list").done(function(data){
+    		$("#checkboxList").html("");
     		// 动态的显示deptList列表
     		for(var i = 0; i < data.length; i++) {
     			var dept = data[i];
@@ -189,7 +248,9 @@
     			data: $("#addAccountForm").serialize(),
     			success : function(data){
     				if(data.state == 'success') {
-	    				$('#myModal').modal('hide');
+	    				layer.alert("新增成功")
+    					$('#myModal').modal('hide');
+	    				pageload(deptId);
     				} else {
     					layer.alert(data.message);
     				}
@@ -246,7 +307,12 @@
 			},
 			callback:{
 				onClick:function(event,treeId,treeNode,clickFlag){
-					alert(treeNode.id);
+					deptId = treeNode.id;
+					if(deptId == 1) {
+						deptId = null;
+					}
+					// 当用户点击了部门节点后，重新加载分页插件，一旦分页插件重新加在后，那么就会执行
+					pageload(deptId);
 				}
 			}
 		};
