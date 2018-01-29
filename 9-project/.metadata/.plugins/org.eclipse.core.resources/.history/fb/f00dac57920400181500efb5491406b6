@@ -1,0 +1,11 @@
+#Password salt
+user.password.salt=QWSXZA$%$%((^%^FDEW))123
+
+#jdbc connection config
+jdbc.driver=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql:///crm_2018
+jdbc.username=root
+jdbc.password=rootroot
+
+customer.source=DM\u5E7F\u544A,\u7535\u89C6\u5A92\u4F53,\u7F51\u7EDC\u5A92\u4F53,\u987E\u5BA2\u63A8\u8350,\u4E3B\u52A8\u4E0A\u95E8,\u5176\u4ED6
+customer.trade=\u4e92\u8054\u7f51,IT\u6280\u672f,\u623f\u5730\u4ea7,\u65b0\u80fd\u6e90,\u7535\u529b,\u5176\u4ed6

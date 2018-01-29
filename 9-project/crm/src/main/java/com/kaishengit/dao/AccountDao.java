@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.dbutils.BasicRowProcessor;
+import org.apache.commons.dbutils.BeanProcessor;
+import org.apache.commons.dbutils.GenerousBeanProcessor;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -12,6 +15,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.apache.commons.lang3.StringUtils;
 
 import com.kaishengit.entity.Account;
+import com.kaishengit.entity.Customer;
 import com.kaishengit.util.DbHelp;
 
 public class AccountDao {
@@ -23,7 +27,7 @@ public class AccountDao {
 
 	public Account findByMobile(String mobile) {
 		String sql = "select * from t_Account where mobile = ?";
-		return DbHelp.query(sql, new BeanHandler<>(Account.class), mobile);
+		return DbHelp.query(sql, new BeanHandler<>(Account.class, new BasicRowProcessor(new GenerousBeanProcessor())), mobile);
 	}
 
 	public int save(Account account) {

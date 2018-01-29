@@ -16,7 +16,10 @@
 <div class="wrapper">
 
  <%@ include file="../include/header.jsp"%> 
- <%@ include file="../include/sider.jsp"%> 
+ <%-- <%@ include file="../include/sider.jsp"%> --%>
+ <jsp:include page="../include/sider.jsp">
+ 	<jsp:param value="account" name="param"/>
+ </jsp:include> 
   <!-- =============================================== -->
 
   <!-- 右侧内容部分 -->
@@ -114,7 +117,7 @@
 
 <%@ include file="../include/js.jsp"%> 
 <script src="/static/plugins/tree/js/jquery.ztree.all.min.js"></script>
-
+<script src="/static/plugins/jQuery/jquery.twbsPagination.js"></script>
 <script>
   $(function(){
 	    var deptId = null;
@@ -141,7 +144,6 @@
 		                startPage: currentPage,
 		                totalPages: totalPages,
 		                visiblePages:3,
-		    		    // href:'/list?p={{number}}',
 		    		    first:'首页',
 		    		    last:'末页',
 		    		    prev:'上一页',

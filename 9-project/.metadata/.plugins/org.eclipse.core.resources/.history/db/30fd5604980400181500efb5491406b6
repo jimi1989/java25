@@ -1,0 +1,5 @@
+package com.kaishengit.web.dao;
+
+public class CustomerDao {
+
+}

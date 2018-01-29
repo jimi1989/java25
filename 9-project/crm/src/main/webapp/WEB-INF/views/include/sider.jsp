@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
   <!-- 左侧菜单栏 -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -20,7 +21,7 @@
       <ul class="sidebar-menu">
         <li class="header">系统功能</li>
         <!-- 客户管理 -->
-        <li class="treeview">
+        <li class="treeview ${fn:startsWith(param.param,'customer_') ? 'active' : ''}">
           <a href="#">
             <i class="fa fa-address-book-o"></i> <span>客户管理</span>
             <span class="pull-right-container">
@@ -28,8 +29,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/customer/my"><i class="fa fa-circle-o"></i> 我的客户</a></li>
-            <li><a href="/customer/public"><i class="fa fa-circle-o"></i> 公海客户</a></li>
+            <li class="${param.param == 'customer_my' ? 'active' : ''}"><a href="/customer/my/list"><i class="fa fa-circle-o"></i> 我的客户</a></li>
+            <li class="${param.param == 'customer_public' ? 'active' : ''}"><a href="/customer/public/list"><i class="fa fa-circle-o"></i> 公海客户</a></li>
           </ul>
         </li>
         <!-- 工作记录 -->
@@ -74,9 +75,9 @@
         
         
         <li><a href="../../documentation/index.html"><i class="fa fa-share-alt"></i> <span>公司网盘</span></a></li>
-        <li class="header">系统管理</li>
+        <li class="header ${param.param == 'account' ? 'active' : ''}">系统管理</li>
         <!-- 部门员工管理 -->
-        <li class="active"><a href="../../documentation/index.html"><i class="fa fa-users"></i> <span>员工管理</span></a></li>
+        <li ><a href="/account/list"><i class="fa fa-users"></i> <span>员工管理</span></a></li>
         <!--<li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>-->
       </ul>

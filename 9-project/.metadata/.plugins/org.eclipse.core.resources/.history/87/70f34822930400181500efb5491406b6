@@ -1,0 +1,27 @@
+package com.kaishengit.web.service;
+
+import java.util.List;
+
+import com.kaishengit.util.Config;
+
+public class CustomerService {
+
+	/**
+	 * 新增客户是获得所有客户来源列表
+	 * @return
+	 */
+	public List<String> findAllSources() {
+		 String sourceStr = Config.get("customer.source");
+		 String[] sourceArray = sourceStr.split(",")
+		 return null;
+	}
+	
+	/**
+	 * 新增客户是获得所有客户行业列表
+	 * @return
+	 */
+	public List<String> findAllTrades() {
+		return null;
+	}
+
+}

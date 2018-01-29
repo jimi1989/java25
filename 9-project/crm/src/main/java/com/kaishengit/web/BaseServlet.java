@@ -7,13 +7,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.kaishengit.entity.Account;
 
 public class BaseServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
+	public Account getCurrAccount(HttpServletRequest req){
+		HttpSession session = req.getSession();
+		Account currAccount = (Account)session.getAttribute("account");
+		return currAccount;
+	}
+	
 	/**
 	 * 请求转发跳转方法
 	 */

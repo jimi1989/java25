@@ -1,0 +1,9 @@
+package com.kaishengit.web.customer;
+
+import com.kaishengit.web.BaseServlet;
+
+public class MyCustomerListServlet extends BaseServlet{
+
+	private static final long serialVersionUID = 1L;
+
+}
