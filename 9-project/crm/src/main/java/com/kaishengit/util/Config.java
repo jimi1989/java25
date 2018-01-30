@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class Config {
 	public static final int COMPANY_ID = 1;
-	
+	public static final int PUBLIC_ID = 0;
 	private static Properties prop = new Properties();
 	static {
 		try {

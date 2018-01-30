@@ -137,8 +137,10 @@
 		        },
 		        success: function (data) {
 		        	var page = data.data;
-		            var totalPages = page.totalpage;
+		            var totalPages = page.totalpage;   //
 		            var currentPage = $pagination.twbsPagination('getCurrentPage');
+		            // currentPage不能比totalPages大，因此使用三元表达式选择其中较小值
+		            currentPage = (currentPage > totalPages ? totalPages : currentPage);
 		            $pagination.twbsPagination('destroy');
 		            $pagination.twbsPagination($.extend({}, defaultOpts, {
 		                startPage: currentPage,
@@ -148,16 +150,9 @@
 		    		    last:'末页',
 		    		    prev:'上一页',
 		    		    next:'下一页',
-		    		    onPageClick: function (event, page) {
+		    		    onPageClick: function(event, pageNo) {
 		    		    	// 一旦分页插件被重新加载，分页插件就会自动执行第一页数据
-		    		    	load(deptId,page);
-		    		    	/* var page = data.data;
-				        	$("#body").html("");
-				            for(var i = 0; i < page.items.length; i++) {
-				            	var account = page.items[i];
-				            	var html = "<tr> <td>" + account.username+"</td> <td>" + account.deptName + "</td> <td>"+account.mobile+"</td> <td> <a href=''>禁用</a><a href=''>删除</a><a href=''>编辑</a></td></tr>";
-				            	$("#body").append(html);
-				            } */
+		    		    	load(deptId, pageNo);
 		    	        }
 		            }));
 		        }

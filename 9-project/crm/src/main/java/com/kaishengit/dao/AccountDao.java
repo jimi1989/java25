@@ -115,4 +115,14 @@ public class AccountDao {
 		}, arrays.toArray());
 	}
 
+	public List<Account> findAll() {
+		String sql = "select * from t_account";
+		return DbHelp.query(sql, new BeanListHandler<>(Account.class,new BasicRowProcessor(new GenerousBeanProcessor())));
+	}
+
+	public Account findById(int accountId) {
+		String sql = "select * from t_account where id = ?";
+		return DbHelp.query(sql, new BeanHandler<>(Account.class,new BasicRowProcessor(new GenerousBeanProcessor())),accountId);
+	}
+
 }

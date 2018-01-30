@@ -1,0 +1,32 @@
+package com.kaishengit.web.account;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.kaishengit.web.BaseServlet;
+
+@WebServlet("/account/logout")
+public class LogoutServlet extends BaseServlet{
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 强制销毁session
+		req.getSession().invalidate();
+		
+		Cookie[] cookies = req.getCookies();
+		for(Cookie cookie : cookies) {
+			if("username".equals(cookie.getName())) {
+				req.setAttribute("username", cookie.getValue());
+			}
+		}
+		forward("account/login", req, resp);
+	}
+	
+}

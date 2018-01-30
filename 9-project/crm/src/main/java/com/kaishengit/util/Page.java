@@ -11,7 +11,7 @@ public class Page<T> {
 	//	当前页的数据
 	private List<T> items;
 	//	每页显示的数量
-	private int pageSize = 1;
+	private int pageSize = 3;
 	//	起始行号
 	private int start;
 

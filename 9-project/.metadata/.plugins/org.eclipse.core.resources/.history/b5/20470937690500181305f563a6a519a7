@@ -1,0 +1,127 @@
+package com.kaishengit.service;
+
+import java.sql.Timestamp;
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.kaishengit.dao.CustomerDao;
+import com.kaishengit.entity.Customer;
+import com.kaishengit.exception.ForbiddenException;
+import com.kaishengit.exception.ServiceException;
+import com.kaishengit.util.Config;
+import com.kaishengit.util.Page;
+
+public class CustomerService {
+	CustomerDao custDao = new CustomerDao();
+	/**
+	 * 新增客户是获得所有客户来源列表
+	 * @return
+	 */
+	public List<String> findAllSources() {
+		 String sourceStr = Config.get("customer.source");
+		 String[] sourceArray = sourceStr.split(",");
+		 return Arrays.asList(sourceArray);
+	}
+	
+	/**
+	 * 新增客户是获得所有客户行业列表
+	 * @return
+	 */
+	public List<String> findAllTrades() {
+		 String tradeStr = Config.get("customer.trade");
+		 String[] tradeArray = tradeStr.split(",");
+		 return Arrays.asList(tradeArray);
+	}
+
+	/**
+	 * 
+	 * 新增当前登录员工的客户信息
+	 * @param custname
+	 * @param sex
+	 * @param jobtitle
+	 * @param mobile
+	 * @param source
+	 * @param trade
+	 * @param level
+	 * @param mark
+	 * @param id 当前登录员工的accountId
+	 */
+	public void addMyCustomer(String custname, String sex, String jobTitle,String address, String mobile, String source, String trade,
+			String level, String mark, int accountId) {
+		
+		Customer customer = new Customer(custname, sex, jobTitle,address, mobile, trade, source, level, mark, accountId);
+		customer.setReminder("员工添加");
+		// 创建Customer时加上跟进时间和更新事件  （当前的系统时间）
+		customer.setLastConcatTime(new Timestamp(System.currentTimeMillis()));
+		customer.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+		
+		custDao.add(customer);
+		
+	}
+
+	/**
+	 * 根据accountId 和 pageNo查找对应的customer集合
+	 * @param id
+	 * @param pageNo
+	 * @return 
+	 */
+	public Page<Customer> findMyCustomerByPage(int accountId, int pageNo) {
+		int count = custDao.count(accountId);
+		Page<Customer> page = new Page<>(count, pageNo);
+		List<Customer> custList = custDao.findCustomerListByPage(accountId, page.getStart(), page.getPageSize());
+		page.setItems(custList);
+		return page;
+	}
+
+	/**
+	 * 根据custId获得对应的customer对象
+	 * @param custId
+	 * @return
+	 */
+	public Customer findCustomerById(String custId,int accountId) {
+		Customer cust = checkCustomer(custId, accountId);
+		return cust;
+	}
+
+	private Customer checkCustomer(String custId,int accountId) {
+		//  1.校验custId是否合法
+		if(StringUtils.isEmpty(custId)) {
+			throw new ServiceException("参数异常");
+		}
+		
+		//  2.根据custId查找对应的对象，如果该对象不存在，在抛出异常
+		Customer cust = custDao.findById(custId);
+		if(cust == null) {
+			throw new ServiceException("参数异常");
+		}
+		//  3.校验该客户是否为当前登录员工的客户
+		if(cust.getAccountId() != accountId) {
+			throw new ForbiddenException("拒绝访问");
+		}	
+		
+		return cust;
+	}
+
+	/**
+	 * 通过客户的id删除
+	 * @param custId
+	 */
+	public void delByCustId(String custId, int accountId) {
+		checkCustomer(custId, accountId);
+		custDao.del(custId);
+	}
+
+	/**
+	 * 把custId对应的客户放入公海
+	 * @param custId
+	 * @param accountId
+	 */
+	public void toPublicByCustId(String custId, int accountId) {
+		checkCustomer(custId, accountId);
+		
+		
+	}
+
+}

@@ -34,6 +34,10 @@
             font-size: 20px;
             color: #ff7400;
         }
+        
+        .pink {
+        	 background-color: #E74C3C;
+        }
     </style>
     
 </head>
@@ -73,8 +77,8 @@
                                 <th>联系方式</th>
                             </tr>
                            <c:forEach items="${page.items}" var="cust">
-	                           	 <tr>
-	                                <td><span class="name-avatar">${fn:substring(cust.custName,0,1)}</span></td>
+	                           	 <tr class="datarow" rel="${cust.id}">
+	                                <td><span class="name-avatar ${cust.sex == '女士' ? 'pink' : '' }">${fn:substring(cust.custName,0,1)}</span></td>
 	                                <td>${cust.custName}</td>
 	                                <td>${cust.jobTitle}</td>
 	                                <td><fmt:formatDate value="${cust.lastConcatTime}"  pattern='yyyy年MM月dd日'></fmt:formatDate></td>
@@ -106,6 +110,11 @@
  
  <script>
  	$(function(){
+ 		$(".datarow").click(function(){
+ 			var custId = $(this).attr("rel");
+ 			window.location.href = "/customer/my/detail?id=" + custId;
+ 		});
+ 		
  		$("#addBtn").click(function(){
  	 		window.location.href = "/customer/my/add";
  	 	});

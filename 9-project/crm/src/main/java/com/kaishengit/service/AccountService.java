@@ -84,12 +84,27 @@ public class AccountService {
 	}
 
 
+	/**
+	 * 通过部门id和页码获取对应的page对象
+	 * @param deptId
+	 * @param pageNo
+	 * @return
+	 */
 	public Page<Account> findAccountByPage(String deptId, int pageNo) {
 		int count = accDao.count(deptId);
 		Page<Account> page = new Page<>(count, pageNo);
 		List<Account> accountList = accDao.findByPage(deptId,page.getStart(),page.getPageSize());
 		page.setItems(accountList);
 		return page;
+	}
+
+
+	/**
+	 * 获得所有员工列表
+	 * @return
+	 */
+	public List<Account> findAllAccount() {
+		return accDao.findAll();
 	}
 
 }

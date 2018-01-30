@@ -20,11 +20,21 @@ public class Customer {
 	private Timestamp updateTime;
 	private String reminder;
 
-	
-	
-	public Customer() {
-	}
+	public Customer() {	}
 
+	public Customer(String custName, String sex, String jobTitle, String address, String mobile, String trade,
+			String source, String level, String mark) {
+		this.custName = custName;
+		this.sex = sex;
+		this.jobTitle = jobTitle;
+		this.address = address;
+		this.mobile = mobile;
+		this.trade = trade;
+		this.source = source;
+		this.level = level;
+		this.mark = mark;
+	}
+	
 	public Customer(String custName, String sex, String jobTitle, String address, String mobile, String trade,
 			String source, String level, String mark, int accountId) {
 		this.custName = custName;

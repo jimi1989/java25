@@ -33,17 +33,17 @@
                 <img src="/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  李美苏
+                 	 李美苏
                   <small>海外事业部</small>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">个人设置</a>
+                  <a href="/account/change/password" class="btn btn-default btn-flat">个人设置</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">安全退出</a>
+                  <a href="/account/logout" class="btn btn-default btn-flat">安全退出</a>
                 </div>
               </li>
             </ul>
