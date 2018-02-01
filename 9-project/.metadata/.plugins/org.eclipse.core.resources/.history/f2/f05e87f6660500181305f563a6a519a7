@@ -1,0 +1,10 @@
+package com.kaishengit.web.customer;
+
+import javax.servlet.annotation.WebServlet;
+
+import com.kaishengit.web.BaseServlet;
+
+@WebServlet("/customer/my/del")
+public class MyCustomerDelServlet extends BaseServlet{
+
+}

@@ -1,0 +1,13 @@
+package com.kaishengit.entity;
+
+public class SaleChance {
+
+	private int id;
+	private String name;
+	private int custId;
+	private int worth;
+	private String progress;
+	private String content;
+	private Timestamp createTime;
+	
+}

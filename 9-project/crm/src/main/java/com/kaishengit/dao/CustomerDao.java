@@ -28,7 +28,7 @@ public class CustomerDao {
 		return DbHelp.query(sql, new BeanListHandler<>(Customer.class, new BasicRowProcessor(new GenerousBeanProcessor())), accountId, start, pageSize);
 	}
 
-	public Customer findById(String custId) {
+	public Customer findById(int custId) {
 		String sql = "select * from t_customer where id = ?";
 		return DbHelp.query(sql, new BeanHandler<>(Customer.class, new BasicRowProcessor(new GenerousBeanProcessor())), custId);
 	}
@@ -41,6 +41,11 @@ public class CustomerDao {
 	public void update(Customer customer) {
 		String sql = "update t_customer set cust_name = ?, sex = ?, job_title=?, mobile = ?, address=?, trade=?, source=?,level=?,mark=?, account_id=?, last_concat_time =?, update_time=?, reminder=? where id=?";
 		DbHelp.executeUpdate(sql, customer.getCustName(),customer.getSex(),customer.getJobTitle(),customer.getMobile(),customer.getAddress(),customer.getTrade(),customer.getSource(),customer.getLevel(),customer.getMark(),customer.getAccountId(),customer.getLastConcatTime(),customer.getUpdateTime(),customer.getReminder(),customer.getId());
+	}
+
+	public List<Customer> findByAccountId(int accountId) {
+		String sql = "select * from t_customer where account_id = ?";
+		return DbHelp.query(sql, new BeanListHandler<>(Customer.class, new BasicRowProcessor(new GenerousBeanProcessor())), accountId);
 	}
 
 }

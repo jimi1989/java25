@@ -1,0 +1,10 @@
+package com.kaishengit.entity;
+
+public class SaleChanceRecord {
+
+	private int id;
+	private String content;
+	private int saleId;
+	private Timestamp createTime;
+	
+}

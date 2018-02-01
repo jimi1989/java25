@@ -1,0 +1,8 @@
+package com.kaishengit.web.customer;
+
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet("/customer/my/del")
+public class MyCustomerDelServlet {
+
+}

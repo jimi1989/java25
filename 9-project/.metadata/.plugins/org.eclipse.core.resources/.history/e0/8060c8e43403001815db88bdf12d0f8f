@@ -1,0 +1,77 @@
+package com.kaishengit.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.dbutils.ResultSetHandler;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
+import org.apache.commons.lang3.StringUtils;
+
+import com.kaishengit.entity.Account;
+import com.kaishengit.util.DbHelp;
+
+public class AccountDao {
+
+	public Account findbyByName(String username) {
+		String sql = "select * from t_account where username = ?";
+		return DbHelp.query(sql, new BeanHandler<>(Account.class), username);
+	}
+
+	public Account findByMobile(String mobile) {
+		String sql = "select * from t_Account where mobile = ?";
+		return DbHelp.query(sql, new BeanHandler<>(Account.class), mobile);
+	}
+
+	public int save(Account account) {
+		String sql = "insert into t_account (username, password, mobile, update_time) values (?,?,?,?)";
+		return DbHelp.executeInsert(sql, account.getUsername(),account.getPassword(), account.getMobile(),account.getUpdateTime());
+	}
+
+	public int count(String deptId) {
+		String sql = "select count(*) from t_account a inner join t_account_dept ad on a.id = ad.account_id ";
+		if(StringUtils.isNotEmpty(deptId)) {
+			sql += "where ad.dept_id = ? ";
+			return DbHelp.query(sql, new ScalarHandler<Long>(),deptId).intValue();
+		} else {
+			return DbHelp.query(sql, new ScalarHandler<Long>()).intValue();
+		}
+		
+	}
+
+	public List<Account> findByPage(String deptId, int start, int pageSize) {
+		String sql = "select a.id,a.username,a.mobile,d.deptname from t_Account a inner JOIN t_account_dept ad on a.id = ad.account_id inner join t_dept d on ad.dept_id = d.id ";
+		List<Object> arrays = new ArrayList<>();
+		if(StringUtils.isNotEmpty(deptId)) {
+			sql += "where ad.dept_id = ? ";
+			arrays.add(deptId);
+		}
+		
+		sql += "order by a.id desc limit ?,?";
+		arrays.add(start);
+		arrays.add(pageSize);
+		return DbHelp.query(sql, new ResultSetHandler<List<Account>>() {
+			List<Account> accountList = new List<Account>();
+			@Override
+			public List<Account> handle(ResultSet rs) throws SQLException {
+				while(rs.next()) {
+					// 封装account对象
+					Account account = new Account();
+					account.setId(rs.getInt("id"));
+					account.setUsername(rs.getString("username"));
+					account.setMobile(rs.getString("mobile"));
+					
+					account.setDeptName(rs.getString("deptname"));
+					
+					
+					
+				}
+				return null;
+			}
+		}, arrays.toArray());
+	}
+
+}

@@ -1,0 +1,23 @@
+package com.kaishengit.entity;
+
+import java.sql.Timestamp;
+
+public class Customer {
+
+	private int id;
+	private String custName;
+	private String sex;
+	private String jobTitle;
+	private String mobile;
+	private String trade;
+	private String source;
+	private String level;
+	private String mark;
+	private int accountId;
+	private Timestamp createTime;
+	private Timestamp lastConcatTime;
+	private Timestamp updateTime;
+	private String reminder;
+	
+	
+}

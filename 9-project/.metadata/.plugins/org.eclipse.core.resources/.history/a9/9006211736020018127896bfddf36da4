@@ -1,0 +1,5 @@
+package com.kaishengit.web.dept;
+
+public class DeptAddServlet {
+
+}

@@ -1,0 +1,8 @@
+package com.kaishengit.entity;
+
+public class AccountDept {
+
+	private int accountId;
+	private int deptId;
+	
+}

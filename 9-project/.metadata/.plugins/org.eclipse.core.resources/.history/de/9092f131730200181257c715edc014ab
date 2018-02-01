@@ -1,0 +1,68 @@
+package com.kaishengit.service;
+
+import java.sql.Timestamp;
+
+import org.apache.commons.codec.digest.DigestUtils;
+
+import com.kaishengit.dao.AccountDao;
+import com.kaishengit.entity.Account;
+import com.kaishengit.exception.ServiceException;
+import com.kaishengit.util.Config;
+
+public class AccountService {
+
+	AccountDao accDao = new AccountDao();
+	/**
+	 * @param username 用户名
+	 * @param password 密码
+	 * @return account对象
+	 */
+	public Account login(String username, String password) {
+		Account account = accDao.findbyByName(username);
+		String md5Password = DigestUtils.md5Hex(password + Config.get("user.password.salt"));
+		
+		if(account != null && md5Password.equals(account.getPassword())) {
+			 return account;
+		} else {
+			throw new ServiceException("用户名或者密码错误");
+		}
+	}
+	
+	
+	/**
+	 * 保存员工信息和部门员工关联关系信息
+	 * @param userName 用户名
+	 * @param password 密码(明文)
+	 * @param mobile 手机号码
+	 * @param deptId 部门id数组 
+	 * @throws ServiceException  当手机号码已经存在的时候抛出该异常
+	 */
+	public void saveAccount(String userName, String password, String mobile, String[] deptId) 
+		throws ServiceException{
+		
+		// 校验手机号码是否已存在
+		Account account = accDao.findByMobile(mobile);
+		if(account != null) {
+			throw new ServiceException("该电话号码已经存在");
+		}
+		
+		// 新增account数据
+		account = new Account();
+		account.setUsername(userName);
+		account.setMobile(mobile);
+		String md5Password = DigestUtils.md5Hex(password + Config.get("user.password.salt"));
+		account.setPassword(md5Password);
+		account.setUpdateTime(new Timestamp(System.currentTimeMillis())); // 日期 + 时间
+		
+		// 调用save方法并获得自动生成的id
+		int accountId = accDao.save(account);
+		
+		// 新增员工和部门的对应关系
+		for(String in : deptId) {
+			
+		}
+		
+		
+	}
+
+}

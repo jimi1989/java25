@@ -1,0 +1,11 @@
+package com.kaishengit.entity;
+
+public class Dept {
+
+	private int id;
+	private String deptName;
+	private int pId; // TODO  此处有坑
+	
+	
+	
+}

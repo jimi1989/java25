@@ -1,0 +1,12 @@
+package com.kaishengit.entity;
+
+import java.sql.Timestamp;
+
+public class SaleChanceRecord {
+
+	private int id;
+	private String content;
+	private int saleId;
+	private Timestamp createTime;
+	
+}

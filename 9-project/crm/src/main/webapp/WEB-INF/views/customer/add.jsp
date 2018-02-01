@@ -36,6 +36,7 @@
                     <form action="" id="customerAddForm">
                         <div class="form-group">
                             <label>姓名</label>
+                            <input type="hidden" name="accountId" value="${accountId}"/>
                             <input type="text" class="form-control" name="custname">
                         </div>
 						<div class="form-group">
@@ -139,14 +140,18 @@
 			},
 			submitHandler : function(form){
 				$.ajax({
-					url:'/customer/my/add',
+					url:'/customer/add',
 					type:'post',
 					data:$("#customerAddForm").serialize(),
 					beforeSend : function(){
 						$("#save").text("保存中...").attr("disabled","disabled");
 					},
 					success : function(data){
-						window.location.href="/customer/my/list";
+						if(data.data == 0) { // 如果accountId == '0' 则跳转公海list
+							window.location.href="/customer/public/list";
+						} else {
+							window.location.href="/customer/my/list";
+						}
 					},
 					error : function(){
 						alert("系统异常");

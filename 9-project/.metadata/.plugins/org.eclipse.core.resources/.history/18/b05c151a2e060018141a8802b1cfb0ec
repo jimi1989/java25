@@ -1,0 +1,7 @@
+package com.kaishengit.web.sale;
+
+import com.kaishengit.web.BaseServlet;
+
+public class MySaleChanceServlet extends BaseServlet{
+
+}

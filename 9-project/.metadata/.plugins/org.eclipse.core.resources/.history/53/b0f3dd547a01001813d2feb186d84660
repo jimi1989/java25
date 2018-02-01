@@ -1,0 +1,8 @@
+#Password salt
+user.password.salt=QWSXZA$%$%((^%^FDEW))123
+
+#jdbc connection config
+jdbc.driver=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql:///db_25
+jdbc.username=root
+jdbc.password=rootroot

@@ -1,0 +1,15 @@
+package com.kaishengit.entity;
+
+public class Customer {
+
+	private int id;
+	private String custName;
+	private String sex;
+	private String jobTitle
+	private String mobile;
+	private String trade;
+	private String source;
+	private String level;
+	
+	
+}

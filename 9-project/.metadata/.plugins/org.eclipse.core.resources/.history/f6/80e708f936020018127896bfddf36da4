@@ -1,0 +1,9 @@
+package com.kaishengit.entity;
+
+public class Dept {
+
+	private int id;
+	private int deptName;
+	private int pId;
+	
+}

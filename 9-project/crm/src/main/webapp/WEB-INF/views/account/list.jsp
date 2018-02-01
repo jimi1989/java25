@@ -120,6 +120,20 @@
 <script src="/static/plugins/jQuery/jquery.twbsPagination.js"></script>
 <script>
   $(function(){
+	  
+	  	// 事件委托
+	  	$(document).delegate(".del","click",function(){
+	  		alert(123);
+	  		var id = $(this).attr("rel");
+	  		alert("id:" + id);
+	  	})
+	  
+	  	/* $(".del").click(function(){
+	  		alert(123);
+	  		var id = $(this).attr("rel");
+	  		alert("id:" + id);
+	  	}) */
+	  
 	    var deptId = null;
 	    var $pagination = $('#pagination');
 	    var defaultOpts = {
@@ -173,7 +187,7 @@
 		        	$("#body").html("");
 		            for(var i = 0; i < page.items.length; i++) {
 		            	var account = page.items[i];
-		            	var html = "<tr> <td>" + account.username+"</td> <td>" + account.deptName + "</td> <td>"+account.mobile+"</td> <td> <a href=''>删除</a><a href=''>编辑</a></td></tr>";
+		            	var html = "<tr> <td>" + account.username+"</td> <td>" + account.deptName + "</td> <td>"+account.mobile+"</td> <td> <a href='javascript:;' class='del' rel='" + account.id + "'>删除</a><a href=''>编辑</a></td></tr>";
 		            	$("#body").append(html);
 		            }
 		        }

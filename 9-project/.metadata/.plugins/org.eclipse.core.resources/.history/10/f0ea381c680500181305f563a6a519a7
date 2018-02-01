@@ -1,0 +1,27 @@
+package com.kaishengit.web.customer;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.kaishengit.service.CustomerService;
+import com.kaishengit.web.BaseServlet;
+
+@WebServlet("/customer/my/del")
+public class MyCustomerDelServlet extends BaseServlet{
+	CustomerService service = new CustomerService();
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String custId = req.getParameter("custId");
+		int accountId = getCurrAccount(req).getId();
+		service.delByCustId(custId,accountId);
+		
+
+	}
+	
+}

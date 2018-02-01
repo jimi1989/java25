@@ -14,7 +14,9 @@
 <!-- Site wrapper -->
 <div class="wrapper">
 	<%@ include file="../include/header.jsp"%> 
-  	<%@ include file="../include/sider.jsp"%> 
+  	<jsp:include page="../include/sider.jsp">
+  		<jsp:param value="home" name="param"/>
+  	</jsp:include>
 
   <!-- 右侧内容部分 -->
   <div class="content-wrapper">

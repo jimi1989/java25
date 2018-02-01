@@ -70,7 +70,7 @@ public class CustomerService {
 	 * @param pageNo
 	 * @return 
 	 */
-	public Page<Customer> findMyCustomerByPage(int accountId, int pageNo) {
+	public Page<Customer> findCustomerByPage(int accountId, int pageNo) {
 		int count = custDao.count(accountId);
 		Page<Customer> page = new Page<>(count, pageNo);
 		List<Customer> custList = custDao.findCustomerListByPage(accountId, page.getStart(), page.getPageSize());
@@ -95,16 +95,17 @@ public class CustomerService {
 		}
 		
 		//  2.根据custId查找对应的对象，如果该对象不存在，在抛出异常
-		Customer cust = custDao.findById(custId);
+		Customer cust = custDao.findById(Integer.parseInt(custId));
 		if(cust == null) {
 			throw new ServiceException("参数异常");
 		}
 		//  3.校验该客户是否为当前登录员工的客户
-		if(cust.getAccountId() != accountId) {
+		if(cust.getAccountId() == accountId) {
+			return cust;
+		} else {
 			throw new ForbiddenException("拒绝访问");
-		}	
+		}
 		
-		return cust;
 	}
 
 	/**
@@ -188,7 +189,7 @@ public class CustomerService {
 	public void edit(String custId, String custName, String sex, String jobTitle, String address, String mobile,
 			String source, String trade, String level, String mark) {
 
-		Customer cust = custDao.findById(custId);
+		Customer cust = custDao.findById(Integer.parseInt(custId));
 		cust.setCustName(custName);
 		cust.setSex(sex);
 		cust.setJobTitle(jobTitle);

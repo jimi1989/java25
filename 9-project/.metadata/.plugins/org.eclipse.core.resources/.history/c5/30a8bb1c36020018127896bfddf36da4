@@ -1,0 +1,12 @@
+package com.kaishengit.web.dept;
+
+import com.kaishengit.web.BaseServlet;
+
+@WebServlet("/dept/add")
+public class DeptAddServlet extends BaseServlet{
+
+	private static final long serialVersionUID = 1L;
+
+	
+	
+}

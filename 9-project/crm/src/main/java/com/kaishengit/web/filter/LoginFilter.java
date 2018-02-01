@@ -2,7 +2,10 @@ package com.kaishengit.web.filter;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -43,6 +46,8 @@ public class LoginFilter extends AbstractFilter{
 			if(account != null) {
 				chain.doFilter(req, resp);
 			} else {
+				// 拼装uri，解决uri中带有参数的问题  uri : customer/my/detail
+				uri = getUriWithParam(uri,req); // customer/my/detail?id=12&name=jack
 				// 如果未登录，跳转登录页面
 				resp.sendRedirect("/login?callback=" + uri);
 			}
@@ -54,6 +59,31 @@ public class LoginFilter extends AbstractFilter{
 	}
 
 	
+	/**
+	 * 获得带参数的uri
+	 * @param req 
+	 * @param uri 原来的uri
+	 * @return 添加参数后的uri
+	 */
+	private String getUriWithParam(String uri, HttpServletRequest req) {
+		Map<String,String[]> params = req.getParameterMap();
+		Set<String> keys = params.keySet();
+		Iterator<String> it = keys.iterator();
+		if(it.hasNext()) {
+			uri += "?";
+			while(it.hasNext()) {
+				String key = it.next();
+				String[] values = params.get(key);
+				for(String value : values) {
+					String param = key + "=" + value +"&"; // id=1&id=2&
+					uri += param;
+				}
+			}
+			uri = uri.substring(0, uri.length()-1); // uri?id=12&name=jack  12345  (0,4)
+		}
+		return uri;
+	}
+
 	/**
 	 * 如果uri以uriList中的某个元素开头,那么返回true
 	 * @param uri 需要判断的uri

@@ -1,0 +1,57 @@
+package com.kaishengit.service;
+
+import java.sql.Timestamp;
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.kaishengit.dao.CustomerDao;
+import com.kaishengit.dao.SaleDao;
+import com.kaishengit.entity.Customer;
+import com.kaishengit.entity.SaleChance;
+import com.kaishengit.entity.SaleChanceRecord;
+import com.kaishengit.util.Config;
+
+public class SaleService {
+
+	CustomerDao custDao = new CustomerDao();
+	SaleDao saleDao = new SaleDao();
+	/**
+	 * 获得销售机会的进度列表
+	 * @return
+	 */
+	public List<String> findAllProcess() {
+		String processString = Config.get("sales.progress");
+		String[] processArray = processString.split(",");
+		return Arrays.asList(processArray);
+	}
+
+	/**
+	 * 获得当前登录员工的所有客户列表
+	 * @param accountId
+	 * @return
+	 */
+	public List<Customer> findAllCustomersByAccountId(int accountId) {
+		return custDao.findByAccountId(accountId);
+	}
+
+	public void saveSaleChane(SaleChance saleChance) {
+		// 修改customer表中last_concat_time
+		Customer cust = custDao.findById(saleChance.getCustId());
+		cust.setLastConcatTime(new Timestamp(System.currentTimeMillis()));
+		custDao.update(cust);
+		
+		// 保存销售机会
+		int saveId = saleDao.save(saleChance);
+		
+		// 如果填写了content，那么需要在sale_chance_record表中添加记录
+		if(StringUtils.isNotEmpty(saleChance.getContent())) {
+			SaleChanceRecord record = new SaleChanceRecord();
+			record.setContent(saleChance.getContent());
+			record.setSaleId(saveId);
+		}
+	}
+
+
+}

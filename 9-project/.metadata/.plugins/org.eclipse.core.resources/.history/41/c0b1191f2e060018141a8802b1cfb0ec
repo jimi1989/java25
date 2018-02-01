@@ -1,0 +1,11 @@
+package com.kaishengit.web.sale;
+
+import com.kaishengit.web.BaseServlet;
+
+public class MySaleChanceServlet extends BaseServlet{
+
+	private static final long serialVersionUID = 1L;
+
+	
+	
+}

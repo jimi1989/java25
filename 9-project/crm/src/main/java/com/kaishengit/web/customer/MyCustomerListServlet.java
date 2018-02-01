@@ -32,7 +32,7 @@ public class MyCustomerListServlet extends BaseServlet{
 		}
 		Account acc = getCurrAccount(req);
 	
-		Page<Customer> page = service.findMyCustomerByPage(acc.getId(),pageNo);
+		Page<Customer> page = service.findCustomerByPage(acc.getId(),pageNo);
 		
 		req.setAttribute("page", page);
 		

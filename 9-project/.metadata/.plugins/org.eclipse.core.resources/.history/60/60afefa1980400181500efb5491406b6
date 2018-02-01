@@ -1,0 +1,12 @@
+package com.kaishengit.web.dao;
+
+import com.kaishengit.entity.Customer;
+
+public class CustomerDao {
+
+	public void add(Customer customer) {
+		String sql = "insert into t_customer (cust_name,sex,job_title,mobile,address,trade,source,level,mark,account_id,reminder) values (?,?,?,?,?,?,?,?,?,?,?)";
+		
+	}
+
+}

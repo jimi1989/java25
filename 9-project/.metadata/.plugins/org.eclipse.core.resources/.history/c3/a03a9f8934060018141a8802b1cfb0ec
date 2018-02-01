@@ -1,0 +1,17 @@
+package com.kaishengit.entity;
+
+import java.sql.Timestamp;
+
+public class SaleChance {
+
+	private int id;
+	private String name;
+	private int custId;
+	private int worth;
+	private String progress;
+	private String content;
+	private Timestamp createTime;
+	private Timestamp lastTime;
+	private int accountId;
+	
+}

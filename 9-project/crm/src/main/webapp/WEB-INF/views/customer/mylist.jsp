@@ -116,7 +116,7 @@
  		});
  		
  		$("#addBtn").click(function(){
- 	 		window.location.href = "/customer/my/add";
+ 	 		window.location.href = "/customer/add";
  	 	});
  		
  		 $("#pagination").twbsPagination({

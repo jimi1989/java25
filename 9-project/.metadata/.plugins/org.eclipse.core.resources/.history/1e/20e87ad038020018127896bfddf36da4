@@ -1,0 +1,9 @@
+package com.kaishengit.util;
+
+public class AjaxResult {
+	
+	private String state;
+	private Object data;
+	private String message;
+	
+}
