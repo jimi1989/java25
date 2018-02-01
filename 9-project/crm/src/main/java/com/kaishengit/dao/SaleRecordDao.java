@@ -21,4 +21,9 @@ public class SaleRecordDao {
 		return DbHelp.query(sql, new BeanListHandler<>(SaleChanceRecord.class, new BasicRowProcessor(new GenerousBeanProcessor())), saleId);
 	}
 
+	public void delBySaleId(int saleId) {
+		String sql = "delete from sale_chance_record where sale_id = ?";
+		DbHelp.executeUpdate(sql, saleId);
+	}
+
 }

@@ -5,7 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.dbutils.BasicRowProcessor;
+import org.apache.commons.dbutils.GenerousBeanProcessor;
 import org.apache.commons.dbutils.ResultSetHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.kaishengit.entity.Customer;
@@ -64,7 +67,7 @@ public class SaleDao {
 		}, accountId, start, pageSize);
 	}
 
-	public SaleChance findById(String saleId) {
+	public SaleChance findById(int saleId) {
 		String sql = "select * from sale_chance sc inner JOIN t_customer c ON sc.cust_id = c.id where sc.id = ?";
 		return DbHelp.query(sql, new ResultSetHandler<SaleChance>() {
 
@@ -74,6 +77,7 @@ public class SaleDao {
 				if(rs.next()) {
 					chance = new SaleChance();
 					chance.setId(rs.getInt("id"));
+					chance.setCustId(rs.getInt("cust_id"));
 					chance.setName(rs.getString("name"));
 					chance.setWorth(rs.getFloat("worth"));
 					chance.setProcess(rs.getString("process"));
@@ -93,12 +97,28 @@ public class SaleDao {
 					customer.setSource(rs.getString("source"));
 					customer.setLevel(rs.getString("level"));
 					customer.setMark(rs.getString("mark"));
+					customer.setReminder(rs.getString("reminder"));
 					
 					chance.setCustomer(customer);
 				}
 				return chance;
 			}
 		}, saleId);
+	}
+
+	public void update(SaleChance chance) {
+		String sql = "update sale_chance set worth = ? , process = ?, content = ?, last_time = ? where id = ?";
+		DbHelp.executeUpdate(sql, chance.getWorth(),chance.getProcess(),chance.getContent(),chance.getLastTime(),chance.getId());
+	}
+
+	public void delById(int id) {
+		String sql = "delete from sale_chance where id = ?";
+		DbHelp.executeUpdate(sql, id);
+	}
+
+	public List<SaleChance> findListByCustId(int custId) {
+		String sql = "select * from sale_chance where cust_id = ?";
+		return DbHelp.query(sql, new BeanListHandler<>(SaleChance.class, new BasicRowProcessor(new GenerousBeanProcessor())), custId);
 	}	
 
 }

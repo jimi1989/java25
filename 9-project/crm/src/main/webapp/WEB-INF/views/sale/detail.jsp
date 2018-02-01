@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -32,7 +33,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">销售机会基本资料</h3>
                     <div class="box-tools">
-                        <a href="/sales/my" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> 返回列表</a>
+                        <a href="/sale/my/list" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> 返回列表</a>
                         <button id="delBtn" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> 删除</button>
                     </div>
                 </div>
@@ -101,22 +102,24 @@
                     <h4>跟进记录
                         <small><button id="showRecordModalBtn" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button></small>
                     </h4>
-                    <c:if test="${empty recordList}">
-                    	<li>
-                                <!-- timeline icon -->
-                            <i class="fa fa-circle-o bg-red"></i>
-                                <div class="timeline-item">
-                                    <div class="timeline-body">
-                                           	暂无跟进记录
-                                    </div>
-                                </div>
-                            </li>
-                    </c:if>
+                   
                     
                     <ul class="timeline">
+                    		 <c:if test="${empty recordList}">
+		                    	<li>
+		                                <!-- timeline icon -->
+		                            <i class="fa fa-circle-o bg-red"></i>
+		                                <div class="timeline-item">
+		                                    <div class="timeline-body">
+		                                           	暂无跟进记录
+		                                    </div>
+		                                </div>
+		                        </li>
+		                    </c:if>
+                    
                       		<c:forEach items="${recordList}" var="record">
                       			<c:choose>
-                      				<c:when test="${saleChance.process == '成交' }">
+                      				<c:when test="${fn:contains(record.content,'[ 成交 ]')}">
                       					 <li>
 			                                <!-- timeline icon -->
 			                                <i class="fa fa-check bg-green"></i>
@@ -128,7 +131,7 @@
 			                                </div>
 			                            </li>
                       				</c:when>
-	                      			<c:when test="${saleChance.process == '暂时搁置' }">
+	                      			<c:when test="${fn:contains(record.content,'[ 暂时搁置 ]' )}">
 	                      				<li>
 			                                <!-- timeline icon -->
 			                                <i class="fa fa-close bg-red"></i>
@@ -185,7 +188,7 @@
                             <h4 class="modal-title">添加跟进记录</h4>
                         </div>
                         <div class="modal-body">
-                            <form action="/sales/my/new/record" id="recordForm" method="post">
+                            <form action="/sale/add/record" id="recordForm" method="post">
                                 <input type="hidden" name="saleId" value="${saleChance.id}">
                                 <textarea id="recordContent"  class="form-control" name="content"></textarea>
                             </form>
@@ -207,9 +210,9 @@
                             <h4 class="modal-title">更新当前进度</h4>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="/sales/my/${saleChance.id}/progress/update" id="updateProgressForm">
-                                <input type="hidden" name="id" value="${saleChance.id}">
-                                <select name="progress" class="form-control">
+                            <form method="post" action="/sale/process/update" id="updateProcessForm">
+                                <input type="hidden" name="saleId" value="${saleChance.id}">
+                                <select name="process" class="form-control">
                                     <c:forEach items="${processList}" var="pro">
                                         <option value="${pro}">${pro}</option>
                                     </c:forEach>
@@ -218,7 +221,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-primary" id="saveProgress">更新</button>
+                            <button type="button" class="btn btn-primary" id="saveProcess">更新</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -237,6 +240,79 @@
  <%@ include file="../include/js.jsp"%>
  <script>
 	$(function(){
+		var saleId = ${saleChance.id};
+		$("#delBtn").click(function(){
+			layer.confirm("确定要删除该销售机会么？",function(){
+				window.location.href = "/sale/del?saleId=" + saleId;
+			})
+		});
+		
+		$("#showChangeProgressModalBtn").click(function(){
+			$("#changeProgressModal").modal({
+				show:true,
+				backdrop:'static'
+			})
+		});
+		
+		$("#saveProcess").click(function(){
+			$("#updateProcessForm").submit();
+		})
+		
+		
+		$("#showRecordModalBtn").click(function(){
+			$("#recordModal").modal({
+				show:true,
+				backdrop:'static'
+			})
+		});
+		
+		$("#saveRecordBtn").click(function(){
+			/* var text = $("#recordContent").val();
+			if(text) {
+				$("#recordForm").submit();
+			} else {
+				layer.msg("请填写记录内容");
+			} */
+			$("#recordForm").submit();
+		})
+		
+		$("#recordForm").validate({
+			errorClass : 'text-danger',
+			errorElement : 'span',
+			rules : {
+				content :{
+					"required" : true
+				}
+			},
+			messages :{
+				content :{
+					"required" : "请输入跟进记录"
+				},
+				
+			},
+			submitHandler : function(form){
+				$.ajax({
+					url:'/sale/add/record',
+					type:'post',
+					data:$("#recordForm").serialize(),
+					beforeSend : function(){
+						$("#saveRecordBtn").text("保存中...").attr("disabled","disabled");
+					},
+					success : function(data){
+						history.go(0);
+					},
+					error : function(){
+						alert("系统异常");
+					},
+					complete : function(){
+						$("#saveRecordBtn").text("保存").removeAttr("disabled");
+					}
+				});
+				
+			}
+		})
+		
+		
 		
 	}) 
  </script>

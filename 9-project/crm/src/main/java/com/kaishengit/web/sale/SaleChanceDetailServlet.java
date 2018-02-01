@@ -28,9 +28,11 @@ public class SaleChanceDetailServlet extends BaseServlet{
 		try {
 			SaleChance saleChance = saleService.findSaleChanceById(saleId,accountId);
 			List<SaleChanceRecord> recordList = saleService.findRecordListBySaleId(saleId);
+			List<String> processList = saleService.findAllProcess();
+			
 			req.setAttribute("saleChance", saleChance);
 			req.setAttribute("recordList", recordList);
-			
+			req.setAttribute("processList", processList);
 			forward("sale/detail", req, resp);
 		} catch(ServiceException e) {
 			resp.sendError(404,e.getMessage());

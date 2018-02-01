@@ -88,7 +88,11 @@
                             <h3 class="box-title">跟进记录</h3>
                         </div>
                         <div class="box-body">
-
+                        	<ul class="list-group">
+								<c:forEach items="${chanceList}" var="chance"> 
+									<li class="list-group-item"><a href="/sale/detail?saleId=${chance.id}">${chance.name}</a></li>									
+								</c:forEach>
+                        	</ul>
                         </div>
                     </div>
                 </div>
