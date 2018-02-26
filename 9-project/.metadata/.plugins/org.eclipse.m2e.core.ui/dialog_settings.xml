@@ -56,12 +56,14 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.kaishengit.mybatis_test"/>
 			<item value="com.kaishengit.web"/>
 		</list>
 		<list key="groupId">
 			<item value="com.kaishengit"/>
 		</list>
 		<list key="artifactId">
+			<item value="mybatis-test"/>
 			<item value="crm"/>
 		</list>
 		<list key="projectNameTemplate">

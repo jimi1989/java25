@@ -20,7 +20,6 @@
  <jsp:include page="../include/sider.jsp">
  	<jsp:param value="account" name="param"/>
  </jsp:include> 
-  <!-- =============================================== -->
 
   <!-- 右侧内容部分 -->
   <div class="content-wrapper">
@@ -187,8 +186,11 @@
 		        	$("#body").html("");
 		            for(var i = 0; i < page.items.length; i++) {
 		            	var account = page.items[i];
-		            	var html = "<tr> <td>" + account.username+"</td> <td>" + account.deptName + "</td> <td>"+account.mobile+"</td> <td> <a href='javascript:;' class='del' rel='" + account.id + "'>删除</a><a href=''>编辑</a></td></tr>";
-		            	$("#body").append(html);
+		            	var html = "<tr> <td id='row'>" + account.username+"</td> <td>" + account.deptName + "</td> <td>"+account.mobile+"</td> <td> <a href='javascript:;' class='del' rel='" + account.id + "'>删除</a><a href=''>编辑</a></td></tr>";
+		            	console.log($(html)[0]);
+		            	//$("#body").append($(html));
+		            	$(html).appendTo($("#body"));
+		            	$("#body").find("tr").addClass("aa");
 		            }
 		        }
 		    });

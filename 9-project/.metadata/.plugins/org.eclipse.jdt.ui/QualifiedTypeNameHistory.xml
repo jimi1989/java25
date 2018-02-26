@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="com.google.gson.Gson"/>
-<fullyQualifiedTypeName name="com.kaishengit.entity.Account"/>
 <fullyQualifiedTypeName name="org.apache.commons.codec.digest.DigestUtils"/>
 <fullyQualifiedTypeName name="javax.servlet.Filter"/>
 <fullyQualifiedTypeName name="com.kaishengit.web.filter.AbstractFilter"/>
@@ -22,21 +21,29 @@
 <fullyQualifiedTypeName name="com.kaishengit.service.AccountService"/>
 <fullyQualifiedTypeName name="java.lang.Iterable"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.kaishengit.entity.Customer"/>
 <fullyQualifiedTypeName name="com.kaishengit.util.Config"/>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="com.kaishengit.dao.CustomerDao"/>
 <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
-<fullyQualifiedTypeName name="com.kaishengit.entity.SaleChance"/>
 <fullyQualifiedTypeName name="com.kaishengit.util.AjaxResult"/>
-<fullyQualifiedTypeName name="com.kaishengit.util.DbHelp"/>
-<fullyQualifiedTypeName name="java.sql.Timestamp"/>
 <fullyQualifiedTypeName name="org.apache.commons.lang3.StringUtils"/>
 <fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.ScalarHandler"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.apache.commons.dbutils.ResultSetHandler"/>
+<fullyQualifiedTypeName name="java.sql.Timestamp"/>
+<fullyQualifiedTypeName name="com.kaishengit.entity.SaleChanceRecord"/>
+<fullyQualifiedTypeName name="com.kaishengit.entity.SaleChance"/>
+<fullyQualifiedTypeName name="com.kaishengit.util.DbHelp"/>
 <fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.BeanListHandler"/>
 <fullyQualifiedTypeName name="org.apache.commons.dbutils.BasicRowProcessor"/>
 <fullyQualifiedTypeName name="org.apache.commons.dbutils.GenerousBeanProcessor"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
+<fullyQualifiedTypeName name="com.kaishengit.entity.School"/>
+<fullyQualifiedTypeName name="com.kaishengit.mapper.UserMapper"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
+<fullyQualifiedTypeName name="com.kaishengit.mapper.AccountMapper"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="com.kaishengit.entity.Account"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>
