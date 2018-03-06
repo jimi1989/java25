@@ -3,6 +3,8 @@ package com.kaishengit.entity;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import org.joda.time.DateTime;
+
 public class Task {
 
 	private int id;
@@ -60,4 +62,13 @@ public class Task {
 		this.createTime = createTime;
 	}
 
+	/**
+	 * 判断任务是否过期
+	 * @return true:已过期 false:未过期
+	 */
+	public boolean isOverTime() {
+		DateTime dateTime = new DateTime(getFinishTime());
+		return dateTime.isBeforeNow();
+	}
+	
 }

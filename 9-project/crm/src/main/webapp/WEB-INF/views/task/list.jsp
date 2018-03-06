@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,35 +40,18 @@
                 <div class="box-body">
 
                     <ul class="todo-list">
-                        <li class="done">
-                            <input type="checkbox">
-                            <span class="text">给张三打电话联系</span>
-                            <a href=""><i class="fa fa-user-o"></i> 张三</a>
-                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 7月15日</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                        <li>
-                            <input type="checkbox">
-                            <span class="text">给张三打电话联系</span>
-                            <a href=""><i class="fa fa-money"></i> 9号楼23#</a>
-                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 8月3日</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                        <li>
-                            <input type="checkbox">
-                            <span class="text">给张三打电话联系</span>
-                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 8月5日</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
+                    	<c:forEach items="${taskList}" var="task">
+                    		<li class="${task.status == 1 ? 'done' : '' }">
+	                            <input type="checkbox">
+	                            <span class="text">${task.title}</span>
+	                            <small class="label ${task.overTime ? 'label-danger' : 'label-success' }"><i class="fa fa-clock-o"></i> ${task.finishTime}</small>
+	                            <div class="tools">
+	                                <i class="fa fa-edit"></i>
+	                                <i class="fa fa-trash-o"></i>
+	                            </div>
+	                        </li>
+                    	</c:forEach>
+                        
                     </ul>
                 </div>
                 <!-- /.box-body -->
