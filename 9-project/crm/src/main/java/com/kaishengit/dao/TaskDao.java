@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.dbutils.GenerousBeanProcessor;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.kaishengit.entity.Task;
@@ -21,4 +22,30 @@ public class TaskDao {
 		return DbHelp.query(sql, new BeanListHandler<>(Task.class,new BasicRowProcessor(new GenerousBeanProcessor())), accountId);
 	}
 
+	public Task findById(String taskId) {
+		String sql = "select * from t_task where id = ?";
+		return DbHelp.query(sql, new BeanHandler<>(Task.class, new BasicRowProcessor(new GenerousBeanProcessor())), taskId);
+	}
+
+	public void update(Task task) {
+		String sql = "update t_task set title = ?, finish_time = ?, status = ? where id = ?";
+		DbHelp.executeUpdate(sql, task.getTitle(), task.getFinishTime(), task.getStatus(), task.getId());
+	}
+
+	public void delById(int taskId) {
+		String sql = "delete from t_task where id = ?";
+		DbHelp.executeUpdate(sql, taskId);
+	}
+
+	public List<Task> findListByAccountIdAndStatus(int accountId, int status) {
+		String sql = "select * from t_task where account_id = ? and status = ?";
+		return DbHelp.query(sql, new BeanListHandler<>(Task.class,new BasicRowProcessor(new GenerousBeanProcessor())), accountId, status);
+	
+	}
+
+	/*public void updateStatus(int taskId, int status) {
+		String sql = "update t_task set status = ? where id = ?";
+		DbHelp.executeUpdate(sql, status, taskId);
+	}*/
+	
 }

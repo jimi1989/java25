@@ -34,7 +34,15 @@
 
                     <div class="box-tools pull-right">
                         <a href="/task/add" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> 新增任务</a>
-                        <button class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> 显示所有任务</button>
+                        <c:choose>
+                        	<c:when test="${param.show == 'undone'}">
+                        		<a href="/task/list" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> 显示所有任务</a>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<a href="/task/list?show=undone" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> 显示未完成任务</a>	
+                        	</c:otherwise>
+                        </c:choose>
+                        
                     </div>
                 </div>
                 <div class="box-body">
@@ -42,12 +50,12 @@
                     <ul class="todo-list">
                     	<c:forEach items="${taskList}" var="task">
                     		<li class="${task.status == 1 ? 'done' : '' }">
-	                            <input type="checkbox">
+	                            <input type="checkbox" class="taskStatus" rel="${task.id}" ${task.status == 1 ? 'checked' : ''}>
 	                            <span class="text">${task.title}</span>
 	                            <small class="label ${task.overTime ? 'label-danger' : 'label-success' }"><i class="fa fa-clock-o"></i> ${task.finishTime}</small>
 	                            <div class="tools">
-	                                <i class="fa fa-edit"></i>
-	                                <i class="fa fa-trash-o"></i>
+	                                <i class="fa fa-edit edit_task"></i>
+	                                <i class="fa fa-trash-o del_task" rel="${task.id}"></i>
 	                            </div>
 	                        </li>
                     	</c:forEach>
@@ -64,17 +72,44 @@
     <!-- /.content-wrapper -->
 
     <!-- 底部 -->
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0
-        </div>
-        <strong>Copyright &copy; 2010 -2017 <a href="http://almsaeedstudio.com">凯盛软件</a>.</strong> All rights
-        reserved.
-    </footer>
+    <%@ include file="../include/footer.jsp"%>
 
 </div>
 <!-- ./wrapper -->
-<%@ include file="../include/footer.jsp"%>
+<%@ include file="../include/js.jsp"%>
+<script>
+	$(function(){
+		$(".del_task").click(function () {
+        	var taskId = $(this).attr("rel");
+            layer.confirm("确定要删除么？", function(){
+        		window.location.href = "/task/del?taskId=" + taskId;
+            })
+        });
+		
+		$(".taskStatus").click(function(){
+			var taskId = $(this).attr("rel");
+			alert(taskId);
+			var checked = $(this)[0].checked; // 判断是打勾（true）还是取消（false）
+			var status = 0;
+			if(checked) {
+				// 把状态改成已完成
+				status = 1;
+			} else {
+				// 把状态改成未完成
+				status = 0;
+			}
+			
+			$.get("/task/status",{"taskId":taskId, "status": status}, function(data){
+				if(data.state == 'success') {
+					layer.msg("修改成功");
+					// 刷新当前页面
+					history.go(0);
+				}
+			});
+		})
+		
+	})
+</script>
 </body>
 </html>
     

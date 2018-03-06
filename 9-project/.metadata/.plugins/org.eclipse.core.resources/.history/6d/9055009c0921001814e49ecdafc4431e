@@ -1,0 +1,26 @@
+package com.kaishengit.web.chart;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.kaishengit.entity.Task;
+import com.kaishengit.web.BaseServlet;
+import com.kaishengit.web.service.TaskService;
+
+@WebServlet("/chart/demo")
+public class ChartDemoServlet extends BaseServlet{
+
+	private static final long serialVersionUID = 1L;
+
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		forward("chart/demo",req,resp);
+	}
+	
+}

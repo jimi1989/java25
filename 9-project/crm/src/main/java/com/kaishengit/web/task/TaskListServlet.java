@@ -21,8 +21,9 @@ public class TaskListServlet extends BaseServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String show = req.getParameter("show");
 		int accountId = getCurrAccount(req).getId();
-		List<Task> taskList = service.findTaskListByAccountId(accountId);
+		List<Task> taskList = service.findTaskListByAccountId(accountId, show);
 		req.setAttribute("taskList", taskList);
 		forward("task/list",req,resp);
 	}

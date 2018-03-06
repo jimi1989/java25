@@ -6,8 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.kaishengit.dao.TaskDao;
 import com.kaishengit.entity.Task;
+import com.kaishengit.exception.ForbiddenException;
 import com.kaishengit.exception.ServiceException;
 import com.kaishengit.util.Config;
 
@@ -41,8 +44,53 @@ public class TaskService {
 	 * @param accountId 当前登录的账户id
 	 * @return 任务列表
 	 */
-	public List<Task> findTaskListByAccountId(int accountId) {
+	public List<Task> findTaskListByAccountId(int accountId, String show) {
+		if(StringUtils.isNotEmpty(show)) {
+			if(show.equals("undone")) {
+				int status = Config.TASK_STATUS_UNDONE;
+				return taskDao.findListByAccountIdAndStatus(accountId, status);
+			}
+		}
 		return taskDao.findListByAccountId(accountId);
+	}
+
+	/**
+	 * 根据id修改task的状态值
+	 * @param taskId
+	 * @param status
+	 */
+	public void updateTaskStatusById(String taskId, String status) {
+		// 通过id查询对应的task对象
+		Task task = taskDao.findById(taskId);
+		// 修改task的status属性值
+		task.setStatus(Integer.parseInt(status));
+		// 全量更新
+		taskDao.update(task);
+	}
+
+	/**
+	 * 通过id删除任务
+	 * @param taskId
+	 */
+	public void delById(String taskId, int accountId) {
+		// 判断taskId是否为纯数字
+		if(!StringUtils.isNumeric(taskId)) {
+			throw new ServiceException("参数异常");
+		}
+		
+		// 判断该任务是否属于当前的登录用户
+		Task task = taskDao.findById(taskId);
+		if(task == null) {
+			throw new ServiceException("参数异常");
+		} 
+		
+		if(task.getAccountId() == accountId) {
+			taskDao.delById(Integer.parseInt(taskId));
+		} else {
+			throw new ForbiddenException("无访问权限");
+		}
+		
+			
 	}
 
 }
