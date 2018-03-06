@@ -16,7 +16,6 @@
 <div class="wrapper">
 
  <%@ include file="../include/header.jsp"%> 
- <%-- <%@ include file="../include/sider.jsp"%> --%>
  <jsp:include page="../include/sider.jsp">
  	<jsp:param value="account" name="param"/>
  </jsp:include> 

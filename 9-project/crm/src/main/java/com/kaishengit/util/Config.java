@@ -6,6 +6,11 @@ import java.util.Properties;
 public class Config {
 	public static final int COMPANY_ID = 1;
 	public static final int PUBLIC_ID = 0;
+	public static final int TASK_STATUS_UNDONE = 0;
+	public static final int TASK_STATUS_DONE = 1;
+	
+	
+	
 	private static Properties prop = new Properties();
 	static {
 		try {

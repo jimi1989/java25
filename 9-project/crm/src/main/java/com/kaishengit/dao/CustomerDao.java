@@ -1,9 +1,15 @@
 package com.kaishengit.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.dbutils.GenerousBeanProcessor;
+import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
@@ -46,6 +52,26 @@ public class CustomerDao {
 	public List<Customer> findByAccountId(int accountId) {
 		String sql = "select * from t_customer where account_id = ?";
 		return DbHelp.query(sql, new BeanListHandler<>(Customer.class, new BasicRowProcessor(new GenerousBeanProcessor())), accountId);
+	}
+
+	public List<Map<String, Object>> countCustomerByLevel() {
+		String sql = "select count(*) as 'count', level from t_customer group by level";
+		return DbHelp.query(sql, new ResultSetHandler<List<Map<String, Object>>>() {
+
+			@Override
+			public List<Map<String, Object>> handle(ResultSet rs) throws SQLException {
+				List<Map<String, Object>> mapList = new ArrayList<Map<String, Object>>();
+				while(rs.next()) {
+					int count = rs.getInt("count");
+					String level = rs.getString("level");
+					Map<String, Object> maps = new HashMap<>();
+					maps.put("count", count);
+					maps.put("level", level);
+					mapList.add(maps);
+				}
+				return mapList;
+			}
+		});
 	}
 
 }
