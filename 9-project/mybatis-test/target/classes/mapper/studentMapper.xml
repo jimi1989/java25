@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaishengit.mapper.StudentMapper">
+
+	<select id="findById" parameterType="int" resultMap="studentMap">
+		select st.id ,st.name ,st.age, sc.id as scId, sc.name as scName,sc.tel 
+		from t_school sc,t_stu st 
+		where sc.id = st.schoolid and st.id = #{id}; 
+	</select>
+
+	<resultMap id="studentMap" type="Student">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="age" property="age"/>
+		<association property="school" javaType="com.kaishengit.entity.School" column="schoolid">
+			<id column="scId" property="id"/>
+			<result column="scName" property="name"/>
+			<result column="tel" property="tel"/>
+		</association>
+	</resultMap>
+
+</mapper>

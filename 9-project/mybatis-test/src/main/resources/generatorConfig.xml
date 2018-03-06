@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <classPathEntry location="D:\jars\JDBC\mysql-connector-java-5.1.41.jar"/>
+
+    <context id="myConfig" targetRuntime="MyBatis3">
+
+        <!--去掉自动产生的注释-->
+        <commentGenerator>
+            <!-- 是否去掉自动生成的注释 true是 false 否 -->
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!-- 连接数据库的信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql:///crm_2018?useSSL=false"
+                        userId="root" password="rootroot"/>
+
+        <!-- POJO -->
+        <javaModelGenerator targetPackage="com.kaishengit.pojo" targetProject="src/main/java"/>
+         <!--XML映射文件-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+         <!--Mapper接口-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.kaishengit.mapper"
+                             targetProject="src/main/java"/>
+
+
+        <table tableName="t_account" domainObjectName="Account" enableSelectByExample="true"/>
+        <table tableName="t_dept" domainObjectName="Dept" enableSelectByExample="true"/>
+    </context>
+
+
+</generatorConfiguration>
+        

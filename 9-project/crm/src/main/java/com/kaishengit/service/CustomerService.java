@@ -3,6 +3,7 @@ package com.kaishengit.service;
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -206,7 +207,5 @@ public class CustomerService {
 		custDao.update(cust);
 		
 	}
-
-	
 
 }

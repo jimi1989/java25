@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaishengit.mapper.UserMapper">
+  
+  
+	<select id="findById" parameterType="int" resultType="User">
+		SELECT * FROM t_user WHERE id = #{id}
+	</select>
+	
+	<insert id="save" parameterType="User">
+		insert into t_user (name, tel, address) values(#{name}, #{tel}, #{address})
+	</insert>
+	
+	<update id="update" parameterType="User">
+		update t_user set name = #{name}, tel = #{tel}, address = #{address} where id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from t_user where id = #{id}
+	</delete>
+	
+	<select id="findAll" resultType="User">
+		select * from t_user
+	</select>
+	
+	
+</mapper>

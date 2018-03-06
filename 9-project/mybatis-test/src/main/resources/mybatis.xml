@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!--注册别名-->  
+	<typeAliases>
+	       <typeAlias type="com.kaishengit.entity.User" alias="User"/>
+	       <typeAlias type="com.kaishengit.entity.School" alias="School"/>
+	       <typeAlias type="com.kaishengit.entity.Student" alias="Student"/>
+	       <typeAlias type="com.kaishengit.entity.Account" alias="Account"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC">
+			
+			</transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql:///db_25"/>
+				<property name="username" value="root"/>
+				<property name="password" value="rootroot"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="mapper/userMapper.xml"/>
+		<mapper resource="mapper/schoolMapper.xml"/>
+		<mapper resource="mapper/studentMapper.xml"/>
+		<mapper resource="mapper/accountMapper.xml"/>
+	</mappers>
+</configuration>

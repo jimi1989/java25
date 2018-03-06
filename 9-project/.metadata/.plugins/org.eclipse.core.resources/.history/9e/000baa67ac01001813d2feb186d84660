@@ -1,7 +1,0 @@
-package com.kaishengit.web.account;
-
-import com.kaishengit.web.BaseServlet;
-
-public class HomeServlet extends BaseServlet{
-
-}
