@@ -47,7 +47,7 @@
 
                     <div class="box-tools pull-right">
                         <button class="btn btn-primary btn-sm"><i class="fa fa-upload"></i> 上传文件</button>
-                        <button class="btn btn-success btn-sm"><i class="fa fa-plus"></i> 新建文件夹</button>
+                        <button id="addFolderBtn" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> 新建文件夹</button>
                     </div>
                 </div>
                 <div class="box-body no-padding">
@@ -162,5 +162,26 @@
 <!-- ./wrapper -->
 
  <%@ include file="../include/js.jsp"%>
+ <script>
+ 	$(function(){
+ 		$("#addFolderBtn").click(function(){
+ 			layer.prompt({title:"请输入文件夹名称:"},function(text, index){
+ 				layer.close();
+ 				$.post("/disk/new/folder",{"pId":pid,"name":text,"accountId":accountId}).done(function(resp){
+                    /* if(resp.state == 'success') {
+                        layer.msg("创建成功");
+                       
+                        }
+                    } else {
+                        layer.msg(resp.message);
+                    } */
+                }).error(function(){
+                    layer.msg("服务器异常");
+                });
+ 			});
+ 		})
+ 	})
+ 
+ </script>
 </body>
 </html>
