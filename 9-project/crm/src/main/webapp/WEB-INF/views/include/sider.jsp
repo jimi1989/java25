@@ -60,7 +60,7 @@
         </li>
         
         <!-- 统计报表 -->
-        <li class="treeview">
+        <li class="treeview ${fn:startsWith(param.param,'charts') ? 'active' : ''}">
           <a href="#">
             <i class="fa fa-pie-chart"></i> <span>统计报表</span>
             <span class="pull-right-container">
@@ -68,13 +68,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/charts/demo"><i class="fa fa-circle-o"></i> 静态报表</a></li>
-            <li><a href="/charts/show"><i class="fa fa-circle-o"></i> 客户统计</a></li>
+            <li class="${param.param == 'charts_demo' ? 'active' : ''}"><a href="/charts/demo"><i class="fa fa-circle-o"></i> 静态报表</a></li>
+            <li class="${param.param == 'charts_level' ? 'active' : ''}"><a href="/charts/level"><i class="fa fa-circle-o"></i> 客户统计</a></li>
           </ul>
         </li>
         
         
-        <li><a href="../../documentation/index.html"><i class="fa fa-share-alt"></i> <span>公司网盘</span></a></li>
+        <li><a href="/disk/home" class="${param.param == 'disk_home' ? 'active' : ''}"  ><i class="fa fa-share-alt"></i> <span>公司网盘</span></a></li>
         <li class="header ${param.param == 'account' ? 'active' : ''}">系统管理</li>
         <!-- 部门员工管理 -->
         <li ><a href="/account/list"><i class="fa fa-users"></i> <span>员工管理</span></a></li>

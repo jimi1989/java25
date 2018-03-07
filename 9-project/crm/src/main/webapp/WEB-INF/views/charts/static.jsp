@@ -12,7 +12,7 @@
     <!-- =============================================== -->
 
     <jsp:include page="../include/sider.jsp">
-        <jsp:param name="menu" value="charts_demo"/>
+        <jsp:param name="param" value="charts_demo"/>
     </jsp:include>
     <!-- 右侧内容部分 -->
     <div class="content-wrapper">

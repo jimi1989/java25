@@ -9,10 +9,9 @@
 <!-- Site wrapper -->
 <div class="wrapper">
     <%@include file="../include/header.jsp"%>
-    <!-- =============================================== -->
 
     <jsp:include page="../include/sider.jsp">
-        <jsp:param name="menu" value="charts_customer"/>
+        <jsp:param name="param" value="charts_level"/>
     </jsp:include>
     <!-- 右侧内容部分 -->
     <div class="content-wrapper">
