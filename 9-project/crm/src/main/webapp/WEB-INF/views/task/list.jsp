@@ -15,7 +15,7 @@
 <!-- Site wrapper -->
 <div class="wrapper">
 
-   <%@ include file="../include/css.jsp"%>
+   <%@ include file="../include/header.jsp"%>
    <jsp:include page="../include/sider.jsp">
    		<jsp:param value="task_list" name="param"/>
    	</jsp:include>
@@ -88,7 +88,6 @@
 		
 		$(".taskStatus").click(function(){
 			var taskId = $(this).attr("rel");
-			alert(taskId);
 			var checked = $(this)[0].checked; // 判断是打勾（true）还是取消（false）
 			var status = 0;
 			if(checked) {

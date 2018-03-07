@@ -134,7 +134,8 @@
                        {value:310, name:'邮件营销'},
                        {value:274, name:'联盟广告'},
                        {value:235, name:'视频广告'},
-                       {value:800, name:'搜索引擎'}
+                       {value:800, name:'搜索引擎'},
+                       {value:1800, name:'朋友介绍'}
                    ]
                }
            });
@@ -164,11 +165,11 @@
           bar2.setOption({
               title: {
                   text: "2017上半年手机销售量统计图",
-                  left: 'center'
+                  left: 'left'
               },
               tooltip: {},
               legend: {
-                  data: ['苹果','三星',"Vivo"],
+                  data: ['苹果','三星',"Vivo","小米"],
                   left: 'right'
               },
               xAxis: {
@@ -189,8 +190,13 @@
                   },
                   {
                       name: "ViVO",
-                      type: 'bar',
+                      type: 'line',
                       data: [300, 650, 100, 600, 750, 900]
+                  },
+                  {
+                      name: "小米",
+                      type: 'line',
+                      data: [400, 550, 900, 1600, 550, 1900]
                   }
               ]
           });

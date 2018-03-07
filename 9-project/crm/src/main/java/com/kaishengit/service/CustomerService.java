@@ -208,4 +208,12 @@ public class CustomerService {
 		
 	}
 
+	/**
+	 * 统计个级别对应的客户数量
+	 * @return
+	 */
+	public List<Map<String, Object>> countCustomerLevel() {
+		return custDao.countLevel();
+	}
+
 }

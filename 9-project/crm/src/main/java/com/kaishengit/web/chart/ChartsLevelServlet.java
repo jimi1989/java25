@@ -9,15 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kaishengit.web.BaseServlet;
 
-@WebServlet("/chart/demo")
-public class ChartDemoServlet extends BaseServlet{
+@WebServlet("/charts/level")
+public class ChartsLevelServlet extends BaseServlet{
 
 	private static final long serialVersionUID = 1L;
-
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		forward("charts/static",req,resp);
+		forward("charts/level",req,resp);
 	}
 	
 }

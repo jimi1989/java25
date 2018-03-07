@@ -54,4 +54,23 @@ public class CustomerDao {
 		return DbHelp.query(sql, new BeanListHandler<>(Customer.class, new BasicRowProcessor(new GenerousBeanProcessor())), accountId);
 	}
 
+	public List<Map<String, Object>> countLevel() {
+		String sql = "SELECT count(*) as count, level FROM `t_customer` GROUP BY level";
+		return DbHelp.query(sql, new ResultSetHandler<List<Map<String, Object>> >() {
+
+			@Override
+			public List<Map<String, Object>> handle(ResultSet rs) throws SQLException {
+				List<Map<String, Object>> mapsList = new ArrayList<>();
+				while(rs.next()) {
+					Map<String, Object> map = new HashMap<>();
+					map.put("count", rs.getInt("count"));
+					map.put("level", rs.getString("level"));
+					mapsList.add(map);
+				}
+				
+				return mapsList;
+			}
+		});
+	}
+
 }
