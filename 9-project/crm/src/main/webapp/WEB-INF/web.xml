@@ -26,7 +26,7 @@
 		<filter-class>com.kaishengit.web.filter.LoginFilter</filter-class>
 		<init-param>
 			<param-name>validate</param-name>
-			<param-value>/account,/customer,/sale,/task</param-value>
+			<param-value>/account,/customer,/sale,/task,/disk</param-value>
 		</init-param>
 	</filter>
 
