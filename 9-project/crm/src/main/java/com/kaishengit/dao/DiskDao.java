@@ -13,8 +13,8 @@ import com.kaishengit.util.DbHelp;
 public class DiskDao {
 
 	public void save(Disk disk) {
-		String sql = "insert into t_disk (name, pid, type, account_id) values (?,?,?,?)";
-		DbHelp.executeUpdate(sql, disk.getName(), disk.getpId(), disk.getType(), disk.getAccountId());
+		String sql = "insert into t_disk (name, pid, type, account_id, file_size, download_count, save_name) values (?,?,?,?,?,?,?)";
+		DbHelp.executeUpdate(sql, disk.getName(), disk.getpId(), disk.getType(), disk.getAccountId(), disk.getFileSize(), disk.getDownloadCount(), disk.getSaveName());
 	}
 
 	public List<Disk> findListByPId(int pId) {

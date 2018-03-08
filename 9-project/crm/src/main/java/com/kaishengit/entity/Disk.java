@@ -5,6 +5,7 @@ import java.util.Date;
 public class Disk {
 	public static final String DISK_TYPE_FOLDER = "dir";
 	public static final String DISK_TYPE_FILE = "file";
+	public static final int INIT_DOWNLOAD_COUNT = 0;
 
 	private Integer id;
 
