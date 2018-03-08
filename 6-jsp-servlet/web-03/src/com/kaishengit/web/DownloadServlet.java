@@ -25,7 +25,7 @@ public class DownloadServlet extends HttpServlet{
 		
 		// 获取下载的文件名
 		String fileName = req.getParameter("fileName");
-		String name = req.getParameter("name");
+		String name = req.getParameter("name"); // 我的照片
 		// get请求中文乱码
 //		fileName = new String(fileName.getBytes("ISO8859-1"),"UTF-8");
 		
