@@ -126,7 +126,7 @@
 						                        	</c:choose>
 			                                        
 			                                        <li><a href="#">重命名</a></li>
-			                                        <li><a href="#">删除</a></li>
+			                                        <li><a href="/disk/delete?id=${disk.id}">删除</a></li>
 			                                    </ul>
 			                                </div>
 			                            </td>
@@ -158,8 +158,53 @@
  <%@ include file="../include/js.jsp"%>
  <script type="text/javascript" src="/static/plugins/uploader/webuploader.js"></script>
  <script>
+ 
  	$(function(){
- 		var pid = "${requestScope.disk == null? '0' : requestScope.disk.id}";
+		var pid = "${requestScope.disk == null? '0' : requestScope.disk.id}";
+		var fileMd5;
+	 	WebUploader.Uploader.register({
+		    'before-send-file': 'preupload'
+		}, {
+		    preupload: function( file ) {
+		        var me = this,
+		            owner = this.owner,
+		            server = me.options.server,
+		            deferred = WebUploader.Deferred();
+	
+		        	owner.md5File(file)
+	
+		            // 如果读取出错了，则通过reject告诉webuploader文件上传出错。
+		            .fail(function() {
+		                deferred.reject();
+		            })
+	
+		            // md5值计算完成
+		            .then(function( md5 ) {
+		            	fileMd5 = md5;
+	                	$.ajax({
+	    					url:'/disk/md5',
+	    					type:'get',
+	    					data:{"md5":md5,
+	    						"pid":pid,
+	    						"name":file.name
+	    					},
+	    					success: function(json) {
+	                            // 如果验证已经上传过
+	                            if (json.state == "error" ) {
+	                                owner.skipFile( file );
+	                                console.log('文件重复，已跳过');
+	                            } else {
+							        me.options.formData.fileMd5 = fileMd5;
+	                            }
+	                            // webuploader接着往下走。
+	                            deferred.resolve();
+	                        }
+	                	});
+		            });
+		        return deferred.promise();
+		    }
+		});
+	 	
  		$("#addFolderBtn").click(function(){
  			layer.prompt({title:"请输入文件夹名称:"},function(text, index){
  				layer.close(index);
@@ -176,23 +221,26 @@
  			});
  		});
  		
- 		$(".tr").click(function(){
+ 		$(".tr").dblclick(function(){
  			var pid = $(this).attr("rel");
  			window.location.href = "/disk/home?pid=" + pid;
  		});
  		
-
+		
  		//文件上传
-        var uploader = WebUploader.create({
+        var uploader = new WebUploader.Uploader({
             pick:"#picker",
             swf:'/static/plugins/uploader/Uploader.swf',
             server:'/disk/upload', //上传服务器
             auto: true, //自动上传
             fileVal:'file', //上传文件的表单控件的名称 name属性
             formData:{
-                "pid":pid
+                "pid":pid,
+               // "fileMd5":fileMd5
             } //发送请求给服务器的额外数据
         });
+ 		
+       
  		
         var loadIndex = -1;
         //开始上传
@@ -202,7 +250,7 @@
         
         //上传成功
         uploader.on('uploadSuccess',function (file,resp) {
-            if(resp.state == 'success') {
+            if(!resp || resp.state == 'success') {
                 layer.msg("文件上传成功");
                 history.go(0);
             }
@@ -215,8 +263,9 @@
         uploader.on('uploadComplete',function (file) {
             layer.close(loadIndex);
         });
- 		
- 	})
+        
+ 	});
+ 	
  
  </script>
 </body>

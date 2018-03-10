@@ -31,8 +31,6 @@ public class DiskDownloadServlet extends BaseServlet{
 		String diskId = req.getParameter("id");
 		String fileName = req.getParameter("fileName");
 	
-		fileName = new String(fileName.getBytes("ISO8859-1"), "UTF-8");
-		System.out.println(fileName);
 		
 		if(StringUtils.isNumeric(diskId)) {
 			Disk disk = service.findDiskById(Integer.parseInt(diskId));
@@ -46,6 +44,8 @@ public class DiskDownloadServlet extends BaseServlet{
 				
 				if(StringUtils.isNotEmpty(fileName)) {
 					// 下载
+					// 解决中文乱码
+					fileName = new String(fileName.getBytes("ISO8859-1"), "UTF-8");
 					// 设置MIME类型
 					resp.setContentType("application/octet-stream");
 					// 设置文件名

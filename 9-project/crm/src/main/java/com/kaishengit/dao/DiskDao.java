@@ -13,8 +13,8 @@ import com.kaishengit.util.DbHelp;
 public class DiskDao {
 
 	public void save(Disk disk) {
-		String sql = "insert into t_disk (name, pid, type, account_id, file_size, download_count, save_name) values (?,?,?,?,?,?,?)";
-		DbHelp.executeUpdate(sql, disk.getName(), disk.getpId(), disk.getType(), disk.getAccountId(), disk.getFileSize(), disk.getDownloadCount(), disk.getSaveName());
+		String sql = "insert into t_disk (name, pid, type, account_id, file_size, download_count, save_name, md5) values (?,?,?,?,?,?,?,?)";
+		DbHelp.executeUpdate(sql, disk.getName(), disk.getpId(), disk.getType(), disk.getAccountId(), disk.getFileSize(), disk.getDownloadCount(), disk.getSaveName(), disk.getMd5());
 	}
 
 	public List<Disk> findListByPId(int pId) {
@@ -25,6 +25,16 @@ public class DiskDao {
 	public Disk findById(int id) {
 		String sql = "select * from t_disk where id = ?";
 		return DbHelp.query(sql, new BeanHandler<>(Disk.class, new BasicRowProcessor(new GenerousBeanProcessor())), id);
+	}
+
+	public Disk findByMd5(String md5) {
+		String sql = "select * from t_disk where md5 = ?";
+				return DbHelp.query(sql, new BeanHandler<>(Disk.class, new BasicRowProcessor(new GenerousBeanProcessor())), md5);
+	}
+
+	public void deleteById(int id) {
+		String sql = "delete from t_disk where id = ?";
+		DbHelp.executeUpdate(sql, id);
 	}
 
 }

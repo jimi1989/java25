@@ -19,6 +19,7 @@ com\kaishengit\entity\Task.class
 com\kaishengit\dao\SaleDao$2.class
 com\kaishengit\web\customer\PublicCustomerListServlet.class
 com\kaishengit\web\account\AccountAddServlet.class
+com\kaishengit\web\disk\DiskFileMd5Servlet.class
 com\kaishengit\entity\Account.class
 com\kaishengit\web\customer\MyCustomerDelServlet.class
 com\kaishengit\web\disk\DiskDownloadServlet.class
@@ -35,6 +36,7 @@ com\kaishengit\web\BaseServlet.class
 com\kaishengit\web\chart\ChartsLevelServlet.class
 com\kaishengit\dao\AccountDeptDao.class
 com\kaishengit\util\ConnectionManager.class
+com\kaishengit\web\disk\DiskDeleteServlet.class
 com\kaishengit\util\AjaxResult.class
 com\kaishengit\dao\SaleDao$1.class
 com\kaishengit\exception\ForbiddenException.class

@@ -2,6 +2,7 @@ package com.kaishengit.web.disk;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -27,7 +28,6 @@ public class DiskUploadServlet extends BaseServlet {
 		Part part = req.getPart("file");
 		// 获取文件上传的二进制流
 		InputStream input = part.getInputStream();
-		
 		// 获得文件上传的原始名称
 		String name = req.getParameter("name");// part.getSubmittedFileName(); error:tomcat7不支持
 		// 获得文件上传的大小
@@ -36,10 +36,17 @@ public class DiskUploadServlet extends BaseServlet {
 		// 从formData中获得pid 
 		String pid = req.getParameter("pid");
 		
+		String md5 = req.getParameter("fileMd5");
+		System.out.println("md5:" + md5);
 		// 获得accountId
 		try{
 			int accountId = getCurrAccount(req).getId();
-			service.saveNewFile(input, name, fileSize, Integer.parseInt(pid), accountId);
+			String saveName = UUID.randomUUID() + name.substring(name.lastIndexOf("."));
+			// 数据入库
+			service.saveNewFile( saveName, name, fileSize, Integer.parseInt(pid), accountId, md5);
+			// 保存文件
+			service.uploadFile(input,saveName);
+			
 			sendJson(AjaxResult.success(), resp);
 		} catch(NullPointerException e) {
 			sendJson(AjaxResult.error("登录信息已过期，请重新登录"), resp);
