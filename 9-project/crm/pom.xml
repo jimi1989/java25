@@ -9,6 +9,7 @@
 	<packaging>war</packaging>
 
 	<properties>
+		<junit-version>4.12</junit-version>
 		<servlet-version>3.1.0</servlet-version>
 		<commons-dbcp2-version>2.1.1</commons-dbcp2-version>
 		<gson-version>2.7</gson-version>
@@ -22,6 +23,13 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+		  <groupId>junit</groupId>
+		  <artifactId>junit</artifactId>
+		  <version>${junit-version}</version>
+		  <scope>test</scope>
+		</dependency>
+	
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
