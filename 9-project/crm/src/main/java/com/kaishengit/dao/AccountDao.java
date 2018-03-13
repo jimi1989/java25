@@ -3,10 +3,11 @@ package com.kaishengit.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.dbutils.BasicRowProcessor;
-import org.apache.commons.dbutils.BeanProcessor;
 import org.apache.commons.dbutils.GenerousBeanProcessor;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -15,11 +16,12 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.apache.commons.lang3.StringUtils;
 
 import com.kaishengit.entity.Account;
-import com.kaishengit.entity.Customer;
 import com.kaishengit.util.DbHelp;
 
 public class AccountDao {
 
+	private static Map<String, Account> cache = new HashMap<>();
+	
 	public Account findbyByName(String username) {
 		String sql = "select * from t_account where username = ?";
 		return DbHelp.query(sql, new BeanHandler<>(Account.class), username);
@@ -125,5 +127,19 @@ public class AccountDao {
 		return DbHelp.query(sql, new BeanHandler<>(Account.class,new BasicRowProcessor(new GenerousBeanProcessor())),accountId);
 	}
 
+	public void delById(int accountId) {
+		String sql = "delete from t_account where id = ?";
+		DbHelp.executeUpdate(sql, accountId);
+	}
 
+	/*public Account findById(int accountId) {
+		Account acc = cache.get("user"+accountId); // user1  user1002
+		if(acc == null) {
+			String sql = "select * from t_account where id = ?";
+			acc = DbHelp.query(sql, new BeanHandler<>(Account.class,new BasicRowProcessor(new GenerousBeanProcessor())),accountId);
+			// 存储到map集合
+			cache.put("user" + accountId, acc);
+		}
+		return acc;
+	}*/
 }

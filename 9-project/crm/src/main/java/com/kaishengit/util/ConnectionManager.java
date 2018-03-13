@@ -8,6 +8,8 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.kaishengit.exception.DataAccessException;
 
@@ -21,6 +23,8 @@ public class ConnectionManager {
 	private static BasicDataSource dataSource = new BasicDataSource();
 	private static Properties prop = new Properties();
 	
+	private static Logger logger = LoggerFactory.getLogger(ConnectionManager.class);
+	
 	static {
 		try {
 			prop.load(ConnectionManager.class.getClassLoader().getResourceAsStream("config.properties"));
@@ -30,6 +34,7 @@ public class ConnectionManager {
 			NAME = prop.getProperty("jdbc.username","root");
 			PASSWORD = prop.getProperty("jdbc.password","rootroot");
 		} catch (IOException e) {
+			logger.error("数据库连接异常");
 			throw new DataAccessException("数据库连接异常",e);
 		}
 		
@@ -54,6 +59,7 @@ public class ConnectionManager {
 		try {
 			conn = dataSource.getConnection();
 		} catch (SQLException e) {
+			logger.error("数据库连接异常");
 			throw new DataAccessException("数据库连接异常",e);
 		}
 		return conn;

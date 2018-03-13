@@ -19,4 +19,15 @@ public class Log4jTestCase {
 		
 	}
 	
+	@Test
+	public void systemPropertyTest() {
+		// java.io.tmpdir
+		String dir = System.getProperty("java.io.tmpdir");
+		System.out.println(dir);
+		
+		String javaVersion = System.getProperty("java.version");
+		System.out.println(javaVersion);
+		
+	}
+	
 }

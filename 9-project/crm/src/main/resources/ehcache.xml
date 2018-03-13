@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+	<diskStore path="java.io.tmpdir"/>
+	<cache name="account"
+		maxElementsInMemory="100"
+		eternal="false" 
+		timeToIdleSeconds="50"
+		timeToLiveSeconds="50"
+		overflowToDisk="true"
+	/>
+	
+	<!-- <cache name="dept"
+		maxElementsInMemory="100"
+		eternal="false" 
+		timeToIdleSeconds="50"
+		timeToLiveSeconds="50"
+		overflowToDisk="true"
+	/>
+	
+	<cache name="customer"
+		maxElementsInMemory="100"
+		eternal="false" 
+		timeToIdleSeconds="50"
+		timeToLiveSeconds="50"
+		overflowToDisk="true"
+	/> -->
+	<!-- eternal: true 永不过期 -->
+</ehcache>

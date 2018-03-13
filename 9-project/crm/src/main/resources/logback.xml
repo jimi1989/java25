@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<!-- <appender name="sout" class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="sout" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>%d{MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
 		</encoder>
@@ -17,15 +17,15 @@
 	<root level="debug">
 		<appender-ref ref="sout"/>
 		<appender-ref ref="fout"/>
-	</root> -->
+	</root>
 	
-	<property name="LOG_HOME" value="D:/logs"/>
+	<!-- <property name="LOG_HOME" value="D:/logs"/>
 	
 	<appender name="dailyOut" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<!--日志文件输出的文件名-->
+			日志文件输出的文件名
 			<FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}.log</FileNamePattern>
-			<!--日志文件保留天数-->
+			日志文件保留天数
 			<MaxHistory>30</MaxHistory>
 		</rollingPolicy>
 		
@@ -36,7 +36,8 @@
 	
 	<root level="debug">
 		<appender-ref ref="dailyOut" />
-	</root>
+		<appender-ref ref="sout" />
+	</root> -->
 	
 	
 </configuration>

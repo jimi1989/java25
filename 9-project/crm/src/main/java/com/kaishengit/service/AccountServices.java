@@ -12,15 +12,15 @@ import com.kaishengit.entity.Account;
 import com.kaishengit.entity.AccountDept;
 import com.kaishengit.exception.ServiceException;
 import com.kaishengit.util.Config;
-import com.kaishengit.util.EhcacheUtil;
+import com.kaishengit.util.EhcacheUtils;
 import com.kaishengit.util.Page;
 
-public class AccountService {
+public class AccountServices {
 
 	AccountDao accDao = new AccountDao();
 	AccountDeptDao accountDeptDao = new AccountDeptDao();
 	
-	EhcacheUtil cacheUtil = new EhcacheUtil();
+	EhcacheUtils cacheUtil = new EhcacheUtils("account");
 	
 	/**
 	 * @param username 用户名
@@ -109,29 +109,29 @@ public class AccountService {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Account> findAllAccount() {
-		List<Account> accountList = (ArrayList<Account>) cacheUtil.getCache("account", "accountList");
+		List<Account> accountList = (ArrayList<Account>) cacheUtil.getCache("accountList");
 		if(accountList == null) {
 			accountList = accDao.findAll();
-			cacheUtil.setCache("account", "accountList", accountList);
+			cacheUtil.setCache("accountList", accountList);
 		}
 		return accountList;
 	}
 
 	
 	public Account findById(int accountId) {
-		Account acc = (Account) cacheUtil.getCache("account", accountId);
+		Account acc = (Account) cacheUtil.getCache(accountId);
 		if(acc == null) {
 			acc = accDao.findById(accountId);
-			cacheUtil.setCache("account", accountId, acc);
+			cacheUtil.setCache(accountId, acc);
 		}
 		return acc;
 	}
 	
 	public void delById(int accountId) {
 		accDao.delById(accountId);
-//		cacheUtil.removeAll("account");
-		cacheUtil.removeByKey("account","accountList");
-		cacheUtil.removeByKey("account",accountId);
+//		cacheUtil.removeAll();
+		cacheUtil.removeByKey("accountList");
+		cacheUtil.removeByKey(accountId);
 	}
 	
 }

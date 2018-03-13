@@ -12,17 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.kaishengit.entity.Account;
 import com.kaishengit.exception.ServiceException;
 import com.kaishengit.service.AccountService;
+import com.kaishengit.util.ConnectionManager;
 import com.kaishengit.web.BaseServlet;
 
 @WebServlet("/login")
 public class LoginServlet extends BaseServlet{
 
 	private static final long serialVersionUID = 1L;
-
+	private static Logger logger = LoggerFactory.getLogger(LoginServlet.class); 
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Cookie[] cookies = req.getCookies();
@@ -36,9 +40,12 @@ public class LoginServlet extends BaseServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		String remember = req.getParameter("remember");
+
+		logger.info("{}登录了系统", username);
 		
 		AccountService service = new AccountService();
 		Map<String,Object> res = new HashMap<>();
