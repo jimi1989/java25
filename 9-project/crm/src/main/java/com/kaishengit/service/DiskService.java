@@ -93,6 +93,10 @@ public class DiskService {
 		
 		// 文件上传
 		try {
+			File savePath = new File(filePath);
+			if(!savePath.exists()) {
+				savePath.mkdirs();
+			}
 			OutputStream out = new FileOutputStream(new File(filePath,saveName));
 			IOUtils.copy(input, out);
 			out.flush();

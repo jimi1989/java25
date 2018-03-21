@@ -20,8 +20,8 @@ public class AccountService {
 	AccountDao accDao = new AccountDao();
 	AccountDeptDao accountDeptDao = new AccountDeptDao();
 	
-	EhcacheUtil cacheUtil = new EhcacheUtil();
-	
+	EhcacheUtil cacheUtil = new EhcacheUtil("account");
+//	EhcacheUtil deptCache = new EhcacheUtil("dept");
 	/**
 	 * @param username 用户名
 	 * @param password 密码
@@ -109,29 +109,38 @@ public class AccountService {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Account> findAllAccount() {
-		List<Account> accountList = (ArrayList<Account>) cacheUtil.getCache("account", "accountList");
+		List<Account> accountList = (ArrayList<Account>) cacheUtil.getCacheValue("accountList");
 		if(accountList == null) {
 			accountList = accDao.findAll();
-			cacheUtil.setCache("account", "accountList", accountList);
+			cacheUtil.setCacheValue("accountList", accountList);
 		}
 		return accountList;
 	}
 
 	
+	/**
+	 * 根据id查找account数据
+	 * @param accountId
+	 * @return
+	 */
 	public Account findById(int accountId) {
-		Account acc = (Account) cacheUtil.getCache("account", accountId);
+		Account acc = (Account) cacheUtil.getCacheValue(accountId);
 		if(acc == null) {
 			acc = accDao.findById(accountId);
-			cacheUtil.setCache("account", accountId, acc);
+			cacheUtil.setCacheValue(accountId, acc);
 		}
 		return acc;
 	}
 	
+	/**
+	 * 根据id删除account数据
+	 * @param accountId
+	 */
 	public void delById(int accountId) {
 		accDao.delById(accountId);
-//		cacheUtil.removeAll("account");
-		cacheUtil.removeByKey("account","accountList");
-		cacheUtil.removeByKey("account",accountId);
+//		cacheUtil.removeAll();
+		cacheUtil.removeByKey("accountList");
+		cacheUtil.removeByKey(accountId);
 	}
 	
 }

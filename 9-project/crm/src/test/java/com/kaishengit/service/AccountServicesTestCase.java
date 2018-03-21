@@ -8,7 +8,7 @@ import com.kaishengit.entity.Account;
 
 public class AccountServicesTestCase {
 
-	AccountServices service = new AccountServices();
+	AccountService service = new AccountService();
 //	AccountDao accDao = new AccountDao();
 	
 	@Test

@@ -24,7 +24,7 @@ public class DbHelp {
 			logger.info("SQL:{}",sql);
 			return runner.insert(sql, new ScalarHandler<Long>(),params).intValue(); // Long -- > int
 		} catch (SQLException e) {
-			logger.error("执行{}异常", sql);
+			logger.error("执行{}异常-->exception:{}", sql, e.getMessage());
 			throw new DataAccessException("ִ执行" + sql + "异常", e);
 		} 
 	}
@@ -37,7 +37,7 @@ public class DbHelp {
 			logger.info("SQL:{}",sql);
 			runner.update(sql, params);
 		} catch (SQLException e) {
-			logger.error("执行{}异常", sql);
+			logger.error("执行{}异常-->exception:{}", sql, e.getMessage());
 			throw new DataAccessException("ִ执行" + sql + "异常", e);
 		} 
 	}
@@ -47,7 +47,8 @@ public class DbHelp {
 			logger.info("SQL:{}",sql);
 			return runner.query(sql, rsh, params);
 		} catch (SQLException e) {
-			logger.error("执行{}异常", sql);
+			logger.error("执行{}异常-->exception:{}", sql, e.getMessage());
+			
 			throw new DataAccessException("ִ执行" + sql + "异常", e);
 		} 
 	}

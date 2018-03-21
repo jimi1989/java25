@@ -17,9 +17,12 @@ com\kaishengit\dao\AccountDao$1.class
 com\kaishengit\web\customer\MyCustomerEditServlet.class
 com\kaishengit\entity\Task.class
 com\kaishengit\dao\SaleDao$2.class
+com\kaishengit\service\AccountServiceWithGuava$1.class
 com\kaishengit\web\customer\PublicCustomerListServlet.class
 com\kaishengit\web\account\AccountAddServlet.class
+com\kaishengit\util\EhcacheUtil.class
 com\kaishengit\web\disk\DiskFileMd5Servlet.class
+com\kaishengit\service\AccountServiceWithGuava.class
 com\kaishengit\entity\Account.class
 com\kaishengit\web\customer\MyCustomerDelServlet.class
 com\kaishengit\web\disk\DiskDownloadServlet.class
@@ -33,6 +36,7 @@ com\kaishengit\service\DiskService.class
 com\kaishengit\web\account\LogoutServlet.class
 com\kaishengit\web\disk\DiskUploadServlet.class
 com\kaishengit\web\BaseServlet.class
+com\kaishengit\util\EhcacheUtil1.class
 com\kaishengit\web\chart\ChartsLevelServlet.class
 com\kaishengit\dao\AccountDeptDao.class
 com\kaishengit\util\ConnectionManager.class

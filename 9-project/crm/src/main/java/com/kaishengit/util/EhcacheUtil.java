@@ -10,13 +10,24 @@ public class EhcacheUtil {
 
 	private static CacheManager cacheManager = new CacheManager();
 	
+	private String cacheName;
+	private Ehcache ehcache;
+	
+	
+	public EhcacheUtil(String cacheName) {
+		this.cacheName = cacheName;
+	}
+	
 	/**
 	 * 获得ehcache对象
 	 * @param cacheName
 	 * @return
 	 */
-	public Ehcache getEhcache(String cacheName) {
-		return cacheManager.getEhcache(cacheName);
+	public Ehcache getEhcache() {
+		if(ehcache == null) {
+			ehcache = cacheManager.getEhcache(cacheName);
+		}
+		return ehcache;
 	}
 	
 	/**
@@ -25,24 +36,14 @@ public class EhcacheUtil {
 	 * @param key
 	 * @param value
 	 */
-	public void setCache(Ehcache cache, Object key, Object value) {
+	public void setCacheValue(Object key, Object value) {
 		Element element = new Element(key, value);
-		cache.put(element);
+		getEhcache().put(element);
 	}
 	
-	public void setCache(Ehcache cache, Serializable key, Serializable value) {
+	public void setCacheValue( Serializable key, Serializable value) {
 		Element element = new Element(key, value);
-		cache.put(element);
-	}
-	
-	public void setCache(String cacheName, Object key, Object value) {
-		Element element = new Element(key, value);
-		getEhcache(cacheName).put(element);
-	}
-	
-	public void setCache(String cacheName, Serializable key, Serializable value) {
-		Element element = new Element(key, value);
-		getEhcache(cacheName).put(element);
+		getEhcache().put(element);
 	}
 	
 	/**
@@ -51,23 +52,13 @@ public class EhcacheUtil {
 	 * @param key
 	 * @return
 	 */
-	public Object getCache(Ehcache cache, Object key) {
-		Element element = cache.get(key);
+	public Object getCacheValue(Object key) {
+		Element element = getEhcache().get(key);
 		return element == null ? null : element.getObjectValue();
 	}
 	
-	public Object getCache(Ehcache cache, Serializable key) {
-		Element element = cache.get(key);
-		return element == null ? null : element.getObjectValue();
-	}
-	
-	public Object getCache(String cacheName, Object key) {
-		Element element = getEhcache(cacheName).get(key);
-		return element == null ? null : element.getObjectValue();
-	}
-	
-	public Object getCache(String cacheName, Serializable key) {
-		Element element =  getEhcache(cacheName).get(key);
+	public Object getCacheValue(Serializable key) {
+		Element element = getEhcache().get(key);
 		return element == null ? null : element.getObjectValue();
 	}
 	
@@ -76,30 +67,19 @@ public class EhcacheUtil {
 	 * @param cache
 	 * @param key
 	 */
-	public void removeByKey(Ehcache cache, Object key) {
-		cache.remove(key);
+	public void removeByKey(Object key) {
+		getEhcache().remove(key);
 	}
 	
-	public void removeByKey(String cacheName, Object key) {
-		getEhcache(cacheName).remove(key);
-	}
-	
-	public void removeByKey(Ehcache cache, Serializable key) {
-		cache.remove(key);
-	}
-	
-	public void removeByKey(String cacheName, Serializable key) {
-		getEhcache(cacheName).remove(key);
+	public void removeByKey(Serializable key) {
+		getEhcache().remove(key);
 	}
 	
 	/**
 	 * 删除对应缓存中所有的数据
 	 * @param cache
 	 */
-	public void removeAll(Ehcache cache) {
-		cache.removeAll();
-	}
-	public void removeAll(String cacheName) {
-		getEhcache(cacheName).removeAll();
+	public void removeAll() {
+		getEhcache().removeAll();
 	}
 }

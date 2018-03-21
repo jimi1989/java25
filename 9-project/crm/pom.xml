@@ -23,16 +23,17 @@
 		<slf4j-version>1.7.25</slf4j-version>
 		<logback-version>1.2.3</logback-version>
 		<ehcache-version>2.10.4</ehcache-version>
+		<guava-version>23.0</guava-version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-		  <groupId>junit</groupId>
-		  <artifactId>junit</artifactId>
-		  <version>${junit-version}</version>
-		  <scope>test</scope>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit-version}</version>
+			<scope>test</scope>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -87,57 +88,52 @@
 			<artifactId>gson</artifactId>
 			<version>2.7</version>
 		</dependency>
-	
+
 		<dependency>
-		  <groupId>joda-time</groupId>
-		  <artifactId>joda-time</artifactId>
-		  <version>2.9.7</version>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.7</version>
 		</dependency>
-		
-		<!-- <dependency>
-		    <groupId>log4j</groupId>
-		    <artifactId>log4j</artifactId>
-		    <version>${log4j-version}</version>
-		</dependency> -->
-		
+
+		<!-- <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> 
+			<version>${log4j-version}</version> </dependency> -->
+
 		<dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-api</artifactId>
-		    <version>${slf4j-version}</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j-version}</version>
 		</dependency>
-		
-		<!-- <dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-log4j12</artifactId>
-		    <version>${slf4j-version}</version>
-		</dependency> -->
+
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
+			<version>${slf4j-version}</version> </dependency> -->
 		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
 		<dependency>
-		    <groupId>ch.qos.logback</groupId>
-		    <artifactId>logback-classic</artifactId>
-		    <version>${logback-version}</version>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback-version}</version>
 		</dependency>
-						
+
 		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
 		<dependency>
-		    <groupId>ch.qos.logback</groupId>
-		    <artifactId>logback-core</artifactId>
-		    <version>${logback-version}</version>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback-version}</version>
 		</dependency>
-		
-		<!-- <dependency>
-	      <groupId>org.ehcache</groupId>
-	      <artifactId>ehcache</artifactId>
-	      <version>${ehcache-version}</version>
-	    </dependency>  -->
-	    
-	    <!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache -->
+
+		<!-- <dependency> <groupId>org.ehcache</groupId> <artifactId>ehcache</artifactId> 
+			<version>${ehcache-version}</version> </dependency> -->
+
+		<!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache -->
 		<dependency>
-		    <groupId>net.sf.ehcache</groupId>
-		    <artifactId>ehcache</artifactId>
-		    <version>${ehcache-version}</version>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>${ehcache-version}</version>
 		</dependency>
-			    
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava-version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
