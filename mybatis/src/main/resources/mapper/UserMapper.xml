@@ -13,5 +13,34 @@
           select * from t_user WHERE  id = #{id}
     </select>
 
+    <select id="findAll" resultType="User">
+          select * from t_user
+    </select>
+
+    <select id="page" resultType="User" parameterType="map">
+        select * from t_user limit #{start}, #{size}
+    </select>
+
+    <select id="page2" resultType="User">
+        select * from t_user limit #{param1}, #{param2}
+    </select>
+
+    <select id="page3" resultType="User">
+        select * from t_user limit #{start}, #{size}
+    </select>
+
+    <insert id="save" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user (user_name, address, tel) values (#{userName}, #{address}, #{tel});
+    </insert>
+
+    <update id="update" parameterType="User">
+        update t_user set user_name = #{userName} , address = #{address}, tel = #{tel}
+        where id = #{id}
+
+    </update>
+    
+    <delete id="delById">
+        delete from t_user where id = #{id}
+    </delete>
 
 </mapper>
