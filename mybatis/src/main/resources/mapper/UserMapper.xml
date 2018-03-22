@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--推荐使用 类似类的完全限定名-->
+<mapper namespace="com.kaishengit.mapper.UserMapper">
+    <!--
+    id:唯一，最好写成类似于方法名
+    parameterType : 参数类型 一个参数的情况下可以省略
+    resultType: 返回值类型
+    -->
+    <select id="findById" parameterType="int" resultType="User">
+          select * from t_user WHERE  id = #{id}
+    </select>
+
+
+</mapper>

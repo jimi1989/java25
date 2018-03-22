@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!--开启将数据库中下划线风格的命名映射为Java中驼峰命名风格-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="com.kaishengit.entity.User" alias="User"/>
+    </typeAliases>
+
+    <!-- 环境：开发 测试 线上，default来决定当前使用的配置 -->
+    <environments default="dev">
+        <!-- 开发环境的DataSource配置-->
+        <environment id="dev">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///db_25"/>
+                <property name="username" value="root"/>
+                <property name="password" value="rootroot"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+
+    <!--加载mapper配置文件-->
+    <mappers>
+        <!--classpath路径：源代码根目录-->
+        <mapper resource="mapper/USerMapper.xml"/>
+    </mappers>
+
+
+</configuration>
