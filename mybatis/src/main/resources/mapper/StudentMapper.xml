@@ -4,6 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kaishengit.mapper.StudentMapper">
 
+    <cache/>
+
     <resultMap id="baseMap" type="com.kaishengit.entity.Student">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
@@ -11,71 +13,17 @@
         <result column="school_id" property="schoolId"/>
     </resultMap>
 
-    <resultMap id="studentMapWithTag" type="com.kaishengit.entity.Student" extends="baseMap">
-        <collection property="tagList" ofType="com.kaishengit.entity.Tag">
-            <id column="tid" property="id"/>
-            <result column="tag_name" property="tagName"/>
-        </collection>
-
-    </resultMap>
-
-    <select id="findByIdWithTag" parameterType="int" resultMap="studentMapWithTag">
-        SELECT
-            stu.id,
-            stu. NAME,
-            stu.age,
-            stu.school_id,
-            st.tid,
-            tag.tag_name
-        FROM
-            t_student stu
-        INNER JOIN t_stu_tag st ON stu.id = st.sid
-        INNER JOIN t_tag tag ON st.tid = tag.id
-        WHERE
-            stu.id = #{id}
-
-    </select>
-
-
-
     <resultMap id="studentMap" type="com.kaishengit.entity.Student" extends="baseMap">
-
-        <association property="school" javaType="com.kaishengit.entity.School">
-            <id column="id" property="id"/>
-            <result column="school_name" property="schoolName"/>
-            <result column="tel" property="tel"/>
-        </association>
-
+        <association property="school" javaType="com.kaishengit.entity.School"
+                     column="school_id" select="com.kaishengit.mapper.SchoolMapper.findById"/>
     </resultMap>
 
-    <select id="findById" parameterType="int" resultType="com.kaishengit.entity.Student">
-        SELECT
-            stu.id,
-            stu.name,
-            stu.age,
-            stu.school_id,
-            sch.id as 'school.id',
-            sch.school_name as 'school.schoolName',
-            sch.tel as 'school.tel'
-        FROM
-            t_student stu
-        INNER JOIN t_school sch ON stu.school_id = sch.id
-        WHERE
-            stu.id = #{id};
-
+    <select id="findById" parameterType="int" resultMap="studentMap">
+        select * from t_student WHERE id = #{id}
     </select>
 
-    <select id="findAll" resultMap="studentMap">
-        SELECT
-            stu.id,
-            stu.name,
-            stu.age,
-            stu.school_id,
-            sch.school_name,
-            sch.tel
-        FROM
-            t_student stu
-        INNER JOIN t_school sch ON stu.school_id = sch.id
+    <select id="findAll"  resultMap="studentMap">
+        select * from t_student
     </select>
-    
+
 </mapper>

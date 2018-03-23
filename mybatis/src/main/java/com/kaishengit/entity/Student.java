@@ -1,8 +1,9 @@
 package com.kaishengit.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Student {
+public class Student implements Serializable{
     private Integer id;
     private String name;
     private Integer age;

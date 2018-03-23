@@ -37,20 +37,13 @@ public class StudentMapperTestCase {
 
     @Test
     public void testFindByIdWithTag() {
-        Student student = studentMapper.findByIdWithTag(1);
-        System.out.println(student);
-        List<Tag> tagList = student.getTagList();
-        for(Tag tag : tagList) {
-            System.out.println(tag);
-        }
-
 
     }
 
     @Test
     public void testFindAll() {
         List<Student> studentList = studentMapper.findAll();
-        for (Student stu : studentList) {
+        for(Student stu : studentList) {
             System.out.println(stu);
         }
     }
