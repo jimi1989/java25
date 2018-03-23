@@ -9,9 +9,17 @@
     parameterType : 参数类型 一个参数的情况下可以省略
     resultType: 返回值类型
     -->
-    <select id="findById" parameterType="int" resultType="User">
+    <select id="findById" parameterType="int" resultMap="userMap">
           select * from t_user WHERE  id = #{id}
     </select>
+
+    <!--设置对应关系-->
+    <resultMap id="userMap" type="com.kaishengit.entity.User">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="address" property="address"/>
+        <result column="tel" property="tel"/>
+    </resultMap>
 
     <select id="findAll" resultType="User">
           select * from t_user
