@@ -16,6 +16,8 @@
     <resultMap id="studentMap" type="com.kaishengit.entity.Student" extends="baseMap">
         <association property="school" javaType="com.kaishengit.entity.School"
                      column="school_id" select="com.kaishengit.mapper.SchoolMapper.findById"/>
+        <collection property="tagList" ofType="com.kaishengit.entity.Tag"
+                    column="id" select="com.kaishengit.mapper.TagMapper.findByStuId"/>
     </resultMap>
 
     <select id="findById" parameterType="int" resultMap="studentMap">
