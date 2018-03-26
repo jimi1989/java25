@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动jar的路径 -->
+    <classPathEntry location="D:/jars/JDBC/mysql-connector-java-5.1.41.jar"/>
+
+    <context id="generatotConfig" targetRuntime="MyBatis3">
+        <!--去掉自动产生的注释-->
+        <commentGenerator>
+            <!-- 是否去掉自动生成的注释 true是 false 否 -->
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!--数据库连接配置-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql:///db_25" userId="root" password="rootroot"/>
+
+        <!--生成实体类的配置-->
+        <javaModelGenerator targetPackage="com.kaishengit.entity" targetProject="src/main/java"/>
+        <!--生成xml映射的配置-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+        <!--mapper接口配置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kaishengit.mapper" targetProject="src/main/java"/>
+
+        <table tableName="movie" domainObjectName="Movie" />
+    </context>
+
+
+</generatorConfiguration>
