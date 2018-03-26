@@ -27,9 +27,9 @@ public class UserMapperInterfaceTest {
     @Test
     public void testSave() {
         User user = new User();
-        user.setUserName("赵小蓝1");
+        user.setUserName("赵小蓝3");
         user.setAddress("北京");
-        user.setTel("010777");
+        user.setTel("0107778990");
 
         int num = userMapper.save(user);
         System.out.println("受影响的行数：" + num);
@@ -79,13 +79,13 @@ public class UserMapperInterfaceTest {
 
     @Test
     public void testDelete() {
-        userMapper.delById(20);
+        userMapper.delById(25);
     }
 
     @Test
     public void testUpdate() {
-        User user = userMapper.findById(3);
-        user.setTel("11223344");
+        User user = userMapper.findById(24);
+        user.setTel("01077886655");
         int num = userMapper.update(user);
         System.out.println("受影响行数：" + num);
     }

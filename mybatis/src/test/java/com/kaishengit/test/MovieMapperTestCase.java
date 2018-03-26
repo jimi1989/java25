@@ -29,6 +29,14 @@ public class MovieMapperTestCase {
         sqlSession.close();
     }
 
+    @Test
+    public void testFindAll() {
+        List<Movie> movieList = movieMapper.findAll();
+        for(Movie movie : movieList) {
+            System.out.println(movie);
+        }
+    }
+
        @Test
     public void testFindList() {
 //        String title = "%大话西游%";

@@ -32,11 +32,19 @@
     <!--加载mapper配置文件-->
     <mappers>
         <!--classpath路径：源代码根目录-->
-        <mapper resource="mapper/USerMapper.xml"/>
+        <!--<mapper resource="mapper/USerMapper.xml"/>
         <mapper resource="mapper/StudentMapper.xml"/>
         <mapper resource="mapper/MovieMapper.xml"/>
         <mapper resource="mapper/SchoolMapper.xml"/>
-        <mapper resource="mapper/TagMapper.xml"/>
+        <mapper resource="mapper/TagMapper.xml"/>-->
+
+        <!--<mapper class="com.kaishengit.mapper.MovieMapper"/>-->
+        <mapper resource="mapper/MovieMapper.xml"/>
+
+        <mapper class="com.kaishengit.mapper.UserMapper"/>
+        <mapper class="com.kaishengit.mapper.StudentMapper"/>
+        <mapper class="com.kaishengit.mapper.SchoolMapper"/>
+        <mapper class="com.kaishengit.mapper.TagMapper"/>
     </mappers>
 
 
