@@ -73,13 +73,19 @@ public class MovieExampleTestCase {
         }
     }
     @Test
-    public void findAll() {
+    public void testfindAll() {
         MovieExample example = new MovieExample();
 
         List<Movie> movieList = movieMapper.selectByExample(example);
         for(Movie movie : movieList) {
             System.out.println(movie);
         }
+    }
+
+    @Test
+    public void testCount() {
+        int count = movieMapper.count();
+        System.out.println(count);
     }
 
     @Test

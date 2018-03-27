@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface MovieMapper {
+    int count();
+
     long countByExample(MovieExample example);
 
     int deleteByExample(MovieExample example);
