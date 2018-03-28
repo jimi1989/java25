@@ -7,6 +7,43 @@ import java.sql.*;
 public class ProcedureTest {
 
     @Test
+    public void testTransaction() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql:///kaishengit_db","root","rootroot");
+
+            conn.setAutoCommit(false);
+
+            String sql = "delete from t_stu where id = ?";
+            PreparedStatement pstat = conn.prepareStatement(sql);
+
+            pstat.setInt(1,3);
+            pstat.executeUpdate();
+
+            // 设置保留点
+            Savepoint savepoint = conn.setSavepoint("s1");
+
+            String sql1 = "delete from t_stu where id = ?";
+            PreparedStatement pstat1 = conn.prepareStatement(sql1);
+
+            pstat1.setInt(1,4);
+            pstat1.executeUpdate();
+//            conn.commit();
+//            conn.rollback();
+            conn.rollback(savepoint);
+            conn.commit();
+            pstat.close();
+            conn.close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @Test
     public void testJDBC() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -22,7 +59,9 @@ public class ProcedureTest {
                 System.out.println(rs.getString("prod_name"));
             }
 
-
+            rs.close();
+            preparedStatement.close();
+            conn.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,7 +82,9 @@ public class ProcedureTest {
                 System.out.println(resultSet.getString("prod_name"));
             }
 
-
+            resultSet.close();
+            callableStatement.close();
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -70,6 +111,8 @@ public class ProcedureTest {
 
             System.out.println(max);
             System.out.println(min);
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
