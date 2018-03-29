@@ -1,4 +1,4 @@
-package com.kaishengit;
+package com.kaishengit.test;
 
 import org.junit.Test;
 
